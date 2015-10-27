@@ -53,6 +53,19 @@
      <Compile Include="Assets\Plugins\EZ Camera Shake\Scripts\CameraShakePresets.cs" />
      <Compile Include="Assets\Plugins\EZ Camera Shake\Scripts\CameraShaker.cs" />
      <Compile Include="Assets\Plugins\EZ Camera Shake\Scripts\Utilities\CameraUtilities.cs" />
+     <Compile Include="Assets\Plugins\LgJsonDataTest\LgJsonData_Test.cs" />
+     <Compile Include="Assets\Plugins\LgOctEngine_CoreClasses\Scripts\LgBaseClass\LgBaseClass.cs" />
+     <Compile Include="Assets\Plugins\LgOctEngine_CoreClasses\Scripts\LgBaseClass\LgBaseClass_Debug.cs" />
+     <Compile Include="Assets\Plugins\LgOctEngine_CoreClasses\Scripts\LgBaseClass\LgBaseClass_EditorUtils.cs" />
+     <Compile Include="Assets\Plugins\LgOctEngine_CoreClasses\Scripts\LgBaseClass\LgBaseClass_Log.cs" />
+     <Compile Include="Assets\Plugins\LgOctEngine_CoreClasses\Scripts\LgBaseClass\LgBaseClass_SystemException.cs" />
+     <Compile Include="Assets\Plugins\LgOctEngine_CoreClasses\Scripts\LgBaseClass\LgBaseClass_Utility.cs" />
+     <Compile Include="Assets\Plugins\LgOctEngine_CoreClasses\Scripts\LgDateTime.cs" />
+     <Compile Include="Assets\Plugins\LgOctEngine_CoreClasses\Scripts\LgJsonData\External\MiniJSON.cs" />
+     <Compile Include="Assets\Plugins\LgOctEngine_CoreClasses\Scripts\LgJsonData\LgJsonData.cs" />
+     <Compile Include="Assets\Plugins\LgOctEngine_CoreClasses\Scripts\LgJsonData\LgJsonDataSerializer.cs" />
+     <Compile Include="Assets\Plugins\LgOctEngine_CoreClasses\Scripts\LgJsonData\LgJsonParamsDictionary.cs" />
+     <Compile Include="Assets\Plugins\LgOctEngine_CoreClasses\Scripts\LgTypes.cs" />
      <Compile Include="Assets\Standard Assets\Cameras\Scripts\AbstractTargetFollower.cs" />
      <Compile Include="Assets\Standard Assets\Cameras\Scripts\AutoCam.cs" />
      <Compile Include="Assets\Standard Assets\Cameras\Scripts\FreeLookCam.cs" />
@@ -170,6 +183,7 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\MotionBlur.shader" />
      <None Include="Assets\Models\Chairs and sofas pack\Readme.txt" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MobileBloom.shader" />
+     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween46.xml" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\MinMaxReduction.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\SSAA.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\RadialBlur.shader" />
@@ -190,6 +204,7 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ConvertDepth.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionCurvesSimple.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderYUV.shader" />
+     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween50.xml" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\CreaseApply.shader" />
      <None Include="Assets\Fonts\OpenSans\License!.txt" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ChromaticAberrationShader.shader" />
@@ -239,6 +254,7 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\SimpleClear.shader" />
      <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAdd.shader" />
      <None Include="Assets\Standard Assets\Effects\TessellationShaders\Shaders\BumpedSpecularDisplacement.shader" />
+     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween43.xml" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAA3Console.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAAPreset2.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
@@ -254,6 +270,18 @@
  </Reference>
  <Reference Include="DOTween">
  <HintPath>E:/Projects/Unity3D/Stairs To The Heaven/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
+ </Reference>
+ <Reference Include="LitJson">
+ <HintPath>E:/Projects/Unity3D/Stairs To The Heaven/Assets/Plugins/LitJson.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween46">
+ <HintPath>E:/Projects/Unity3D/Stairs To The Heaven/Assets/Plugins/Demigiant/DOTween/DOTween46.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween43">
+ <HintPath>E:/Projects/Unity3D/Stairs To The Heaven/Assets/Plugins/Demigiant/DOTween/DOTween43.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween50">
+ <HintPath>E:/Projects/Unity3D/Stairs To The Heaven/Assets/Plugins/Demigiant/DOTween/DOTween50.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

@@ -38,7 +38,7 @@ public class MessageManager : MonoSingleton<MessageManager> {
 				messageTextBox = GameObject.Find(Constants.MES_TEXT_BOX).GetComponent<Text>();
 			}
 			else {
-				Debug.LogError("What the fuck? Setup the scene first if you want to display messages!");
+				Debug.LogError("Setup the scene first if you want to display messages!");
 				Destroy(this.gameObject);
 			}
 		}
@@ -183,7 +183,7 @@ public class MessageManager : MonoSingleton<MessageManager> {
 	public void DisplayMessages (string filePath, OnMessageEvent endMessage)
 	{
 		if (!messageOver) {
-			Debug.LogError("The messages are still running, idiot!");
+			Debug.LogError("The messages are still running!");
 			return;
 		}
 		CheckTextEnabled();
@@ -201,7 +201,7 @@ public class MessageManager : MonoSingleton<MessageManager> {
 			DisableMessage();
 		}
 		else {
-			Debug.LogError("You haven't even started the job, mother fucker!");
+			Debug.LogError("You haven't even started the job!");
 		}
 	}
 

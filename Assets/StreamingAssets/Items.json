@@ -1,0 +1,126 @@
+[
+	{
+		"id": 0,
+		"title": "Green Herb",
+		"tag": "u_00",
+		"description": "Green colored herb with healing properties. Combine with Blue Herb to create Yellow Herb.",
+		"equipable": false,
+		"stats": {
+			"type": 0,
+			"hp": 0,
+			"sp": 0,
+			"attack": 0,
+			"defense": 0,
+			"protection": 0
+		},
+		"useable": true,
+		"usability": {
+			"hp": 10,
+			"sp": 0,
+			"cure": 0
+		},
+		"combineable": true,
+		"combination": {
+			"id1": 1,
+			"id2": -1,
+			"id3": -1,
+			"idResult": 3
+		},
+		"stackable": true,
+ 		"value": 6,
+ 		"icon": "herb_01"
+	},
+	{
+		"id": 1,
+		"title": "Blue Herb",
+		"tag": "u_01",
+		"description": "Blue colored herb with energizing properties. Combine with Green Herb to create Yellow Herb.",
+		"equipable": false,
+		"stats": {
+			"type": 0,
+			"hp": 0,
+			"sp": 0,
+			"attack": 0,
+			"defense": 0,
+			"protection": 0
+		},
+		"useable": true,
+		"usability": {
+			"hp": 0,
+			"sp": 5,
+			"cure": 0
+		},
+		"combineable": true,
+		"combination": {
+			"id1": 0,
+			"id2": -1,
+			"id3": -1,
+			"idResult": 3
+		},
+		"stackable": true,
+		"value": 7,
+ 		"icon": "herb_02"
+	},
+	{
+		"id": 2,
+		"title": "Red Herb",
+		"tag": "u_02",
+		"description": "Red colored herb with curing abilities.",
+		"equipable": false,
+		"stats": {
+			"type": 0,
+			"hp": 0,
+			"sp": 0,
+			"attack": 0,
+			"defense": 0,
+			"protection": 0
+		},
+		"useable": true,
+		"usability": {
+			"hp": 0,
+			"sp": 0,
+			"cure": 99
+		},
+		"combineable": false,
+		"combination": {
+			"id1": -1,
+			"id2": -1,
+			"id3": -1,
+			"idResult": -1
+		},
+		"stackable": true,
+		"value": 2,
+ 		"icon": "herb_04"
+	},
+	{
+		"id": 3,
+		"title": "Yellow Herb",
+		"tag": "u_03",
+		"description": "Yellow colored herb incredible recovering abilities. Combined from Green Herb and Yellow Herb.",
+		"equipable": false,
+		"stats": {
+			"type": 0,
+			"hp": 0,
+			"sp": 0,
+			"attack": 0,
+			"defense": 0,
+			"protection": 0
+		},
+		"useable": true,
+		"usability": {
+			"hp": 15,
+			"sp": 10,
+			"cure": 0
+		},
+		"combineable": false,
+		"combination": {
+			"id1": -1,
+			"id2": -1,
+			"id3": -1,
+			"idResult": -1
+		},
+		"stackable": true,
+		"value": 1,
+ 		"icon": "herb_03"
+	}
+]

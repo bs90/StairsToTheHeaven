@@ -1,0 +1,62 @@
+[
+	{
+		"playedTime": 0,
+		"playthrough": 0,
+		"inventory": {
+			"slot1Id": 0,
+			"slot1Amount": 3,
+			"slot2Id": 1,
+			"slot2Amount": 2,
+			"slot3Id": 2,
+			"slot3Amount": 1,
+			"slot4Id": 3,
+			"slot4Amount": 1,
+			"slot5Id": -1,
+			"slot5Amount": -1,
+			"slot6Id": -1,
+			"slot6Amount": -1,
+			"slot7Id": -1,
+			"slot7Amount": -1,
+			"slot8Id": -1,
+			"slot8Amount": -1,
+			"slot9Id": -1,
+			"slot9Amount": -1,
+			"slot10Id": -1,
+			"slot10Amount": -1,
+			"slot11Id": -1,
+			"slot11Amount": -1,
+			"slot12Id": -1,
+			"slot12Amount": -1,
+			"slot13Id": -1,
+			"slot13Amount": -1,
+			"slot14Id": -1,
+			"slot14Amount": -1,
+			"slot15Id": -1,
+			"slot15Amount": -1,
+			"slot16Id": -1,
+			"slot16Amount": -1,
+		},
+		"character1": {
+			"name": 0,
+			"class": 0,
+			"hp": 0, 
+			"sp": 0,
+			"str": 0,
+			"vit": 0,
+			"agi": 0,
+			"dex": 0,
+			"int": 0,
+			"spi": 0
+		},
+		"events": {
+			"event1": 0,
+			"event2": 0,
+			"event3": 0 
+		},
+		"flags": {
+			"flag1": 0,
+			"flag2": 0,
+			"flag3": 0
+		}
+	},
+]
