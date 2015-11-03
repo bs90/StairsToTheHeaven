@@ -1,9 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\Inventory\Assets\Scripts\Data\ItemDatabase.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Environment\Elevator.cs">
     <Files>
-      <File FileName="..\Inventory\Assets\Scripts\Data\ItemDatabase.cs" Line="13" Column="5" />
-      <File FileName="..\Inventory\Assets\Scripts\MessageManager\MessageManager.cs" Line="41" Column="21" />
+      <File FileName="Assets\Scripts\Environment\Elevator.cs" Line="1" Column="1" />
+      <File FileName="..\HighStakes\Assets\Scripts\Map\Grid.cs" Line="264" Column="29" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
