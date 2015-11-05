@@ -4,8 +4,9 @@ using HighlightingSystem;
 
 public class HighlightObject : MonoBehaviour {
 	public bool isObject;
-
+	public bool isElevator;
 	public bool rotate;
+
 	public float rotateSpeed;
 
 	private Ray ray;
@@ -25,12 +26,12 @@ public class HighlightObject : MonoBehaviour {
 	{
 		ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		if (Physics.Raycast(ray, out hit)) {
-			if (hit.collider.transform == this.transform) {
+			if (hit.collider.transform == this.transform  && PlayerControlManager.Instance.controlable) {
 				highlighter.On(Color.cyan);
 				if (Input.GetButtonDown("Fire1")) {
 					PlayerControlManager player = PlayerControlManager.Instance;
 					if (!isObject && player.controlable) {
-						player.Move(this.transform.parent.position);
+						player.Move(this.transform.parent.gameObject, isElevator);
 					}
 				}
 			}

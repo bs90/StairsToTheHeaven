@@ -50,9 +50,9 @@
      <Compile Include="Assets\Scripts\Common\Constants.cs" />
      <Compile Include="Assets\Scripts\Environment\Elevator.cs" />
      <Compile Include="Assets\Scripts\Environment\HighlightObject.cs" />
-     <Compile Include="Assets\Scripts\JobManager\JobManager.cs" />
      <Compile Include="Assets\Scripts\Manager\GameManager\GameManager.cs" />
      <Compile Include="Assets\Scripts\Manager\HighlightManager\HighlightManager.cs" />
+     <Compile Include="Assets\Scripts\Manager\InterfaceManager\InterfaceManager.cs" />
      <Compile Include="Assets\Scripts\Manager\InventoryManager\GameData.cs" />
      <Compile Include="Assets\Scripts\Manager\InventoryManager\InventoryManager.cs" />
      <Compile Include="Assets\Scripts\Manager\InventoryManager\Item.cs" />
@@ -60,7 +60,9 @@
      <Compile Include="Assets\Scripts\Manager\InventoryManager\ItemDatabase.cs" />
      <Compile Include="Assets\Scripts\Manager\InventoryManager\Slot.cs" />
      <Compile Include="Assets\Scripts\Manager\InventoryManager\Tooltip.cs" />
+     <Compile Include="Assets\Scripts\Manager\JobManager\JobManager.cs" />
      <Compile Include="Assets\Scripts\Manager\MessageManager\MessageManager.cs" />
+     <Compile Include="Assets\Scripts\Manager\NavigationManager\NavigationManager.cs" />
      <Compile Include="Assets\Scripts\Manager\PatternLockManager\DrawRectangle.cs" />
      <Compile Include="Assets\Scripts\Manager\PatternLockManager\PatternLockManager.cs" />
      <Compile Include="Assets\Scripts\Manager\PatternLockManager\PatternPoint.cs" />
@@ -68,9 +70,9 @@
      <Compile Include="Assets\Scripts\Models\DialogMessage.cs" />
      <Compile Include="Assets\Scripts\Player\AnimationHash.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerControlManager.cs" />
-     <Compile Include="Assets\Scripts\StateMachine\PlayerStateMachine.cs" />
      <Compile Include="Assets\Scripts\System\Singleton.cs" />
      <Compile Include="Assets\Scripts\Test\TestMessage.cs" />
+     <Compile Include="Assets\Scripts\Tools\FPSCounter.cs" />
      <Compile Include="Assets\Scripts\UI\ActiveStateToggler.cs" />
      <Compile Include="Assets\Scripts\UI\ApplicationManager.cs" />
      <Compile Include="Assets\Scripts\UI\ChangeColor.cs" />
@@ -180,17 +182,11 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAAPreset2.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendForBloom.shader" />
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Analytics">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="LitJson">
  <HintPath>E:/Projects/Unity3D/Stairs To The Heaven/Assets/Plugins/LitJson.dll</HintPath>

@@ -2,7 +2,7 @@
 using System.Collections;
 using DG.Tweening;
 
-public class Elevator : MonoBehaviour {
+public class Elevator : MonoSingleton<Elevator> {
 
 	public Vector3 rightDoorClosePos = new Vector3(2.45f, -0.35f, -1.1f);
 	public Vector3 leftDoorClosePos = new Vector3(1.55f, -0.35f, -1.1f);

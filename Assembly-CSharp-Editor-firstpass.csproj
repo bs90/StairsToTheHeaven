@@ -49,6 +49,19 @@
      <Compile Include="Assets\Plugins\Editor\HighlightingBlitterEditor.cs" />
      <Compile Include="Assets\Plugins\Editor\HighlightingMobileEditor.cs" />
      <Compile Include="Assets\Plugins\Editor\HighlightingRendererEditor.cs" />
+     <Compile Include="Assets\Standard Assets\Editor\ImageEffects\AntialiasingEditor.cs" />
+     <Compile Include="Assets\Standard Assets\Editor\ImageEffects\BloomAndFlaresEditor.cs" />
+     <Compile Include="Assets\Standard Assets\Editor\ImageEffects\BloomEditor.cs" />
+     <Compile Include="Assets\Standard Assets\Editor\ImageEffects\CameraMotionBlurEditor.cs" />
+     <Compile Include="Assets\Standard Assets\Editor\ImageEffects\ColorCorrectionCurvesEditor.cs" />
+     <Compile Include="Assets\Standard Assets\Editor\ImageEffects\ColorCorrectionLookupEditor.cs" />
+     <Compile Include="Assets\Standard Assets\Editor\ImageEffects\DepthOfFieldDeprecatedEditor.cs" />
+     <Compile Include="Assets\Standard Assets\Editor\ImageEffects\DepthOfFieldEditor.cs" />
+     <Compile Include="Assets\Standard Assets\Editor\ImageEffects\EdgeDetectionEditor.cs" />
+     <Compile Include="Assets\Standard Assets\Editor\ImageEffects\NoiseAndGrainEditor.cs" />
+     <Compile Include="Assets\Standard Assets\Editor\ImageEffects\SunShaftsEditor.cs" />
+     <Compile Include="Assets\Standard Assets\Editor\ImageEffects\TonemappingEditor.cs" />
+     <Compile Include="Assets\Standard Assets\Editor\ImageEffects\VignetteAndChromaticAberrationEditor.cs" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Plugins\Demigiant\DOTween\readme.txt" />
@@ -147,9 +160,6 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAAPreset2.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendForBloom.shader" />
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
- </Reference>
  <Reference Include="UnityEditor.Advertisements">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>
@@ -164,9 +174,6 @@
  </Reference>
  <Reference Include="UnityEditor.Networking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Analytics">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="LitJson">
  <HintPath>E:/Projects/Unity3D/Stairs To The Heaven/Assets/Plugins/LitJson.dll</HintPath>

@@ -40,7 +40,7 @@ public class PatternLockManager : MonoSingleton<PatternLockManager> {
 
 		//TODO PointLayout needs to be rewritten if this is to be used again
 		GridLayoutGroup pointLayout = pointParent.GetComponent<GridLayoutGroup>();
-		pointLayout.spacing = new Vector2(400 / patternRows - (5 * patternRows + 4), 400 / patternRows - (5 * patternRows + 4));
+		pointLayout.spacing = new Vector2(400 / patternRows - (5 * patternRows + 5), 400 / patternRows - (5 * patternRows + 5));
 
 		for (int x = 0; x < patternRows; x++) {
 			for (int y = 0; y < patternRows; y++) {
@@ -64,7 +64,7 @@ public class PatternLockManager : MonoSingleton<PatternLockManager> {
 			Debug.Log ("Cross 1");
 		}
 		else if ((startPoint.x + startPoint.y == endPoint.x + endPoint.y) && Mathf.Abs(endPoint.x - startPoint.x) > 1) {
-//			MarkBetweenPoints(startPoint, endPoint, new Vector2(1, 1), true);
+			MarkBetweenPoints(startPoint, endPoint, new Vector2(1, -1), true);
 			Debug.Log ("Cross 2");
 		}
 		else if (startPoint.y == endPoint.y && startPoint.x != endPoint.x && Mathf.Abs(endPoint.x - startPoint.x) > 1) {
@@ -149,9 +149,24 @@ public class PatternLockManager : MonoSingleton<PatternLockManager> {
 		}
 	}
 
-	public void ComparePoints(List<int> comparePoints, List<int> toComparePoints)
+	public bool ComparePoints(List<int> comparePoints, List<int> compareePoints)
 	{
-
+		int correctPoints = 0;
+		//TODO Stupid naming at the best
+		for (int cp = 0; cp < comparePoints.Count; cp++) {
+			for (int tcp = 0; tcp < compareePoints.Count; tcp++) {
+				if (compareePoints[tcp] == comparePoints[cp]) {
+					correctPoints += 1;
+				}
+				compareePoints.Remove(compareePoints[tcp]);
+			}
+		}
+		if (correctPoints == comparePoints.Count) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	public void ClearPoints()

@@ -5,14 +5,18 @@ using System.Collections;
 public enum GameState {
 	MainMenu,
 	Adventure,
-	Invenstigation,
+	Investigation,
 	Inventory,
+	OpenLock,
+	Pause,
 	Option,
+	Uncontrolable,
 	Credits
 }
 
 public class GameManager : MonoSingleton<GameManager> {
-	public string info;
+	[HideInInspector]public string info;
+
 	private string presentFloor;
 
 	public GameObject infoText;
@@ -20,6 +24,20 @@ public class GameManager : MonoSingleton<GameManager> {
 	[HideInInspector]public int minutes = 0;
 	[HideInInspector]public int hour = 0;
 	[HideInInspector]public int second = 0;
+	
+	[HideInInspector]public GameObject standingPoint;
+
+	private GameState gameState;
+	public GameState State {
+		get {
+			return this.gameState;
+		}
+	}
+
+	public void SetGameState (GameState state)
+	{
+		gameState = state;
+	}
 
 	void Start () 
 	{

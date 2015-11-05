@@ -32,75 +32,57 @@ public class PlayerControlManager : MonoSingleton<PlayerControlManager> {
 	public Transform[] pathPoints;
 	public int presentPoint;
 
+	private GameObject destinationPoint;
+
 	void Start ()
 	{
-//		hash = GetComponent<AnimationHash>();
-//		animator = playerTransform.GetComponent<Animator>();
-
 		controlable = true;
 		presentPoint = 0;
 	}
 
 	void Update ()
 	{
-		if (Input.GetButton("Fire2")) {
+		if (Input.GetButton("Fire2") && controlable) {
 			Rotate();
 		}
-
-//		if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idling") && controlable) {
-//			this.transform.SetParent(playerTransform);
-//			if (Input.GetButton("Fire2")) {
-//				Rotate();
-//			}
-//		}
-//		else {
-//			this.transform.SetParent(headTransform);
-//		}
-//
-////		if (Input.GetButtonUp("Fire1") && controlable) {
-////			animator.SetTrigger(hash.fallTrigger);
-////			this.transform.rotation = this.transform.parent.rotation;
-////		}
-//
-//		if (Input.GetKeyUp("a") && controlable) {
-//			presentPoint += 1;
-//			if (presentPoint >= pathPoints.Length) {
-//				presentPoint = 1;
-//			}
-//
-////			playerTransform.rotation = transform.rotation;
-//			playerTransform.LookAt(pathPoints[presentPoint]);
-//			rotationY = 0;
-//
-//		}
 	}
 
-	void FixedUpdate ()
+	public void Move (GameObject navigationPoint, bool faceFrontElevator)
 	{
-
-	}
-
-	public void Move (Vector3 toPosition)
-	{
+		destinationPoint = navigationPoint;
+		Vector3 toPosition = navigationPoint.transform.position;
 		Quaternion targetRotation = Quaternion.LookRotation (toPosition - transform.position);
 
 		Sequence moveSequence = DOTween.Sequence();
-		moveSequence.Append(transform.DORotate(targetRotation.eulerAngles, 3, RotateMode.Fast));
-//		moveSequence.PrependInterval(1);
-		moveSequence.Append(transform.DOMove(toPosition, 5, false).OnStart(StartPath).OnComplete(EndPath));
+		moveSequence.Append(transform.DORotate(targetRotation.eulerAngles, 1, RotateMode.Fast).OnStart(StartPath));
+
+		if (faceFrontElevator) {
+			moveSequence.Append(transform.DOMove(toPosition, 4, false));
+            moveSequence.Append(transform.DORotate(navigationPoint.transform.rotation.eulerAngles, 2, RotateMode.Fast).OnComplete(EndPath));
+		}
+		else {
+			moveSequence.Append(transform.DOMove(toPosition, 4, false).OnComplete(EndPath));
+		}
 		moveSequence.Play();
 	}
 
 	void StartPath ()
 	{
 		controlable = false;
-//		animator.SetBool(hash.walkBool, true);
+		NavigationManager.Instance.MoveAwayFromPoint(NavigationManager.Instance.presentNavigationPoint);
 	}
 
 	void EndPath ()
 	{
-//		animator.SetBool(hash.walkBool, false);
+		//TODO Sometimes it causes warnings, why?
+		if (destinationPoint.GetComponentInChildren<HighlightObject>().isElevator) {
+			InterfaceManager.Instance.ToggleLockWindow();
+			Elevator.Instance.CloseDoors();
+		}
+
 		controlable = true;
+		NavigationManager.Instance.SetPresentPoint(destinationPoint);
+		destinationPoint = null;
 	}
 
 	void Rotate()
