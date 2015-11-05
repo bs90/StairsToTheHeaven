@@ -5,6 +5,8 @@ Project("{7465DBC4-628E-79E1-0294-5218F3103D58}") = "Stairs To The Heaven", "Ass
 EndProject
 Project("{7465DBC4-628E-79E1-0294-5218F3103D58}") = "Stairs To The Heaven", "Assembly-CSharp.csproj", "{0226101F-B633-CC84-2256-782A24650097}"
 EndProject
+Project("{7465DBC4-628E-79E1-0294-5218F3103D58}") = "Stairs To The Heaven", "Assembly-CSharp-Editor-firstpass.csproj", "{2F8DA5E9-D57C-1F0D-4438-84D54BB63CC3}"
+EndProject
 Project("{7465DBC4-628E-79E1-0294-5218F3103D58}") = "Stairs To The Heaven", "Assembly-CSharp-Editor.csproj", "{C2FEE09E-5F00-D099-A4D9-F2326CF8C09D}"
 EndProject
 Global
@@ -21,6 +23,10 @@ Global
 		{0226101F-B633-CC84-2256-782A24650097}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0226101F-B633-CC84-2256-782A24650097}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0226101F-B633-CC84-2256-782A24650097}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F8DA5E9-D57C-1F0D-4438-84D54BB63CC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F8DA5E9-D57C-1F0D-4438-84D54BB63CC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F8DA5E9-D57C-1F0D-4438-84D54BB63CC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F8DA5E9-D57C-1F0D-4438-84D54BB63CC3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C2FEE09E-5F00-D099-A4D9-F2326CF8C09D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C2FEE09E-5F00-D099-A4D9-F2326CF8C09D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2FEE09E-5F00-D099-A4D9-F2326CF8C09D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -29,7 +35,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																						GlobalSection(MonoDevelopProperties) = preSolution
+																																																																																																																																																															GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
