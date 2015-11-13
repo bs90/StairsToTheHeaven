@@ -6,6 +6,7 @@ using System.Collections;
 
 public class Slot : MonoBehaviour, IDropHandler {
 	public int id;
+	public bool equipSlot;
 
 	public void OnDrop(PointerEventData eventData)
 	{
@@ -34,7 +35,7 @@ public class Slot : MonoBehaviour, IDropHandler {
 				droppedItem.transform.SetParent(this.transform);
 				droppedItem.transform.position = this.transform.position;
 
-				if (droppedItem.item.Combineable && droppedItem.item.CombineId1 == swapItemData.item.Id) {
+				if (droppedItem.item.Combineable && droppedItem.item.CombineId1 == swapItemData.item.Id && !equipSlot) {
 					if (droppedItem.item.CombineResult == swapItemData.item.CombineResult) {
 						InventoryManager.Instance.CombineItem(droppedItem.item.Id, swapItemData.item.Id, droppedItem.item.CombineResult);					
 					}

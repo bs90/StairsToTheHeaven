@@ -5,6 +5,8 @@ public class NavigationManager : MonoSingleton<NavigationManager> {
 
 	public GameObject presentNavigationPoint;
 
+	public GameObject[] basementTenthFloorPoints;
+
 	public GameObject[] firstFloorPoints;
 	public GameObject[] secondFloorPoints;
 	public GameObject[] thirdFloorPoints;
@@ -13,7 +15,7 @@ public class NavigationManager : MonoSingleton<NavigationManager> {
 	private void Start()
 	{
 		//TODO Read from save point
-		SetPresentPoint(firstFloorPoints[1]);
+		SetPresentPoint(firstFloorPoints[0]);
 	}
 
 	public void SetPresentPoint (GameObject presentPoint)

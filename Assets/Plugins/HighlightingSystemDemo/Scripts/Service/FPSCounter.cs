@@ -22,10 +22,4 @@ public class FPSCounter : MonoBehaviour
 		}
 		frames++;
 	}
-
-	// 
-	void OnGUI()
-	{
-		GUI.Label (new Rect(Screen.width - 100, Screen.height - 45, 100, 20), fps);
-	}
 }

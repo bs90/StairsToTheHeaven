@@ -103,18 +103,18 @@ public class SceneLoader : MonoBehaviour
 	#endif
 
 	// 
-	void OnGUI()
-	{
-		GUI.Label(new Rect(ox, oy + 10, 500, 100), "Load demo scene:");
-
-		for (int i = 0; i < sceneNames.Length; i++)
-		{
-			string scene = sceneNames[i];
-
-			if (GUI.Button(new Rect(ox, oy + 30 + i * h, 120, 20), scene))
-			{
-				Application.LoadLevel(scene);
-			}
-		}
-	}
+//	void OnGUI()
+//	{
+//		GUI.Label(new Rect(ox, oy + 10, 500, 100), "Load demo scene:");
+//
+//		for (int i = 0; i < sceneNames.Length; i++)
+//		{
+//			string scene = sceneNames[i];
+//
+//			if (GUI.Button(new Rect(ox, oy + 30 + i * h, 120, 20), scene))
+//			{
+//				Application.LoadLevel(scene);
+//			}
+//		}
+//	}
 }

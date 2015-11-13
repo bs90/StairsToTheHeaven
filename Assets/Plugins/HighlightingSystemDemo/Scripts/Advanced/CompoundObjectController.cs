@@ -28,15 +28,15 @@ public class CompoundObjectController : FlashingController
 	}
 
 	// 
-	void OnGUI()
-	{
-		float newX = Screen.width + ox;
-		GUI.Label(new Rect(newX, oy, 500, 100), "Compound object controls:");
-		if (GUI.Button(new Rect(newX, oy + 30, 200, 30), "Add Random Primitive")) { AddObject(); }
-		if (GUI.Button(new Rect(newX, oy + 70, 200, 30), "Change Material")) { ChangeMaterial(); }
-		if (GUI.Button(new Rect(newX, oy + 110, 200, 30), "Change Shader")) { ChangeShader(); }
-		if (GUI.Button(new Rect(newX, oy + 150, 200, 30), "Remove Object")) { RemoveObject(); }
-	}
+//	void OnGUI()
+//	{
+//		float newX = Screen.width + ox;
+//		GUI.Label(new Rect(newX, oy, 500, 100), "Compound object controls:");
+//		if (GUI.Button(new Rect(newX, oy + 30, 200, 30), "Add Random Primitive")) { AddObject(); }
+//		if (GUI.Button(new Rect(newX, oy + 70, 200, 30), "Change Material")) { ChangeMaterial(); }
+//		if (GUI.Button(new Rect(newX, oy + 110, 200, 30), "Change Shader")) { ChangeShader(); }
+//		if (GUI.Button(new Rect(newX, oy + 150, 200, 30), "Remove Object")) { RemoveObject(); }
+//	}
 
 	// 
 	void AddObject()

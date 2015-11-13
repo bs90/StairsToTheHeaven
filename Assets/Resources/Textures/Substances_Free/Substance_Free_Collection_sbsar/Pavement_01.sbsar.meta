@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: 751e3d0cdb8930041aff5b8e982595d4
+timeCreated: 1447123905
+licenseType: Pro
 SubstanceImporter:
   serializedVersion: 5
   materialInstances:
@@ -7,7 +9,7 @@ SubstanceImporter:
     name: Pavement_01
     prototypeName: Pavement_01
     shader: {fileID: 45, guid: 0000000000000000f000000000000000, type: 0}
-    shaderKeywords: 
+    shaderKeywords: _NORMALMAP _PARALLAXMAP _SPECGLOSSMAP
     renderQueue: -1
     lightmapFlags: 5
     inputs:
@@ -126,7 +128,7 @@ SubstanceImporter:
     materialInformation:
       serializedVersion: 5
       offset: {x: 0, y: 0}
-      scale: {x: 1, y: 1}
+      scale: {x: 5, y: 5}
       generateMipmaps: 1
       generateAllOutputs: 0
       animationUpdateRate: 0
@@ -138,14 +140,14 @@ SubstanceImporter:
             name: _MainTex
           second:
             texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
+            scale: {x: 5, y: 5}
             offset: {x: 0, y: 0}
         data:
           first:
             name: _BumpMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
+            scale: {x: 5, y: 1}
             offset: {x: 0, y: 0}
         data:
           first:
@@ -159,7 +161,7 @@ SubstanceImporter:
             name: _ParallaxMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
+            scale: {x: 5, y: 1}
             offset: {x: 0, y: 0}
         data:
           first:
@@ -173,7 +175,7 @@ SubstanceImporter:
             name: _EmissionMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
+            scale: {x: 5, y: 5}
             offset: {x: 0, y: 0}
         data:
           first:
@@ -187,14 +189,14 @@ SubstanceImporter:
             name: _DetailAlbedoMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
+            scale: {x: 5, y: 5}
             offset: {x: 0, y: 0}
         data:
           first:
             name: _SpecGlossMap
           second:
             texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
+            scale: {x: 5, y: 1}
             offset: {x: 0, y: 0}
       floats:
         data:

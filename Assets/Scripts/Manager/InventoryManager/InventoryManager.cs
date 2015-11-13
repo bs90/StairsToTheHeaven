@@ -11,6 +11,8 @@ public class InventoryManager : MonoSingleton<InventoryManager> {
 	public GameObject inventorySlot;
 	public GameObject inventoryItem;
 
+	public GameObject equipSlot;
+
 //	public GameObject equipmentPanel;
 //	public GameObject equipmentSlotPanel;
 //	public GameObject equipmentSlotScrollRect;
@@ -64,8 +66,14 @@ public class InventoryManager : MonoSingleton<InventoryManager> {
 			slots[i].transform.SetParent(slotScrollRect.transform);	
 		}
 
-		AddItem(0, 2);
-		AddItem(1, 3);
+		if (equipSlot != null) {
+			slots.Add(equipSlot);
+			items.Add(new Item());
+			equipSlot.GetComponent<Slot>().id = slots.Count - 1;
+		}
+
+		AddItem(0, 1);
+		AddItem(1, 1);
 		AddItem(2, 1);
 
 	}

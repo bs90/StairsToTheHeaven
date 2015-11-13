@@ -34,6 +34,8 @@ public class PlayerControlManager : MonoSingleton<PlayerControlManager> {
 
 	private GameObject destinationPoint;
 
+	private bool inTheMove;
+
 	void Start ()
 	{
 		controlable = true;
@@ -76,13 +78,18 @@ public class PlayerControlManager : MonoSingleton<PlayerControlManager> {
 	{
 		//TODO Sometimes it causes warnings, why?
 		if (destinationPoint.GetComponentInChildren<HighlightObject>().isElevator) {
-			InterfaceManager.Instance.ToggleLockWindow();
-			Elevator.Instance.CloseDoors();
+			InterfaceManager.Instance.ToggleInfoWindow("Please enter pattern's code for the elevator.", OpenLockPanel);
 		}
 
 		controlable = true;
 		NavigationManager.Instance.SetPresentPoint(destinationPoint);
 		destinationPoint = null;
+	}
+
+	void OpenLockPanel()
+	{
+		InterfaceManager.Instance.ToggleLockWindow();
+		Elevator.Instance.CloseDoors();
 	}
 
 	void Rotate()
@@ -104,5 +111,9 @@ public class PlayerControlManager : MonoSingleton<PlayerControlManager> {
 			
 			transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
 		}
+	}
+
+	void HeadBob () { 
+
 	}
 }

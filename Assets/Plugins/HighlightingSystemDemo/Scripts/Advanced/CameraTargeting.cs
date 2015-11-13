@@ -71,8 +71,8 @@ Right Click - switch see-through mode for object under mouse cursor
 	}
 
 	// 
-	void OnGUI()
-	{
-		GUI.Label(new Rect(10, Screen.height - 100, 500, 100), info);
-	}
+//	void OnGUI()
+//	{
+//		GUI.Label(new Rect(10, Screen.height - 100, 500, 100), info);
+//	}
 }
