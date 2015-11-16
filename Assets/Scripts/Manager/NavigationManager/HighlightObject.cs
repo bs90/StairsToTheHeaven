@@ -5,9 +5,11 @@ using HighlightingSystem;
 public class HighlightObject : MonoBehaviour {
 	public bool isObject;
 	public bool isElevator;
-	public bool rotate;
 
+	public bool rotate;
 	public float rotateSpeed;
+
+	public GameObject[] moveablePoints; 
 
 	private Ray ray;
 	private RaycastHit hit;

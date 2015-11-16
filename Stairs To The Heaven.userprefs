@@ -1,18 +1,17 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Manager\InterfaceManager\InterfaceManager.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Manager\PasswordManager\PasswordManager.cs">
     <Files>
-      <File FileName="Assets\Scripts\Manager\PatternLockManager\PatternPoint.cs" Line="28" Column="38" />
+      <File FileName="Assets\Scripts\Manager\GameManager\GameManager.cs" Line="31" Column="2" />
+      <File FileName="Assets\Scripts\Manager\NavigationManager\NavigationManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Manager\PatternLockManager\PatternPoint.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Manager\ControlManager\ControlManager.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Manager\InventoryManager\InventoryManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Manager\PatternLockManager\PatternLockManager.cs" Line="255" Column="42" />
-      <File FileName="Assets\Scripts\Manager\InterfaceManager\InterfaceManager.cs" Line="77" Column="32" />
-      <File FileName="Assets\Scripts\Manager\InventoryManager\Slot.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Manager\InventoryManager\ItemData.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Manager\InventoryManager\Item.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Manager\NavigationManager\NavigationManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Manager\PatternLockManager\PatternLockManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Manager\InterfaceManager\InterfaceManager.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Player\PlayerControlManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\System\Singleton.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Manager\NavigationManager\HighlightObject.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Manager\PasswordManager\PasswordManager.cs" Line="113" Column="53" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

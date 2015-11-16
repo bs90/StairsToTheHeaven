@@ -15,13 +15,25 @@ public class NavigationManager : MonoSingleton<NavigationManager> {
 	private void Start()
 	{
 		//TODO Read from save point
-		SetPresentPoint(firstFloorPoints[0]);
+		SetPresentPoint(basementTenthFloorPoints[0]);
 	}
 
 	public void SetPresentPoint (GameObject presentPoint)
 	{
-		presentNavigationPoint = presentPoint;
-		presentPoint.SetActive(false);
+		if (presentPoint != null) {
+			presentNavigationPoint = presentPoint;
+			presentPoint.SetActive(false);
+		}
+		else {
+			return;
+		}
+	}
+
+	public void SetMoveablePoints (GameObject[] moveablePoints)
+	{
+		foreach (GameObject moveablePoint in moveablePoints) {
+			moveablePoint.SetActive(true);
+		}
 	}
 
 	public void MoveAwayFromPoint (GameObject awayPoint)
