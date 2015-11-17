@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public enum PasswordInputType
 {
@@ -12,6 +13,8 @@ public enum PasswordInputType
 
 public class PasswordManager : MonoSingleton<PasswordManager> {
 
+	private int characterLimit = 20;
+
 	public GameObject passwordInputPanel;
 
 	public GameObject keyButtonPrefab;
@@ -20,7 +23,12 @@ public class PasswordManager : MonoSingleton<PasswordManager> {
 	public GameObject confirmButton;
 	public GameObject cancelButton;
 
-	public GameObject passwordTextBox;
+	public GameObject passwordField;
+	public GameObject placeholderText;
+
+
+	private string correctPassword;
+	private List<int> passwordSpaces;
 
 	private string passwordText;
 	public string PasswordText {
@@ -28,32 +36,63 @@ public class PasswordManager : MonoSingleton<PasswordManager> {
 			return this.passwordText;
 		}
 	}
-
-	private string correctPassword;
-
-	public PasswordInputType inputType;
-
-	void Update()
-	{
-		if (Input.GetKeyDown("q")) {
-			SetupPasswordInput(PasswordInputType.Roman, "AbCd");
+			
+	private char[] kanjiCharactersSet = "日月火水木金土".ToCharArray();
+	public char[] KanjiCharactersSet {
+		get {
+			return this.kanjiCharactersSet;
 		}
-		if (Input.GetKeyDown("w")) {
-			SetupPasswordInput(PasswordInputType.Numeric, "123");
-		}
-		if (Input.GetKeyDown("e")) {
-			SetupPasswordInput(PasswordInputType.Kanji, "日月火水木金土");
+		set {
+			this.kanjiCharactersSet = value;
 		}
 	}
 
-	public void SetupPasswordInput(PasswordInputType type, string password)
+	private int rewardedItem = -1;
+		
+	void Update()
 	{
-		correctPassword = password;
+		if (Input.GetKeyDown("q")) {
+			SetupPasswordInput(PasswordInputType.Roman, "I am eternal", "Password is I am internal.", new List<int> {1, 4}, 13, -1);
+		}
+		if (Input.GetKeyDown("w")) {
+			SetupPasswordInput(PasswordInputType.Numeric, "123", "Example numeric characters password test.", null, 3, 4);
+		}
+		if (Input.GetKeyDown("e")) {
+			SetupPasswordInput(PasswordInputType.Kanji, "日月火水木金土", "Example kanji characters password test.", null, 7, -1);
+		}
+	}
 
+	public void SetupPasswordInput(PasswordInputType type, string password, string placeholder, List<int> spaces, int limit, int itemId)
+	{
 		if (passwordInputPanel.activeInHierarchy) {
 			return;
 		}
 
+		if (password == null) {
+			return;
+		}
+		correctPassword = password;
+
+		if (spaces != null) {
+			passwordSpaces = spaces;
+		}
+
+		if (placeholder != null) {
+			placeholderText.GetComponent<Text>().text = placeholder;
+		}
+
+		if (limit != 0) {
+			characterLimit = limit;
+		}
+
+		if (itemId != -1) {
+			rewardedItem = 4;
+		}
+		else {
+			rewardedItem = -1;
+		}
+
+		passwordField.GetComponent<InputField>().characterLimit = characterLimit;
 		passwordInputPanel.SetActive(true);
 		RemoveKeys();
 
@@ -72,8 +111,7 @@ public class PasswordManager : MonoSingleton<PasswordManager> {
 			}
 			break;
 		case PasswordInputType.Kanji:
-			char[] kanjis = "日月火水木金土".ToCharArray();
-			foreach(char kanji in kanjis) {
+			foreach(char kanji in kanjiCharactersSet) {
 				string character = kanji.ToString();
 				SetupKey(character, keysPanel);
 			}
@@ -103,21 +141,29 @@ public class PasswordManager : MonoSingleton<PasswordManager> {
 
 	private void OnPressKey(string key)
 	{
+		if (passwordText != null && passwordSpaces != null && passwordSpaces.Contains(passwordText.Length)) {
+			passwordText += " ";
+		}
 		passwordText += key;
-		UpdatePasswordString();
+		if (passwordText.Length <= characterLimit) {
+			UpdatePasswordString();
+		}
 	}
 
 	private void OnBackspaceKey()
 	{
 		if (passwordText.Length > 0) {
 			passwordText = passwordText.Remove(passwordText.Length - 1);
+			if(passwordText.EndsWith(" ")) {
+				passwordText = passwordText.Remove(passwordText.Length - 1);
+			}
 			UpdatePasswordString();
 		}
 	}
 
 	private void OnClickConfirm(string correctPassword)
 	{
-		if (correctPassword.ToUpper() == passwordText || correctPassword.ToLower() == passwordText) {
+		if (correctPassword == passwordText || correctPassword.ToUpper() == passwordText || correctPassword.ToLower() == passwordText) {
 			InterfaceManager.Instance.ToggleInfoWindow(string.Format("Password " + correctPassword + " accepted."), PasswordSolved);
 		}
 		else {
@@ -129,24 +175,38 @@ public class PasswordManager : MonoSingleton<PasswordManager> {
 	{
 		passwordText = string.Empty;
 		correctPassword = string.Empty;
-		
+		characterLimit = 15;
+		if (passwordSpaces != null) {
+			passwordSpaces.Clear();
+		}
+
 		UpdatePasswordString();
 		RemoveKeys();
 		
 		cancelButton.GetComponent<Button>().onClick.RemoveAllListeners();
 		confirmButton.GetComponent<Button>().onClick.RemoveAllListeners();
-		
+
+		placeholderText.GetComponent<Text>().text = string.Empty;
+
 		passwordInputPanel.SetActive(false);
+	}
+
+	private void OnPasswordFieldUpdate()
+	{
+
 	}
 
 	private void UpdatePasswordString()
 	{
-		passwordTextBox.GetComponent<InputField>().text = passwordText;
+		passwordField.GetComponent<InputField>().text = passwordText;
 	}	
 
 	private void PasswordSolved()
 	{
-		//TODO Give item, obviously
+		if (rewardedItem != -1) {
+			InterfaceManager.Instance.ToggleInfoWindow(string.Format("You picked up <color=yellow>" + ItemDatabase.Instance.FetchItemByID(rewardedItem).Title + "</color>."), 
+			                                           ()=> InventoryManager.Instance.AddItem(rewardedItem, 1));
+		}
 		OnClickCancel();
 	}
 

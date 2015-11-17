@@ -47,7 +47,6 @@
   <ItemGroup>
      <Compile Include="Assets\Plugins\Demigiant\DOTween\Examples\Basics.cs" />
      <Compile Include="Assets\Plugins\Demigiant\DOTween\Examples\Sequences.cs" />
-     <Compile Include="Assets\Plugins\EZ Camera Shake\Demo\ShakeDemo.cs" />
      <Compile Include="Assets\Plugins\EZ Camera Shake\Scripts\CameraShakeInstance.cs" />
      <Compile Include="Assets\Plugins\EZ Camera Shake\Scripts\CameraShakePresets.cs" />
      <Compile Include="Assets\Plugins\EZ Camera Shake\Scripts\CameraShaker.cs" />
@@ -59,19 +58,6 @@
      <Compile Include="Assets\Plugins\HighlightingSystem\Scripts\Internal\HighlighterInternal.cs" />
      <Compile Include="Assets\Plugins\HighlightingSystem\Scripts\Internal\HighlightingBase.cs" />
      <Compile Include="Assets\Plugins\HighlightingSystem\Scripts\Internal\ShaderPropertyID.cs" />
-     <Compile Include="Assets\Plugins\HighlightingSystemDemo\Scripts\Advanced\CameraTargeting.cs" />
-     <Compile Include="Assets\Plugins\HighlightingSystemDemo\Scripts\Advanced\CompoundObjectController.cs" />
-     <Compile Include="Assets\Plugins\HighlightingSystemDemo\Scripts\Advanced\FlashingController.cs" />
-     <Compile Include="Assets\Plugins\HighlightingSystemDemo\Scripts\Advanced\HighlighterController.cs" />
-     <Compile Include="Assets\Plugins\HighlightingSystemDemo\Scripts\Advanced\HighlighterOccluder.cs" />
-     <Compile Include="Assets\Plugins\HighlightingSystemDemo\Scripts\Advanced\SpectrumController.cs" />
-     <Compile Include="Assets\Plugins\HighlightingSystemDemo\Scripts\Basic\CSHighlighterController.cs" />
-     <Compile Include="Assets\Plugins\HighlightingSystemDemo\Scripts\Helpers\BlitHelper.cs" />
-     <Compile Include="Assets\Plugins\HighlightingSystemDemo\Scripts\Helpers\MovementController.cs" />
-     <Compile Include="Assets\Plugins\HighlightingSystemDemo\Scripts\Helpers\RotationController.cs" />
-     <Compile Include="Assets\Plugins\HighlightingSystemDemo\Scripts\Service\CameraFlyController.cs" />
-     <Compile Include="Assets\Plugins\HighlightingSystemDemo\Scripts\Service\FPSCounter.cs" />
-     <Compile Include="Assets\Plugins\HighlightingSystemDemo\Scripts\Service\SceneLoader.cs" />
      <Compile Include="Assets\Plugins\LgJsonDataTest\LgJsonData_Test.cs" />
      <Compile Include="Assets\Plugins\LgOctEngine_CoreClasses\Scripts\LgBaseClass\LgBaseClass.cs" />
      <Compile Include="Assets\Plugins\LgOctEngine_CoreClasses\Scripts\LgBaseClass\LgBaseClass_Debug.cs" />

@@ -10,7 +10,10 @@ public enum GameState {
 	OpenLock,
 	Pause,
 	Option,
+	Choice,
+	Confirmation,
 	Uncontrolable,
+	ActionEvent,
 	Credits
 }
 
@@ -34,22 +37,26 @@ public class GameManager : MonoSingleton<GameManager> {
 		}
 	}
 
-	public void SetGameState (GameState state)
-	{
-		gameState = state;
-	}
+	public bool debugMode;
 
 	void Start () 
 	{
 		UpdateFloor(2);
 		ClockSetup();
 		InvokeRepeating("ClockUpdate", 0, 1);
+		SetGameState(GameState.Investigation);
 	}
 	
 	void Update () 
 	{
 	
 	}
+
+	public void SetGameState (GameState state)
+	{
+		gameState = state;
+	}
+
 
 	void ClockSetup ()
 	{

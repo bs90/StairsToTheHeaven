@@ -67,15 +67,17 @@ public class InterfaceManager : MonoSingleton<InterfaceManager> {
 	{
 		if (infoShowing) {
 			infoPanel.GetComponentInChildren<Text>().text = info;
+			GameManager.Instance.SetGameState(GameState.Confirmation);
 		}
 		else {
 			infoPanel.gameObject.SetActive(false);
+			GameManager.Instance.SetGameState(GameState.Investigation);
 		}
-		GameManager.Instance.SetGameState(GameState.Investigation);
 	}
 
 	public void ToggleLockWindow ()
 	{
+		lockPanel.gameObject.SetActive(true);
 		GameManager.Instance.SetGameState(GameState.Uncontrolable);
 		RectTransform lockRectTransform = lockPanel.gameObject.GetComponent<RectTransform>();
 		if (lockShowing) {
@@ -95,11 +97,18 @@ public class InterfaceManager : MonoSingleton<InterfaceManager> {
 
 	void EndLockToggle ()
 	{
-		GameManager.Instance.SetGameState(GameState.Investigation);
+		if (lockShowing) {
+			GameManager.Instance.SetGameState(GameState.Inventory);
+		}
+		else {
+			lockPanel.gameObject.SetActive(false);
+			GameManager.Instance.SetGameState(GameState.Investigation);
+		}
 	}
 
 	public void ToggleInventoryWindow ()
 	{
+		inventoryPanel.gameObject.SetActive(true);
 		GameManager.Instance.SetGameState(GameState.Uncontrolable);
 		RectTransform inventoryRectTransform = inventoryPanel.gameObject.GetComponent<RectTransform>();
 		if (inventoryShowing) {
@@ -117,26 +126,27 @@ public class InterfaceManager : MonoSingleton<InterfaceManager> {
 
 	void EndInventoryToggle ()
 	{
-		GameManager.Instance.SetGameState(GameState.Investigation);
+		if (inventoryShowing) {
+			GameManager.Instance.SetGameState(GameState.Inventory);
+		}
+		else {
+			inventoryPanel.gameObject.SetActive(false);
+			GameManager.Instance.SetGameState(GameState.Investigation);
+		}
 	}
-
-	void Start ()
-	{
-		GameManager.Instance.SetGameState(GameState.Investigation);
-	}
-
+	
 	void Update ()
 	{
-		if (GameManager.Instance.State == GameState.Investigation) {
-			if (Input.GetKeyDown("a")) {
-				ToggleLockWindow();
-			}
-			if (Input.GetKeyDown("s")) {
-				ToggleInventoryWindow();
-			}
-			if (Input.GetButtonDown("Fire1") && infoShowing) {
-				ToggleInfoWindow(string.Empty, onInfoToggleCallback);
-			}
+		if (Input.GetKeyDown("a")) {
+			ToggleLockWindow();
 		}
+		if (Input.GetKeyDown("s")) {
+			ToggleInventoryWindow();
+		}
+		if (Input.GetButtonDown("Fire1") && infoShowing && GameManager.Instance.State == GameState.Confirmation) {
+			ToggleInfoWindow(string.Empty, onInfoToggleCallback);
+		}
+
+
 	}
 }

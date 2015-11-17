@@ -1,14 +1,12 @@
 fileFormatVersion: 2
-guid: b135c4a9d4b7a984e89f8c975b631b7f
-labels:
-- Shake
-- Camera
-- Follow
-- Animation
-- Effect
+guid: 6a1c8c5728a394541acddf4a428af20b
+timeCreated: 1447754185
+licenseType: Pro
 MonoImporter:
   serializedVersion: 2
   defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
+  assetBundleName: 
+  assetBundleVariant: 
