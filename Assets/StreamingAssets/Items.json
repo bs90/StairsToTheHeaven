@@ -27,6 +27,7 @@
 			"idResult": 3
 		},
 		"stackable": true,
+		"inspectable": false,
  		"value": 6,
  		"icon": "herb_01"
 	},
@@ -58,6 +59,7 @@
 			"idResult": 3
 		},
 		"stackable": true,
+		"inspectable": false,
 		"value": 7,
  		"icon": "herb_02"
 	},
@@ -89,6 +91,7 @@
 			"idResult": -1
 		},
 		"stackable": true,
+		"inspectable": false,
 		"value": 2,
  		"icon": "herb_04"
 	},
@@ -120,7 +123,40 @@
 			"idResult": -1
 		},
 		"stackable": true,
+		"inspectable": false,
 		"value": 1,
  		"icon": "herb_03"
+	},
+	{
+		"id": 4,
+		"title": "Piece of Paper",
+		"tag": "e_01",
+		"description": "A piece of paper, it seems there is a drawing on it.",
+		"equipable": false,
+		"stats": {
+			"type": 0,
+			"hp": 0,
+			"sp": 0,
+			"attack": 0,
+			"defense": 0,
+			"protection": 0
+		},
+		"useable": false,
+		"usability": {
+			"hp": 0,
+			"sp": 0,
+			"cure": 0
+		},
+		"combineable": false,
+		"combination": {
+			"id1": -1,
+			"id2": -1,
+			"id3": -1,
+			"idResult": -1
+		},
+		"stackable": false,
+		"inspectable": true,
+		"value": 0,
+ 		"icon": "scroll"
 	}
 ]

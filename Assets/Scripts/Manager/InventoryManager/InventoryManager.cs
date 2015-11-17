@@ -11,6 +11,8 @@ public class InventoryManager : MonoSingleton<InventoryManager> {
 	public GameObject inventorySlot;
 	public GameObject inventoryItem;
 
+	public GameObject equipSlot;
+
 //	public GameObject equipmentPanel;
 //	public GameObject equipmentSlotPanel;
 //	public GameObject equipmentSlotScrollRect;
@@ -27,6 +29,9 @@ public class InventoryManager : MonoSingleton<InventoryManager> {
 
 	private float edgeOffset = 5;
 
+	// Extremely fragile, don't play with this shit
+	protected bool inspectMode;
+
 	void Start()
 	{
 		SetupComponents();
@@ -35,7 +40,6 @@ public class InventoryManager : MonoSingleton<InventoryManager> {
 
 	public void SetupComponents()
 	{
-
 		if (inventoryPanel == null) {
 			inventoryPanel = GameObject.Find("InventoryPanel");
 		}
@@ -64,10 +68,11 @@ public class InventoryManager : MonoSingleton<InventoryManager> {
 			slots[i].transform.SetParent(slotScrollRect.transform);	
 		}
 
-		AddItem(0, 2);
-		AddItem(1, 3);
-		AddItem(2, 1);
-
+		if (equipSlot != null) {
+			slots.Add(equipSlot);
+			items.Add(new Item());
+			equipSlot.GetComponent<Slot>().id = slots.Count - 1;
+		}
 	}
 
 	public void AddItem(int id, int amount)
@@ -171,8 +176,6 @@ public class InventoryManager : MonoSingleton<InventoryManager> {
 
 	public void CombineItem(int combinerId, int combineeId, int resultId)
 	{
-//		GetItemAmount(ItemDatabase.Instance.FetchItemByID(combinerId));
-//		GetItemAmount(ItemDatabase.Instance.FetchItemByID(combineeId));
 		RemoveItem(combinerId, 1);
 		RemoveItem(combineeId, 1);
 
@@ -228,5 +231,15 @@ public class InventoryManager : MonoSingleton<InventoryManager> {
 			}
 		}
 		return 0;
+	}
+
+	private void ToggleInspectMode ()
+	{
+
+	}
+
+	public void StartInspection () 
+	{
+
 	}
 }

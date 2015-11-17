@@ -1,15 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player\PlayerControlManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Manager\PasswordManager\PasswordManager.cs">
     <Files>
-      <File FileName="Assets\Scripts\Manager\InterfaceManager\InterfaceManager.cs" Line="5" Column="64" />
-      <File FileName="Assets\Scripts\Manager\GameManager\GameManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Player\PlayerControlManager.cs" Line="80" Column="49" />
-      <File FileName="Assets\Scripts\Environment\HighlightObject.cs" Line="29" Column="94" />
-      <File FileName="Assets\Scripts\Manager\NavigationManager\NavigationManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Manager\PatternLockManager\PatternLockManager.cs" Line="31" Column="23" />
-      <File FileName="Assets\Scripts\Manager\InventoryManager\Tooltip.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Manager\PatternLockManager\PatternPoint.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Manager\PasswordManager\PasswordManager.cs" Line="94" Column="3" />
+      <File FileName="Assets\Scripts\Manager\InventoryManager\InventoryManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Manager\InventoryManager\ItemDatabase.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Manager\GameManager\GameManager.cs" Line="40" Column="24" />
+      <File FileName="Assets\Scripts\Manager\InterfaceManager\InterfaceManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Environment\Chest.cs" Line="6" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

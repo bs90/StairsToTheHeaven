@@ -25,6 +25,7 @@ public class PatternPoint : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 	
 	public void OnEndDrag(PointerEventData eventData)
 	{
+		PatternLockManager.Instance.CorrectPatternCheck();
 		PatternLockManager.Instance.ClearPoints();
 		PatternLockManager.Instance.ClearLines();
 	}
@@ -40,13 +41,15 @@ public class PatternPoint : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 			//TODO A terrible fucking mess, do something about this
 			Vector3 endPoint = new Vector3(transform.position.x, transform.position.y, 0);
 			PatternLockManager pattern = PatternLockManager.Instance;
-			pattern.EnterPointDrag(this.pointId);
+			pattern.EnterPointDrag(this.pointId); //Adding point to patternPoints, to check for the end
 			pattern.DrawLine(endPoint);
 			pattern.SetStartPoint(endPoint);
 			pattern.DrawNextLine();
 			pattern.MarkPoint(this.pointId);
 			//TODO Especially this shit here
-			pattern.IsUnsignedPointExistBetweenLine(pattern.GetPointById(pattern.patternNumbers[pattern.patternNumbers.Count - 2]).GetComponent<PatternPoint>().pointPosition, this.pointPosition);
+			pattern.IsUnsignedPointExistBetweenLine(
+				pattern.GetPointById(pattern.patternNumbers[pattern.patternNumbers.Count - 2]).GetComponent<PatternPoint>().pointPosition, 
+				this.pointPosition);
 		}
 	}
 	

@@ -37,40 +37,40 @@ public class LgJsonData_Test : MonoBehaviour {
 	void Update () {
 	}
 
-    void OnGUI()
-    {
-        Rect buttonRect = new Rect(30, 30, 200, 45);
-
-        if (GUI.Button(buttonRect, "SimpleClass Serialize Test"))
-        {
-            TestClass.SimpleSerializeTest();
-        }
-        buttonRect.y += buttonRect.height + 10;
-        if (GUI.Button(buttonRect, "Simple Array Test"))
-        {
-            TestClass.SimpleArrayTest();
-        }
-        //buttonRect.y += buttonRect.height + 10;
-        //if (GUI.Button(buttonRect, "Test DebugAssert"))
-        //{
-        //    TestClass.TestDebugAssert();
-        //}
-        //buttonRect.y += buttonRect.height + 10;
-        //if (GUI.Button(buttonRect, "Test Recursive DebugAssert"))
-        //{
-        //    TestClass.TestRecursiveDebugAssert();
-        //}
-        //buttonRect.y += buttonRect.height + 10;
-        //if (GUI.Button(buttonRect, "Test Assert"))
-        //{
-        //    TestClass.TestAssert();
-        //}
-        //buttonRect.y += buttonRect.height + 10;
-        //if (GUI.Button(buttonRect, "Test Exception"))
-        //{
-        //    TestClass.TestException();
-        //}
-    }
+//    void OnGUI()
+//    {
+//        Rect buttonRect = new Rect(30, 30, 200, 45);
+//
+//        if (GUI.Button(buttonRect, "SimpleClass Serialize Test"))
+//        {
+//            TestClass.SimpleSerializeTest();
+//        }
+//        buttonRect.y += buttonRect.height + 10;
+//        if (GUI.Button(buttonRect, "Simple Array Test"))
+//        {
+//            TestClass.SimpleArrayTest();
+//        }
+//        //buttonRect.y += buttonRect.height + 10;
+//        //if (GUI.Button(buttonRect, "Test DebugAssert"))
+//        //{
+//        //    TestClass.TestDebugAssert();
+//        //}
+//        //buttonRect.y += buttonRect.height + 10;
+//        //if (GUI.Button(buttonRect, "Test Recursive DebugAssert"))
+//        //{
+//        //    TestClass.TestRecursiveDebugAssert();
+//        //}
+//        //buttonRect.y += buttonRect.height + 10;
+//        //if (GUI.Button(buttonRect, "Test Assert"))
+//        //{
+//        //    TestClass.TestAssert();
+//        //}
+//        //buttonRect.y += buttonRect.height + 10;
+//        //if (GUI.Button(buttonRect, "Test Exception"))
+//        //{
+//        //    TestClass.TestException();
+//        //}
+//    }
 
     private class TestClass : LgBaseClass
     {

@@ -10,6 +10,7 @@ public class Item
 	public string Description { get; set; }
 	
 	public bool Stackable { get; set; }
+	public bool Inspectable { get; set; }
 	public int Value { get; set; }
 	
 	public bool Equipable { get; set; }
@@ -33,7 +34,7 @@ public class Item
 	public Sprite Icon { get; set; } 
 
 	public Item(int id, string title, string tag, string desc,
-	            bool stackable, int value,
+	            bool stackable, bool inspectable, int value,
 	            bool combineable, Dictionary<string, int> combines, string icon)
 	{
 		this.Id = id;
@@ -41,6 +42,7 @@ public class Item
 		this.Description = desc;
 		
 		this.Stackable = stackable;
+		this.Inspectable = inspectable;
 		this.Value = value;
 		
 		this.Combineable = combineable;
@@ -66,13 +68,13 @@ public class Item
 	}
 	
 	public Item(int id, string title, string tag, string desc, 
-	            bool stackable, int value,
+	            bool stackable, bool inspectable, int value,
 	            bool equiable, Dictionary<string, int> stats,
 	            bool useable, Dictionary<string, int> properties,
 	            bool combineable, Dictionary<string, int> combines,
 	            string icon)
 	{
-		
+		//TODO To implement, someday, a very far far away...
 	}
 	
 	public Item()
