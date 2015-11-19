@@ -13,10 +13,8 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
 	public void OnBeginDrag(PointerEventData eventData)
 	{
-		//TODO Something is wrong here, the Item is off, I don't have time to fix it yet
-		if (item != null) {
+		if (item != null && !InventoryManager.Instance.InspectMode && GameManager.Instance.State == GameState.Inventory) {
 			this.transform.SetParent(this.transform.parent.parent);
-//			this.transform.position = eventData.position;
 			GetComponent<CanvasGroup>().blocksRaycasts = false;
 		}
 	}
@@ -24,7 +22,13 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 	public void OnPointerDown(PointerEventData eventData)
 	{
 		if (item != null) {
-			offset = eventData.position - new Vector2(this.transform.position.x, this.transform.position.y);
+			//TODO Those states are getting really messy
+			if (InventoryManager.Instance.InspectMode && GameManager.Instance.State != GameState.Confirmation) {
+				InterfaceManager.Instance.DisplayInvestMode(item);
+			}
+			else {
+				offset = eventData.position - new Vector2(this.transform.position.x, this.transform.position.y);
+			}
 		}
 		else {
 			Debug.Log("LOL");
@@ -33,14 +37,14 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
 	public void OnDrag(PointerEventData eventData)
 	{
-		if (item != null) {
+		if (item != null && !InventoryManager.Instance.InspectMode && GameManager.Instance.State == GameState.Inventory) {
 			this.transform.position = eventData.position - offset;
 		}
 	}
 
 	public void OnEndDrag(PointerEventData eventData)
 	{
-		if (item != null) {
+		if (item != null && !InventoryManager.Instance.InspectMode && GameManager.Instance.State == GameState.Inventory) {
 			this.transform.SetParent(InventoryManager.Instance.slots[slot].transform);
 			this.transform.position = InventoryManager.Instance.slots[slot].transform.position;
 			GetComponent<CanvasGroup>().blocksRaycasts = true;

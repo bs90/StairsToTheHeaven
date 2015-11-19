@@ -28,6 +28,7 @@
 		},
 		"stackable": true,
 		"inspectable": false,
+		"inspectSprite": "",
  		"value": 6,
  		"icon": "herb_01"
 	},
@@ -60,6 +61,7 @@
 		},
 		"stackable": true,
 		"inspectable": false,
+		"inspectSprite": "",
 		"value": 7,
  		"icon": "herb_02"
 	},
@@ -92,6 +94,7 @@
 		},
 		"stackable": true,
 		"inspectable": false,
+		"inspectSprite": "",
 		"value": 2,
  		"icon": "herb_04"
 	},
@@ -124,6 +127,7 @@
 		},
 		"stackable": true,
 		"inspectable": false,
+		"inspectSprite": "",
 		"value": 1,
  		"icon": "herb_03"
 	},
@@ -131,7 +135,7 @@
 		"id": 4,
 		"title": "Piece of Paper",
 		"tag": "e_01",
-		"description": "A piece of paper, it seems there is a drawing on it.",
+		"description": "A piece of paper, found in a chest at basement 10th, it seems there is a drawing on it.",
 		"equipable": false,
 		"stats": {
 			"type": 0,
@@ -156,6 +160,7 @@
 		},
 		"stackable": false,
 		"inspectable": true,
+		"inspectSprite": "PatternB10",
 		"value": 0,
  		"icon": "scroll"
 	}

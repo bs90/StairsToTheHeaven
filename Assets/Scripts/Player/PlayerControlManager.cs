@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityStandardAssets.ImageEffects;
 using DG.Tweening;
 
 public class PlayerControlManager : MonoSingleton<PlayerControlManager> {
@@ -23,11 +24,6 @@ public class PlayerControlManager : MonoSingleton<PlayerControlManager> {
 	float rotationY = 0F;
 
 	public float headRotationVelocity;
-
-	public bool controlable;
-
-//	private Animator animator;
-//	private AnimationHash hash;
 	
 	public Transform[] pathPoints;
 	public int presentPoint;
@@ -36,20 +32,29 @@ public class PlayerControlManager : MonoSingleton<PlayerControlManager> {
 
 	private bool inTheMove;
 
+	private GameManager game;
+
+	private Blur blur;
+	public Blur CameraBlur{
+		get {
+			return this.gameObject.GetComponentInChildren<Blur>();
+		}
+	}
+
 	void Start ()
 	{
-		controlable = true;
+		game = GameManager.Instance;
 		presentPoint = 0;
 	}
 
 	void Update ()
 	{
-		if (Input.GetButton("Fire2") && controlable) {
+		if (Input.GetButton("Fire2") && game.State == GameState.Investigation) {
 			Rotate();
 		}
 	}
 
-	public void Move (GameObject navigationPoint, bool faceFrontElevator)
+	public void Move (GameObject navigationPoint, bool faceFrontElevator, TweenCallback callback)
 	{
 		destinationPoint = navigationPoint;
 		Vector3 toPosition = navigationPoint.transform.position;
@@ -65,23 +70,46 @@ public class PlayerControlManager : MonoSingleton<PlayerControlManager> {
 		else {
 			moveSequence.Append(transform.DOMove(toPosition, 4, false).OnComplete(EndPath));
 		}
+		if (callback != null) {
+			moveSequence.OnComplete(callback);
+		}
 		moveSequence.Play();
+	}
+
+	public void Rotate (GameObject rotateToObject, TweenCallback callback) {
+		Quaternion targetRotation = Quaternion.LookRotation (rotateToObject.transform.position - transform.position);
+		Sequence rotateSequence = DOTween.Sequence();
+		rotateSequence.Append(transform.DORotate(targetRotation.eulerAngles, 2, RotateMode.Fast)).OnStart(StartRotate).OnComplete(EndRotate);
+		if (callback != null) {
+			rotateSequence.OnComplete(callback);
+		}
+		rotateSequence.Play();
+	}
+
+	void StartRotate()
+	{
+		game.SetGameState(GameState.Uncontrolable);
+	}
+
+	void EndRotate ()
+	{
+		game.SetGameState(GameState.Investigation);
 	}
 
 	void StartPath ()
 	{
-		controlable = false;
+		game.SetGameState(GameState.Uncontrolable);
 		NavigationManager.Instance.MoveAwayFromPoint(NavigationManager.Instance.presentNavigationPoint);
 	}
 
 	void EndPath ()
 	{
 		//TODO Sometimes it causes warnings, why?
-		if (destinationPoint.GetComponentInChildren<HighlightObject>().isElevator) {
-			InterfaceManager.Instance.ToggleInfoWindow("Please enter pattern's code for the elevator.", OpenLockPanel);
+		if (destinationPoint.GetComponentInChildren<InteractableObject>().isElevator) {
+			InterfaceManager.Instance.ToggleInfoWindow("The elevator is locked with a pattern code, enter the code to start up (yes, like your android smartphones).", OpenLockPanel);
 		}
 
-		controlable = true;
+		game.SetGameState(GameState.Investigation);
 		NavigationManager.Instance.SetPresentPoint(destinationPoint);
 		destinationPoint = null;
 	}

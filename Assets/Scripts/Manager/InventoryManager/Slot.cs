@@ -10,6 +10,9 @@ public class Slot : MonoBehaviour, IDropHandler {
 
 	public void OnDrop(PointerEventData eventData)
 	{
+		if (InventoryManager.Instance.InspectMode) {
+			return;
+		}
 		//OnDrop finishes before End Drag
 		ItemData droppedItem = eventData.pointerDrag.GetComponent<ItemData>();
 		if (droppedItem == null) {

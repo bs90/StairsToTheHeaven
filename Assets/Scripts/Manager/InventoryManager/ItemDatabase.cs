@@ -45,6 +45,7 @@ public class ItemDatabase : MonoSingleton<ItemDatabase>
 			                          itemData[i]["description"].ToString(),
 			                          (bool)itemData[i]["stackable"],
 			                          (bool)itemData[i]["inspectable"],
+			                          itemData[i]["inspectSprite"].ToString(),
 			                          (int)itemData[i]["value"],
 			                          (bool)itemData[i]["combineable"],
 			                          comboDict,

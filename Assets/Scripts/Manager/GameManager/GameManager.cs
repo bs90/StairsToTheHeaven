@@ -7,7 +7,9 @@ public enum GameState {
 	Adventure,
 	Investigation,
 	Inventory,
+	Inspection,
 	OpenLock,
+	Password,
 	Pause,
 	Option,
 	Choice,
@@ -23,14 +25,15 @@ public class GameManager : MonoSingleton<GameManager> {
 	private string presentFloor;
 
 	public GameObject infoText;
+	public GameObject modeText;
 
 	[HideInInspector]public int minutes = 0;
 	[HideInInspector]public int hour = 0;
 	[HideInInspector]public int second = 0;
 	
 	[HideInInspector]public GameObject standingPoint;
-
-	private GameState gameState;
+	//TODO Public only for debug purpose
+	public GameState gameState;
 	public GameState State {
 		get {
 			return this.gameState;
@@ -49,7 +52,7 @@ public class GameManager : MonoSingleton<GameManager> {
 	
 	void Update () 
 	{
-	
+		modeText.GetComponent<Text>().text = "State: " + gameState.ToString();
 	}
 
 	public void SetGameState (GameState state)
