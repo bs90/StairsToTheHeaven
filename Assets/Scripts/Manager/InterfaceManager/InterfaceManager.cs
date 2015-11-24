@@ -143,7 +143,7 @@ public class InterfaceManager : MonoSingleton<InterfaceManager> {
 			if (GameManager.Instance.State != GameState.Investigation) {
 				return;
 			}
-			GameManager.Instance.SetGameState(GameState.Inventory);
+			GameManager.Instance.SetGameState(GameState.Uncontrolable);
 			inventoryPanel.gameObject.SetActive(true);
 			inventoryButton.GetComponentInChildren<Text>().text = "Close Inventory";
 			inspectButton.GetComponent<Button>().onClick.AddListener(InventoryManager.Instance.ToggleInspectMode);

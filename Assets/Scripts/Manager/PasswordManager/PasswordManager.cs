@@ -57,19 +57,6 @@ public class PasswordManager : MonoSingleton<PasswordManager> {
 	}
 
 	private int rewardedItem = -1;
-		
-	void Update()
-	{
-		if (Input.GetKeyDown("q")) {
-			SetupPasswordInput(PasswordInputType.Roman, "I am eternal", "Password is I am internal.", new List<int> {1, 4}, 13, -1, null);
-		}
-		if (Input.GetKeyDown("w")) {
-			SetupPasswordInput(PasswordInputType.Numeric, "123", "Example numeric characters password test.", null, 3, 4, null);
-		}
-		if (Input.GetKeyDown("e")) {
-			SetupPasswordInput(PasswordInputType.Kanji, "日月火水木金土", "Example kanji characters password test.", null, 7, -1, null);
-		}
-	}
 
 	public void SetupPasswordInput(PasswordInputType type, string password, string placeholder, List<int> spaces, int limit, int itemId, GameObject chest)
 	{
@@ -188,7 +175,6 @@ public class PasswordManager : MonoSingleton<PasswordManager> {
 	{
 		if (passwordText.Length > 0) {
 			passwordText = passwordText.Remove(passwordText.Length - 1);
-			Debug.Log (passwordText);
 			if(passwordText.EndsWith(" ")) {
 				passwordText = passwordText.Remove(passwordText.Length - 1);
 			}
@@ -199,6 +185,7 @@ public class PasswordManager : MonoSingleton<PasswordManager> {
 	private void OnClickConfirm(string correctPassword)
 	{
 		if (correctPassword == passwordText || correctPassword.ToUpper() == passwordText || correctPassword.ToLower() == passwordText) {
+			Debug.Log ("Password is correct");
 			InterfaceManager.Instance.ToggleInfoWindow(string.Format("Password " + correctPassword + " accepted."), PasswordSolved);
 		}
 		else {
@@ -249,7 +236,8 @@ public class PasswordManager : MonoSingleton<PasswordManager> {
 	{
 		if (rewardedItem != -1) {
 			GameManager.Instance.SetGameState(GameState.Uncontrolable);
-			Invoke("GiveReward", 3);
+			Debug.Log ("Password Solved");
+			StartCoroutine(GiveReward());
 			if (chestObject != null) {
 				chestObject.GetComponent<Chest>().OpenChest();
 				chestObject = null;
@@ -258,8 +246,10 @@ public class PasswordManager : MonoSingleton<PasswordManager> {
 		OnClickCancel(true);
 	}
 
-	private void GiveReward ()
+	private IEnumerator GiveReward ()
 	{
+		yield return new WaitForSeconds(3);
+		Debug.Log ("Reward given " + rewardedItem);
 		InterfaceManager.Instance.ToggleInfoWindow(string.Format("You picked up <color=yellow>" + ItemDatabase.Instance.FetchItemByID(rewardedItem).Title + "</color>."), 
 		                                           null);
 		InventoryManager.Instance.AddItem(rewardedItem, 1);

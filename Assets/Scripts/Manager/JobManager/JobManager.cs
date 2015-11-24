@@ -47,6 +47,11 @@ public class Job
 		}
 	}
 
+	public Job(IEnumerator coroutine, float delay) : this(coroutine, true)
+	{
+		currentCoroutine = coroutine;
+	}
+
 	#endregion
 
 	#region Static Make
@@ -59,6 +64,11 @@ public class Job
 	public static Job Create(IEnumerator coroutine, bool shouldStart)
 	{
 		return new Job(coroutine, shouldStart);
+	}
+
+	public static Job Create(IEnumerator coroutine, float delay)
+	{
+		return new Job(coroutine, delay);
 	}
 
 	#endregion
@@ -115,6 +125,16 @@ public class Job
 //			Debug.LogError("Job already completed");
 //			return;
 //		}
+		running = true;
+		JobManager.Instance.StartCoroutine(RunJob());
+	}
+
+	public void StartJobWithDelay(float delay)
+	{
+		if (currentCoroutine == null) {
+			Debug.LogError("No job to start");
+			return;
+		}
 		running = true;
 		JobManager.Instance.StartCoroutine(RunJob());
 	}

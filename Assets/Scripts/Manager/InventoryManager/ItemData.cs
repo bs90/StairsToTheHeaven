@@ -23,10 +23,11 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 	{
 		if (item != null) {
 			//TODO Those states are getting really messy
+			//TODO Too messy, but I can't redo them now
 			if (InventoryManager.Instance.InspectMode && GameManager.Instance.State != GameState.Confirmation) {
 				InterfaceManager.Instance.DisplayInvestMode(item);
 			}
-			else {
+			else if (GameManager.Instance.State == GameState.Inventory) {
 				offset = eventData.position - new Vector2(this.transform.position.x, this.transform.position.y);
 			}
 		}

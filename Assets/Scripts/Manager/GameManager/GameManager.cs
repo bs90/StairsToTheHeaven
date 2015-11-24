@@ -16,6 +16,7 @@ public enum GameState {
 	Confirmation,
 	Uncontrolable,
 	ActionEvent,
+	Debugging,
 	Credits
 }
 
@@ -90,5 +91,10 @@ public class GameManager : MonoSingleton<GameManager> {
 	public void UpdateFloor (int floorNumber)
 	{
 		presentFloor = string.Format("Floor: " + floorNumber);
+	}
+
+	public void MoveToFloor (int floorNumber)
+	{
+
 	}
 }

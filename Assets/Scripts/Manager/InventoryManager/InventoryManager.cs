@@ -216,6 +216,16 @@ public class InventoryManager : MonoSingleton<InventoryManager> {
 		return false;
 	}
 
+	public bool IsItemInInventory(int id)
+	{
+		for (int i = 0; i < items.Count; i++) {
+			if (items[i].Id == id) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public int GetItemAmount(Item item)
 	{
 		if (IsItemInInventory(item)) {
@@ -240,6 +250,12 @@ public class InventoryManager : MonoSingleton<InventoryManager> {
 						ChangeSlotColor(i, new Color32(64, 132, 242, 100));
 					}
 				}
+			}
+			if (InventoryManager.Instance.inventoryPanel.activeInHierarchy) {
+				GameManager.Instance.SetGameState(GameState.Inventory);
+			}
+			else {
+				GameManager.Instance.SetGameState(GameState.Inspection);
 			}
 		}
 		else {
