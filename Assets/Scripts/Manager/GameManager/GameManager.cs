@@ -7,13 +7,16 @@ public enum GameState {
 	Adventure,
 	Investigation,
 	Inventory,
+	Inspection,
 	OpenLock,
+	Password,
 	Pause,
 	Option,
 	Choice,
 	Confirmation,
 	Uncontrolable,
 	ActionEvent,
+	Debugging,
 	Credits
 }
 
@@ -23,14 +26,18 @@ public class GameManager : MonoSingleton<GameManager> {
 	private string presentFloor;
 
 	public GameObject infoText;
+	public GameObject modeText;
+
+	public GameObject LoadingScene;
+	public Image LoadingBar;
 
 	[HideInInspector]public int minutes = 0;
 	[HideInInspector]public int hour = 0;
 	[HideInInspector]public int second = 0;
 	
 	[HideInInspector]public GameObject standingPoint;
-
-	private GameState gameState;
+	//TODO Public only for debug purpose
+	public GameState gameState;
 	public GameState State {
 		get {
 			return this.gameState;
@@ -39,17 +46,22 @@ public class GameManager : MonoSingleton<GameManager> {
 
 	public bool debugMode;
 
+	void Awake ()
+	{
+		SetGameState(GameState.Investigation);
+		Elevator.Instance.ToggleDoors(null);
+		UpdateFloor(2);
+	}
+
 	void Start () 
 	{
-		UpdateFloor(2);
 		ClockSetup();
 		InvokeRepeating("ClockUpdate", 0, 1);
-		SetGameState(GameState.Investigation);
 	}
 	
 	void Update () 
 	{
-	
+		modeText.GetComponent<Text>().text = "State: " + gameState.ToString();
 	}
 
 	public void SetGameState (GameState state)
@@ -87,5 +99,26 @@ public class GameManager : MonoSingleton<GameManager> {
 	public void UpdateFloor (int floorNumber)
 	{
 		presentFloor = string.Format("Floor: " + floorNumber);
+	}
+
+	public void MoveToFloor (int floorNumber)
+	{
+
+	}
+
+	public void LoadScene(string sceneName)
+	{
+		StartCoroutine(SceneCoroutine(sceneName));
+	}
+	
+	private IEnumerator SceneCoroutine(string sceneName)
+	{
+		LoadingScene.SetActive(true);
+		AsyncOperation async = Application.LoadLevelAsync(sceneName);
+		while (!async.isDone) {
+			LoadingBar.fillAmount = async.progress / 0.9f;
+			yield return null;
+		}
+		LoadingScene.SetActive(false);
 	}
 }

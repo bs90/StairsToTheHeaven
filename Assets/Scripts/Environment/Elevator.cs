@@ -13,33 +13,37 @@ public class Elevator : MonoSingleton<Elevator> {
 	public Transform rightDoor;
 	public Transform leftDoor;
 
-	public bool doorsOpened = true;
-	
-	void Update() 
+	public bool doorsOpened;
+
+	private GameState previousState;
+
+	public void ToggleDoors(TweenCallback callback) 
 	{
-		if (Input.GetButtonDown("Jump")) {
-			if (doorsOpened) {
-				CloseDoors();
-			}
-			else {
-				OpenDoors();
-			}
+		previousState = GameManager.Instance.State;
+		GameManager.Instance.SetGameState(GameState.Uncontrolable);
+		doorsOpened = !doorsOpened;
+
+		if (doorsOpened) {
+			Sequence doorSequence = DOTween.Sequence();
+			doorSequence.Append(rightDoor.DOMove(rightDoorClosePos, 2));
+			doorSequence.OnComplete(callback);
+			doorSequence.Play();
+
+			leftDoor.DOMove(leftDoorClosePos, 2).OnComplete(OnDoorsEnd);
 		}
+		else {
+			Sequence doorSequence = DOTween.Sequence();
+			doorSequence.Append(rightDoor.DOMove(rightDoorOrigPos, 2));
+			doorSequence.OnComplete(callback);
+			doorSequence.Play();
+
+			leftDoor.DOMove(leftDoorOrigPos, 2).OnComplete(OnDoorsEnd);
+		}
+
 	}
 
-	public void OpenDoors() 
+	public void OnDoorsEnd()
 	{
-		doorsOpened = true;
-
-		rightDoor.DOMove(rightDoorOrigPos, 2);
-		leftDoor.DOMove(leftDoorOrigPos, 2);
-	}
-
-	public void CloseDoors()
-	{
-		doorsOpened = false;
-
-		rightDoor.DOMove(rightDoorClosePos, 2);
-		leftDoor.DOMove(leftDoorClosePos, 2);
+		GameManager.Instance.SetGameState(previousState);
 	}
 }

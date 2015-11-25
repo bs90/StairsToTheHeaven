@@ -32,7 +32,7 @@ public class ItemDatabase : MonoSingleton<ItemDatabase>
 	// TODO I feel the flow is somehow wrong with this one
 	private void ConstructItemDatabase(string fileName)
 	{
-		itemData = JsonMapper.ToObject(File.ReadAllText(Application.dataPath + "/StreamingAssets/Items.json")); // StreamingAssets are not to be compiled into the game
+		itemData = JsonMapper.ToObject(File.ReadAllText(Application.streamingAssetsPath + "/" + fileName)); // StreamingAssets are not to be compiled into the game
 		for (int i = 0; i < itemData.Count; i++) {
 			Dictionary<string, int> comboDict = new Dictionary<string, int>();
 			comboDict.Add("combineId1", (int)itemData[i]["combination"]["id1"]);
@@ -45,6 +45,7 @@ public class ItemDatabase : MonoSingleton<ItemDatabase>
 			                          itemData[i]["description"].ToString(),
 			                          (bool)itemData[i]["stackable"],
 			                          (bool)itemData[i]["inspectable"],
+			                          itemData[i]["inspectSprite"].ToString(),
 			                          (int)itemData[i]["value"],
 			                          (bool)itemData[i]["combineable"],
 			                          comboDict,

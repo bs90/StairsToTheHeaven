@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 using System.Collections;
 
-public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler {
+public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler {
 	[HideInInspector] public Item item;
 	[HideInInspector] public int amount;
 	[HideInInspector] public int slot;
@@ -13,10 +13,8 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
 	public void OnBeginDrag(PointerEventData eventData)
 	{
-		//TODO Something is wrong here, the Item is off, I don't have time to fix it yet
-		if (item != null) {
+		if (item != null && !InventoryManager.Instance.InspectMode && GameManager.Instance.State == GameState.Inventory) {
 			this.transform.SetParent(this.transform.parent.parent);
-//			this.transform.position = eventData.position;
 			GetComponent<CanvasGroup>().blocksRaycasts = false;
 		}
 	}
@@ -24,23 +22,37 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 	public void OnPointerDown(PointerEventData eventData)
 	{
 		if (item != null) {
-			offset = eventData.position - new Vector2(this.transform.position.x, this.transform.position.y);
+			//TODO Those states are getting really messy
+			//TODO Too messy, but I can't redo them now
+			if (InventoryManager.Instance.InspectMode && GameManager.Instance.State != GameState.Confirmation) {
+				InterfaceManager.Instance.DisplayInvestMode(item);
+			}
+			else if (GameManager.Instance.State == GameState.Inventory) {
+				offset = eventData.position - new Vector2(this.transform.position.x, this.transform.position.y);
+			}
 		}
 		else {
 			Debug.Log("LOL");
 		}
 	}
 
+	public void OnPointerClick(PointerEventData eventData)
+	{
+		if (eventData.clickCount == 2 && GameManager.Instance.State == GameState.Inventory) {
+			InterfaceManager.Instance.DisplayInvestMode(item);
+		}
+	}
+
 	public void OnDrag(PointerEventData eventData)
 	{
-		if (item != null) {
+		if (item != null && !InventoryManager.Instance.InspectMode && GameManager.Instance.State == GameState.Inventory) {
 			this.transform.position = eventData.position - offset;
 		}
 	}
 
 	public void OnEndDrag(PointerEventData eventData)
 	{
-		if (item != null) {
+		if (item != null && !InventoryManager.Instance.InspectMode && GameManager.Instance.State == GameState.Inventory) {
 			this.transform.SetParent(InventoryManager.Instance.slots[slot].transform);
 			this.transform.position = InventoryManager.Instance.slots[slot].transform.position;
 			GetComponent<CanvasGroup>().blocksRaycasts = true;

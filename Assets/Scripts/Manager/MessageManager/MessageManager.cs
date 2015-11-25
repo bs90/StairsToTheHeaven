@@ -189,9 +189,7 @@ public class MessageManager : MonoSingleton<MessageManager> {
 		CheckTextEnabled();
 		CreateList(filePath);
 		messageDisplayJob = Job.Create(ReadMessages());
-		messageDisplayJob.jobCompleted += (obj) => {
-			endMessage();
-		};
+		messageDisplayJob.jobCompleted += (obj)=> endMessage();
 	}
 	
 	public void RemoveMessages ()

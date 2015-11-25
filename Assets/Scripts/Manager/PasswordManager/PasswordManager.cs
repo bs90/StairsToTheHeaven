@@ -26,9 +26,18 @@ public class PasswordManager : MonoSingleton<PasswordManager> {
 	public GameObject passwordField;
 	public GameObject placeholderText;
 
-
 	private string correctPassword;
 	private List<int> passwordSpaces;
+
+	private GameObject chestObject;
+	public GameObject ChestObject {
+		get {
+			return this.chestObject;
+		}
+		set {
+			this.chestObject = value;
+		}
+	}
 
 	private string passwordText;
 	public string PasswordText {
@@ -48,21 +57,8 @@ public class PasswordManager : MonoSingleton<PasswordManager> {
 	}
 
 	private int rewardedItem = -1;
-		
-	void Update()
-	{
-		if (Input.GetKeyDown("q")) {
-			SetupPasswordInput(PasswordInputType.Roman, "I am eternal", "Password is I am internal.", new List<int> {1, 4}, 13, -1);
-		}
-		if (Input.GetKeyDown("w")) {
-			SetupPasswordInput(PasswordInputType.Numeric, "123", "Example numeric characters password test.", null, 3, 4);
-		}
-		if (Input.GetKeyDown("e")) {
-			SetupPasswordInput(PasswordInputType.Kanji, "日月火水木金土", "Example kanji characters password test.", null, 7, -1);
-		}
-	}
 
-	public void SetupPasswordInput(PasswordInputType type, string password, string placeholder, List<int> spaces, int limit, int itemId)
+	public void SetupPasswordInput(PasswordInputType type, string password, string placeholder, List<int> spaces, int limit, int itemId, GameObject chest)
 	{
 		if (passwordInputPanel.activeInHierarchy) {
 			return;
@@ -73,28 +69,50 @@ public class PasswordManager : MonoSingleton<PasswordManager> {
 		}
 		correctPassword = password;
 
-		if (spaces != null) {
-			passwordSpaces = spaces;
-		}
-
 		if (placeholder != null) {
 			placeholderText.GetComponent<Text>().text = placeholder;
+		}
+
+		if (spaces.Count != 0) {
+			passwordSpaces = spaces;
+		}
+		else {
+			passwordSpaces = new List<int>();
+			if (type == PasswordInputType.Kanji) {
+				for (int i = password.IndexOf('　'); i > -1; i = password.IndexOf('　', i + 1)){
+					passwordSpaces.Add(i);
+				}
+			}
+			else {
+				for (int i = password.IndexOf(' '); i > -1; i = password.IndexOf(' ', i + 1)){
+					passwordSpaces.Add(i);
+				}
+			}
 		}
 
 		if (limit != 0) {
 			characterLimit = limit;
 		}
+		else {
+			characterLimit = password.Length;
+		}
 
 		if (itemId != -1) {
-			rewardedItem = 4;
+			rewardedItem = itemId;
 		}
-		else {
-			rewardedItem = -1;
+
+		if (chest != null) {
+			chestObject = chest;
 		}
 
 		passwordField.GetComponent<InputField>().characterLimit = characterLimit;
 		passwordInputPanel.SetActive(true);
+		GameManager.Instance.SetGameState(GameState.Password);
 		RemoveKeys();
+
+		if (InterfaceManager.Instance.InventoryShowing) {
+			InterfaceManager.Instance.ToggleInventoryWindow();
+		}
 
 		switch (type)
 		{
@@ -125,8 +143,8 @@ public class PasswordManager : MonoSingleton<PasswordManager> {
 		Button backspaceButton = backspaceKey.GetComponent<Button>();
 		backspaceButton.onClick.AddListener(OnBackspaceKey);
 
-		cancelButton.GetComponent<Button>().onClick.AddListener(OnClickCancel);
-		confirmButton.GetComponent<Button>().onClick.AddListener(() => OnClickConfirm(correctPassword));
+		cancelButton.GetComponent<Button>().onClick.AddListener(()=> OnClickCancel(false));
+		confirmButton.GetComponent<Button>().onClick.AddListener(()=> OnClickConfirm(correctPassword));
 	}
 
 	private void SetupKey(string keyword, GameObject parent)
@@ -148,6 +166,9 @@ public class PasswordManager : MonoSingleton<PasswordManager> {
 		if (passwordText.Length <= characterLimit) {
 			UpdatePasswordString();
 		}
+		else {
+			passwordText = passwordText.Remove(passwordText.Length - 1);
+		}
 	}
 
 	private void OnBackspaceKey()
@@ -167,11 +188,16 @@ public class PasswordManager : MonoSingleton<PasswordManager> {
 			InterfaceManager.Instance.ToggleInfoWindow(string.Format("Password " + correctPassword + " accepted."), PasswordSolved);
 		}
 		else {
-			InterfaceManager.Instance.ToggleInfoWindow(string.Format("Password incorrect."), null);
+			InterfaceManager.Instance.ToggleInfoWindow(string.Format("Password incorrect."), ReturnToPasswordState);
 		}
 	}
 
-	private void OnClickCancel()
+	private void ReturnToPasswordState()
+	{
+		GameManager.Instance.SetGameState(GameState.Password);
+	}
+
+	private void OnClickCancel(bool passwordCompleted)
 	{
 		passwordText = string.Empty;
 		correctPassword = string.Empty;
@@ -188,6 +214,10 @@ public class PasswordManager : MonoSingleton<PasswordManager> {
 
 		placeholderText.GetComponent<Text>().text = string.Empty;
 
+		if (!passwordCompleted) {
+			GameManager.Instance.SetGameState(GameState.Investigation);
+			rewardedItem = -1;
+		}
 		passwordInputPanel.SetActive(false);
 	}
 
@@ -204,10 +234,24 @@ public class PasswordManager : MonoSingleton<PasswordManager> {
 	private void PasswordSolved()
 	{
 		if (rewardedItem != -1) {
-			InterfaceManager.Instance.ToggleInfoWindow(string.Format("You picked up <color=yellow>" + ItemDatabase.Instance.FetchItemByID(rewardedItem).Title + "</color>."), 
-			                                           ()=> InventoryManager.Instance.AddItem(rewardedItem, 1));
+			GameManager.Instance.SetGameState(GameState.Uncontrolable);
+			StartCoroutine(GiveReward());
+			if (chestObject != null) {
+				chestObject.GetComponent<Chest>().OpenChest();
+				chestObject = null;
+			}
 		}
-		OnClickCancel();
+		OnClickCancel(true);
+	}
+
+	private IEnumerator GiveReward ()
+	{
+		yield return new WaitForSeconds(3);
+		InterfaceManager.Instance.ToggleInfoWindow(string.Format("You picked up <color=yellow>" + ItemDatabase.Instance.FetchItemByID(rewardedItem).Title + "</color>."), 
+		                                           null);
+		InventoryManager.Instance.AddItem(rewardedItem, 1);
+		GameManager.Instance.SetGameState(GameState.Investigation);
+		rewardedItem = -1;
 	}
 
 	private void RemoveKeys()

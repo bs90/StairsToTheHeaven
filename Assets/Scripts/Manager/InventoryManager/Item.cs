@@ -11,6 +11,7 @@ public class Item
 	
 	public bool Stackable { get; set; }
 	public bool Inspectable { get; set; }
+	public Sprite InspectSprite { get; set; }
 	public int Value { get; set; }
 	
 	public bool Equipable { get; set; }
@@ -34,7 +35,7 @@ public class Item
 	public Sprite Icon { get; set; } 
 
 	public Item(int id, string title, string tag, string desc,
-	            bool stackable, bool inspectable, int value,
+	            bool stackable, bool inspectable, string inspectSprite, int value,
 	            bool combineable, Dictionary<string, int> combines, string icon)
 	{
 		this.Id = id;
@@ -65,6 +66,7 @@ public class Item
 		this.CombineResult = combResult;
 
 		this.Icon = Resources.Load<Sprite>("Sprites/Icons/" + icon);
+		this.InspectSprite = Resources.Load<Sprite>("Sprites/Patterns/" + inspectSprite);
 	}
 	
 	public Item(int id, string title, string tag, string desc, 

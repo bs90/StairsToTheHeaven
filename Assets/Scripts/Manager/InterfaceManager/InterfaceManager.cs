@@ -6,18 +6,32 @@ using DG.Tweening;
 public class InterfaceManager : MonoSingleton<InterfaceManager> {
 
 	public Transform inventoryPanel;
+	public Transform inspectButton;
 	public Transform lockPanel;
 	public Transform optionPanel;
 
 	public Transform infoPanel;
 	public Transform messagePanel;
 
+	public Transform inventoryButton;
+	public Transform inspectOffButton;
+	public Transform patternButton;
+
+	public Transform inspectItem;
+
 	private bool inventoryShowing;
+	public bool InventoryShowing {
+		get {
+			return this.inventoryShowing;
+		}
+	}
 	private bool lockShowing;
 	private bool optionShowing;
 
 	private bool infoShowing;
 	private bool messageShowing;
+
+	private bool inspectImageShowing;
 
 	public Vector2 originalLockPosition;
 	public Vector2 activeLockPosition;
@@ -39,11 +53,11 @@ public class InterfaceManager : MonoSingleton<InterfaceManager> {
 		if (infoShowing) {
 			infoPanel.GetComponentInChildren<Text>().text = string.Empty;
 			if (onCloseEvent == null) {
-				infoRectTransform.DOSizeDelta(minimizedInfoSize, 0.1f, false).OnComplete(()=>EndInfoToggle(null));
+				infoRectTransform.DOSizeDelta(maximizedInfoSize, 0.01f, false).OnComplete(()=>EndInfoToggle(null));
 			}
 			else {
 				Sequence closeSequence = DOTween.Sequence();
-				closeSequence.Append(infoRectTransform.DOSizeDelta(minimizedInfoSize, 0.1f, false).OnComplete(()=>EndInfoToggle(null)));
+				closeSequence.Append(infoRectTransform.DOSizeDelta(maximizedInfoSize, 0.01f, false).OnComplete(()=>EndInfoToggle(null)));
 				closeSequence.OnComplete(onCloseEvent);
 				closeSequence.Play();
 				onInfoToggleCallback = null;
@@ -54,7 +68,6 @@ public class InterfaceManager : MonoSingleton<InterfaceManager> {
 			if (lockShowing) {
 				ToggleLockWindow();
 			}
-
 			if (onCloseEvent != null) {
 				onInfoToggleCallback = onCloseEvent;
 			}
@@ -77,19 +90,22 @@ public class InterfaceManager : MonoSingleton<InterfaceManager> {
 
 	public void ToggleLockWindow ()
 	{
-		lockPanel.gameObject.SetActive(true);
-		GameManager.Instance.SetGameState(GameState.Uncontrolable);
 		RectTransform lockRectTransform = lockPanel.gameObject.GetComponent<RectTransform>();
 		if (lockShowing) {
+			patternButton.GetComponentInChildren<Text>().text = "Pattern Lock";
 			lockRectTransform.DOAnchorPos(originalLockPosition, 0.3f, false).OnComplete(EndLockToggle);
-			//TODO Remove this
-			Elevator.Instance.OpenDoors();
 			lockShowing = false;
 		}
 		else {
 			if (inventoryShowing) {
 				ToggleInventoryWindow();
 			}
+			if (GameManager.Instance.State != GameState.Investigation) {
+				return;
+			}
+			lockPanel.gameObject.SetActive(true);
+			GameManager.Instance.SetGameState(GameState.Uncontrolable);
+			patternButton.GetComponentInChildren<Text>().text = "Close Pattern";
 			lockRectTransform.DOAnchorPos(activeLockPosition, 0.3f, false).OnComplete(EndLockToggle);
 			lockShowing = true;
 		}
@@ -98,7 +114,7 @@ public class InterfaceManager : MonoSingleton<InterfaceManager> {
 	void EndLockToggle ()
 	{
 		if (lockShowing) {
-			GameManager.Instance.SetGameState(GameState.Inventory);
+			GameManager.Instance.SetGameState(GameState.OpenLock);
 		}
 		else {
 			lockPanel.gameObject.SetActive(false);
@@ -108,10 +124,13 @@ public class InterfaceManager : MonoSingleton<InterfaceManager> {
 
 	public void ToggleInventoryWindow ()
 	{
-		inventoryPanel.gameObject.SetActive(true);
-		GameManager.Instance.SetGameState(GameState.Uncontrolable);
 		RectTransform inventoryRectTransform = inventoryPanel.gameObject.GetComponent<RectTransform>();
 		if (inventoryShowing) {
+			inventoryButton.GetComponentInChildren<Text>().text = "Inventory";
+			if (InventoryManager.Instance.InspectMode) {
+				InventoryManager.Instance.ToggleInspectMode();
+			}
+			inspectButton.GetComponent<Button>().onClick.RemoveAllListeners();
 			inventoryRectTransform.DOAnchorPos(originalInventoryPosition, 0.3f, false).OnComplete(EndInventoryToggle);
 			inventoryShowing = false;
 		}
@@ -119,6 +138,13 @@ public class InterfaceManager : MonoSingleton<InterfaceManager> {
 			if (lockShowing) {
 				ToggleLockWindow();
 			}
+			if (GameManager.Instance.State != GameState.Investigation) {
+				return;
+			}
+			GameManager.Instance.SetGameState(GameState.Uncontrolable);
+			inventoryPanel.gameObject.SetActive(true);
+			inventoryButton.GetComponentInChildren<Text>().text = "Close Inventory";
+			inspectButton.GetComponent<Button>().onClick.AddListener(InventoryManager.Instance.ToggleInspectMode);
 			inventoryRectTransform.DOAnchorPos(activeInventoryPosition, 0.3f, false).OnComplete(EndInventoryToggle);
 			inventoryShowing = true;
 		}
@@ -131,10 +157,51 @@ public class InterfaceManager : MonoSingleton<InterfaceManager> {
 		}
 		else {
 			inventoryPanel.gameObject.SetActive(false);
-			GameManager.Instance.SetGameState(GameState.Investigation);
+			//TODO This is really stupid, the inspect mode should show up later
+			if (GameManager.Instance.State != GameState.Inspection) {
+				GameManager.Instance.SetGameState(GameState.Investigation);
+			}
 		}
 	}
+
+	public void SwitchElevatorButton (bool show)
+	{
+		patternButton.gameObject.SetActive(show);
+	}
+
+	public void DisplayInvestMode (Item item)
+	{
+		ToggleInventoryWindow();
+		inspectItem.GetComponent<Image>().sprite = item.InspectSprite;
+		ToggleInspectImage();
+	}
 	
+	public void ToggleInspectImage ()
+	{
+		if (!inspectImageShowing) {
+			GameManager.Instance.SetGameState(GameState.Inspection);
+
+			inspectImageShowing = true;
+			PlayerControlManager.Instance.CameraBlur.enabled = true;
+			inspectItem.parent.gameObject.SetActive(true);
+
+			inspectOffButton.gameObject.SetActive(true);
+			inventoryButton.gameObject.SetActive(false);
+		}
+		else {
+			GameManager.Instance.SetGameState(GameState.Investigation);
+
+			inspectImageShowing = false;
+			PlayerControlManager.Instance.CameraBlur.enabled = false;
+			inspectItem.parent.gameObject.SetActive(false);
+			
+			inspectOffButton.gameObject.SetActive(false);
+			inventoryButton.gameObject.SetActive(true);
+
+			ToggleInventoryWindow();
+		}
+	}
+
 	void Update ()
 	{
 		if (Input.GetKeyDown("a")) {

@@ -1,31 +1,51 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
+using System.Linq;
 using System.Collections;
 
 public class NavigationManager : MonoSingleton<NavigationManager> {
+	//TODO Reload on start new scene
+	//TODO Read from save point
+	void Start() {
+		SetupNavigation();
+	}
 
-	public GameObject presentNavigationPoint;
-
-	public GameObject[] basementTenthFloorPoints;
-
-	public GameObject[] firstFloorPoints;
-	public GameObject[] secondFloorPoints;
-	public GameObject[] thirdFloorPoints;
-	public GameObject[] forthFloorPoints;
-
-	private void Start()
+	public void SetupNavigation ()
 	{
-		//TODO Read from save point
-		SetPresentPoint(basementTenthFloorPoints[0]);
+		MoveAwayFromPoint(NavigationPoints.Instance.navigationPoints[1]);
+		SetPresentPoint(NavigationPoints.Instance.navigationPoints[0]);
 	}
 
 	public void SetPresentPoint (GameObject presentPoint)
 	{
 		if (presentPoint != null) {
-			presentNavigationPoint = presentPoint;
-			presentPoint.SetActive(false);
+			NavigationPoints.Instance.presentNavigationPoint = presentPoint;
+			InteractableObject interactable = presentPoint.GetComponentInChildren<InteractableObject>();
+			if (interactable) {
+				presentPoint.GetComponentInChildren<InteractableObject>().OnClosingIn();
+				if (!interactable.isObject) {
+					presentPoint.SetActive(false);
+				}
+				if (interactable.isElevator) {
+					InterfaceManager.Instance.SwitchElevatorButton(true);
+				}
+			}
 		}
 		else {
 			return;
+		}
+	}
+
+	public void MoveAwayFromPoint (GameObject awayPoint)
+	{
+		NavigationPoints.Instance.presentNavigationPoint = null;
+		awayPoint.SetActive(true);
+		InteractableObject interactable = awayPoint.GetComponentInChildren<InteractableObject>();
+		if (interactable) {
+			interactable.OnMovingAway();
+			if (!interactable.isObject) {
+				InterfaceManager.Instance.SwitchElevatorButton(false);
+			}
 		}
 	}
 
@@ -34,12 +54,6 @@ public class NavigationManager : MonoSingleton<NavigationManager> {
 		foreach (GameObject moveablePoint in moveablePoints) {
 			moveablePoint.SetActive(true);
 		}
-	}
-
-	public void MoveAwayFromPoint (GameObject awayPoint)
-	{
-		presentNavigationPoint = null;
-		awayPoint.SetActive(true);
 	}
 
 	public GameObject GetPresentPoint ()

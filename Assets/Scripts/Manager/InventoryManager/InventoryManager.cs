@@ -13,24 +13,20 @@ public class InventoryManager : MonoSingleton<InventoryManager> {
 
 	public GameObject equipSlot;
 
-//	public GameObject equipmentPanel;
-//	public GameObject equipmentSlotPanel;
-//	public GameObject equipmentSlotScrollRect;
-//	public GameObject equipmentSlot;
-//	public GameObject equipmentItem;
-
 	public int inventorySlotAmount;
-//	public int equipmentSlotAmount;
 
 	public List<Item> items = new List<Item>();
 	public List<GameObject> slots = new List<GameObject>();
-
-//	public List<GameObject> equips = new List<GameObject>();
-
+	
 	private float edgeOffset = 5;
 
 	// Extremely fragile, don't play with this shit
-	protected bool inspectMode;
+	private bool inspectMode;
+	public bool InspectMode{
+		get {
+			return inspectMode;
+		}
+	}
 
 	void Start()
 	{
@@ -220,6 +216,16 @@ public class InventoryManager : MonoSingleton<InventoryManager> {
 		return false;
 	}
 
+	public bool IsItemInInventory(int id)
+	{
+		for (int i = 0; i < items.Count; i++) {
+			if (items[i].Id == id) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public int GetItemAmount(Item item)
 	{
 		if (IsItemInInventory(item)) {
@@ -233,13 +239,54 @@ public class InventoryManager : MonoSingleton<InventoryManager> {
 		return 0;
 	}
 
-	private void ToggleInspectMode ()
+	public void ToggleInspectMode ()
+	{
+		if (inspectMode) {
+			inspectMode = false;
+			InterfaceManager.Instance.inspectButton.GetComponentInChildren<Text>().text = "Inspect";
+			for (int i = 0; i < slots.Count; i ++) {
+				if (slots[i].transform.childCount > 0) {
+					if (slots[i].transform.GetChild(0).GetComponent<ItemData>().item.Id != -1) {
+						ChangeSlotColor(i, new Color32(64, 132, 242, 100));
+					}
+				}
+			}
+			if (InventoryManager.Instance.inventoryPanel.activeInHierarchy) {
+				GameManager.Instance.SetGameState(GameState.Inventory);
+			}
+			else {
+				GameManager.Instance.SetGameState(GameState.Inspection);
+			}
+		}
+		else {
+			inspectMode = true;
+			InterfaceManager.Instance.inspectButton.GetComponentInChildren<Text>().text = "Turn off";
+			int availableItems = 0;
+			for (int i = 0; i < slots.Count; i ++) {
+				if (slots[i].transform.childCount > 0) {
+					if (slots[i].transform.GetChild(0).GetComponent<ItemData>().item.Inspectable) {
+						ChangeSlotColor(i, new Color32(255, 218, 159, 255));
+						availableItems += 1;
+					}
+				}
+			}
+			if (availableItems > 0) {
+				InterfaceManager.Instance.ToggleInfoWindow("Click on highlighted item to inspect", null);
+			}
+			else {
+				InterfaceManager.Instance.ToggleInventoryWindow();
+				InterfaceManager.Instance.ToggleInfoWindow("No item available for inspection", null);
+			}
+		}
+	}
+
+	public void StartInspection (Item item) 
 	{
 
 	}
 
-	public void StartInspection () 
+	private void ChangeSlotColor (int id, Color color)
 	{
-
+		slots[id].GetComponent<Image>().color = color;
 	}
 }
