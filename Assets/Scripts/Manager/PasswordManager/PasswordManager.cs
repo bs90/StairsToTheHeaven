@@ -185,7 +185,6 @@ public class PasswordManager : MonoSingleton<PasswordManager> {
 	private void OnClickConfirm(string correctPassword)
 	{
 		if (correctPassword == passwordText || correctPassword.ToUpper() == passwordText || correctPassword.ToLower() == passwordText) {
-			Debug.Log ("Password is correct");
 			InterfaceManager.Instance.ToggleInfoWindow(string.Format("Password " + correctPassword + " accepted."), PasswordSolved);
 		}
 		else {
@@ -236,7 +235,6 @@ public class PasswordManager : MonoSingleton<PasswordManager> {
 	{
 		if (rewardedItem != -1) {
 			GameManager.Instance.SetGameState(GameState.Uncontrolable);
-			Debug.Log ("Password Solved");
 			StartCoroutine(GiveReward());
 			if (chestObject != null) {
 				chestObject.GetComponent<Chest>().OpenChest();
@@ -249,7 +247,6 @@ public class PasswordManager : MonoSingleton<PasswordManager> {
 	private IEnumerator GiveReward ()
 	{
 		yield return new WaitForSeconds(3);
-		Debug.Log ("Reward given " + rewardedItem);
 		InterfaceManager.Instance.ToggleInfoWindow(string.Format("You picked up <color=yellow>" + ItemDatabase.Instance.FetchItemByID(rewardedItem).Title + "</color>."), 
 		                                           null);
 		InventoryManager.Instance.AddItem(rewardedItem, 1);

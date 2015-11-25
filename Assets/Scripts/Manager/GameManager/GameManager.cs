@@ -28,6 +28,9 @@ public class GameManager : MonoSingleton<GameManager> {
 	public GameObject infoText;
 	public GameObject modeText;
 
+	public GameObject LoadingScene;
+	public Image LoadingBar;
+
 	[HideInInspector]public int minutes = 0;
 	[HideInInspector]public int hour = 0;
 	[HideInInspector]public int second = 0;
@@ -43,12 +46,17 @@ public class GameManager : MonoSingleton<GameManager> {
 
 	public bool debugMode;
 
+	void Awake ()
+	{
+		SetGameState(GameState.Investigation);
+		Elevator.Instance.ToggleDoors(null);
+		UpdateFloor(2);
+	}
+
 	void Start () 
 	{
-		UpdateFloor(2);
 		ClockSetup();
 		InvokeRepeating("ClockUpdate", 0, 1);
-		SetGameState(GameState.Investigation);
 	}
 	
 	void Update () 
@@ -96,5 +104,21 @@ public class GameManager : MonoSingleton<GameManager> {
 	public void MoveToFloor (int floorNumber)
 	{
 
+	}
+
+	public void LoadScene(string sceneName)
+	{
+		StartCoroutine(SceneCoroutine(sceneName));
+	}
+	
+	private IEnumerator SceneCoroutine(string sceneName)
+	{
+		LoadingScene.SetActive(true);
+		AsyncOperation async = Application.LoadLevelAsync(sceneName);
+		while (!async.isDone) {
+			LoadingBar.fillAmount = async.progress / 0.9f;
+			yield return null;
+		}
+		LoadingScene.SetActive(false);
 	}
 }

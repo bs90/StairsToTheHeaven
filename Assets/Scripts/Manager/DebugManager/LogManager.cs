@@ -62,18 +62,6 @@ public class LogManager : MonoSingleton<LogManager> {
 		if (Input.GetKeyUp("tab")) {
 			ToggleLog();
 		}
-		if (Input.GetKeyUp("1")) {
-			Debug.Log ("Asserting some tests");
-		}
-		if (Input.GetKeyUp("2")) {
-			Debug.LogError ("Critical error");
-		}
-		if (Input.GetKeyUp("3")) {
-			Debug.Log ("I am awesome");
-		}
-		if (Input.GetKeyUp("4")) {
-			Debug.LogWarning ("Might be careful");
-		}
 	}
 
 	//TODO Haha despite the fact I wrote this shit for 4 hours it became useless, revert to using 1 string, faster.
@@ -250,6 +238,14 @@ public class LogManager : MonoSingleton<LogManager> {
 		}
 		if (command == "stream path") {
 			Debug.Log(Application.streamingAssetsPath);
+		}
+		if (command == "load f2") {
+			ToggleLog();
+			GameManager.Instance.LoadScene("F2");
+		}
+		if (command == "load b10") {
+			ToggleLog();
+			GameManager.Instance.LoadScene("B10");
 		}
 		commandField.GetComponent<InputField>().Select();
 	}

@@ -98,8 +98,9 @@ public class PlayerControlManager : MonoSingleton<PlayerControlManager> {
 
 	void StartPath ()
 	{
+		//TODO Kinda bad reference
 		game.SetGameState(GameState.Uncontrolable);
-		NavigationManager.Instance.MoveAwayFromPoint(NavigationManager.Instance.presentNavigationPoint);
+		NavigationManager.Instance.MoveAwayFromPoint(NavigationPoints.Instance.presentNavigationPoint);
 	}
 
 	void EndPath ()
@@ -117,7 +118,6 @@ public class PlayerControlManager : MonoSingleton<PlayerControlManager> {
 	void OpenLockPanel()
 	{
 		InterfaceManager.Instance.ToggleLockWindow();
-		Elevator.Instance.CloseDoors();
 	}
 
 	void Rotate()

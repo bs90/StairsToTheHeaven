@@ -253,7 +253,7 @@ public class PatternLockManager : MonoSingleton<PatternLockManager> {
 		if (CompareCoordinations(toChecklist, patternCoordinates) == true) {
 			//TODO Navigate to the right floor.
 			if (InventoryManager.Instance.IsItemInInventory(4)) {
-				InterfaceManager.Instance.ToggleInfoWindow("Floor 2's pattern successfully entered.", null);
+				InterfaceManager.Instance.ToggleInfoWindow("Floor 2's pattern successfully entered.", OnCompletePattern);
 			}
 			else {
 				InterfaceManager.Instance.ToggleInfoWindow("The machine is acting weird.", null);
@@ -263,6 +263,11 @@ public class PatternLockManager : MonoSingleton<PatternLockManager> {
 			InterfaceManager.Instance.ToggleInfoWindow("Entered pattern doesn't exist.", null);
 		}
 		
+	}
+
+	private void OnCompletePattern()
+	{
+		Elevator.Instance.ToggleDoors(()=> GameManager.Instance.LoadScene("F2"));
 	}
 
 	public void ClearPoints()

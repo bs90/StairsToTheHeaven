@@ -53,11 +53,11 @@ public class InterfaceManager : MonoSingleton<InterfaceManager> {
 		if (infoShowing) {
 			infoPanel.GetComponentInChildren<Text>().text = string.Empty;
 			if (onCloseEvent == null) {
-				infoRectTransform.DOSizeDelta(minimizedInfoSize, 0.1f, false).OnComplete(()=>EndInfoToggle(null));
+				infoRectTransform.DOSizeDelta(maximizedInfoSize, 0.01f, false).OnComplete(()=>EndInfoToggle(null));
 			}
 			else {
 				Sequence closeSequence = DOTween.Sequence();
-				closeSequence.Append(infoRectTransform.DOSizeDelta(minimizedInfoSize, 0.1f, false).OnComplete(()=>EndInfoToggle(null)));
+				closeSequence.Append(infoRectTransform.DOSizeDelta(maximizedInfoSize, 0.01f, false).OnComplete(()=>EndInfoToggle(null)));
 				closeSequence.OnComplete(onCloseEvent);
 				closeSequence.Play();
 				onInfoToggleCallback = null;
@@ -94,8 +94,6 @@ public class InterfaceManager : MonoSingleton<InterfaceManager> {
 		if (lockShowing) {
 			patternButton.GetComponentInChildren<Text>().text = "Pattern Lock";
 			lockRectTransform.DOAnchorPos(originalLockPosition, 0.3f, false).OnComplete(EndLockToggle);
-			//TODO Remove this
-			Elevator.Instance.OpenDoors();
 			lockShowing = false;
 		}
 		else {

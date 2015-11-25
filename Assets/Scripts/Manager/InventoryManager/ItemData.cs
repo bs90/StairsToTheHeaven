@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 using System.Collections;
 
-public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler {
+public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler {
 	[HideInInspector] public Item item;
 	[HideInInspector] public int amount;
 	[HideInInspector] public int slot;
@@ -33,6 +33,13 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 		}
 		else {
 			Debug.Log("LOL");
+		}
+	}
+
+	public void OnPointerClick(PointerEventData eventData)
+	{
+		if (eventData.clickCount == 2 && GameManager.Instance.State == GameState.Inventory) {
+			InterfaceManager.Instance.DisplayInvestMode(item);
 		}
 	}
 
