@@ -29,7 +29,6 @@ public class ItemDatabase : MonoSingleton<ItemDatabase>
 		return itemDatabase.Count;
 	}
 
-	// TODO I feel the flow is somehow wrong with this one
 	private void ConstructItemDatabase(string fileName)
 	{
 		itemData = JsonMapper.ToObject(File.ReadAllText(Application.streamingAssetsPath + "/" + fileName)); // StreamingAssets are not to be compiled into the game

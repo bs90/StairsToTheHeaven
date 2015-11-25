@@ -29,6 +29,11 @@ public class InterfaceManager : MonoSingleton<InterfaceManager> {
 	private bool optionShowing;
 
 	private bool infoShowing;
+	public bool InfoShowing {
+		get {
+			return this.infoShowing;
+		}
+	}
 	private bool messageShowing;
 
 	private bool inspectImageShowing;
@@ -200,20 +205,5 @@ public class InterfaceManager : MonoSingleton<InterfaceManager> {
 
 			ToggleInventoryWindow();
 		}
-	}
-
-	void Update ()
-	{
-		if (Input.GetKeyDown("a")) {
-			ToggleLockWindow();
-		}
-		if (Input.GetKeyDown("s")) {
-			ToggleInventoryWindow();
-		}
-		if (Input.GetButtonDown("Fire1") && infoShowing && GameManager.Instance.State == GameState.Confirmation) {
-			ToggleInfoWindow(string.Empty, onInfoToggleCallback);
-		}
-
-
 	}
 }

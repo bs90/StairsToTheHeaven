@@ -24,6 +24,11 @@ public class GameManager : MonoSingleton<GameManager> {
 	[HideInInspector]public string info;
 
 	private string presentFloor;
+	public string PresentFloor {
+		get {
+			return this.presentFloor;
+		}
+	}
 
 	public GameObject infoText;
 	public GameObject modeText;
@@ -50,7 +55,7 @@ public class GameManager : MonoSingleton<GameManager> {
 	{
 		SetGameState(GameState.Investigation);
 		Elevator.Instance.ToggleDoors(null);
-		UpdateFloor(2);
+		UpdateFloor(Application.loadedLevelName);
 	}
 
 	void Start () 
@@ -62,6 +67,10 @@ public class GameManager : MonoSingleton<GameManager> {
 	void Update () 
 	{
 		modeText.GetComponent<Text>().text = "State: " + gameState.ToString();
+
+		if (Input.GetButtonDown("Fire1") && InterfaceManager.Instance.InfoShowing && State == GameState.Confirmation) {
+			InterfaceManager.Instance.ToggleInfoWindow(string.Empty, InterfaceManager.Instance.onInfoToggleCallback);
+		}
 	}
 
 	public void SetGameState (GameState state)
@@ -96,9 +105,9 @@ public class GameManager : MonoSingleton<GameManager> {
 		infoText.GetComponent<Text>().text = info;
 	}
 
-	public void UpdateFloor (int floorNumber)
+	public void UpdateFloor (string floor)
 	{
-		presentFloor = string.Format("Floor: " + floorNumber);
+		presentFloor = floor;
 	}
 
 	public void MoveToFloor (int floorNumber)

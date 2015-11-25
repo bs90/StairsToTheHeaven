@@ -1,27 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Environment\Elevator.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Manager\PatternLockManager\PatternLockManager.cs">
     <Files>
-      <File FileName="Assets\Scripts\Manager\DebugManager\LogManager.cs" Line="15" Column="33" />
-      <File FileName="Assets\Scripts\Manager\InventoryManager\InventoryManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Manager\NavigationManager\NavigationManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Manager\NavigationManager\InteractableObject.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Manager\PatternLockManager\PatternLockManager.cs" Line="256" Column="50" />
+      <File FileName="Assets\Scripts\Manager\DataManager\DataManager.cs" Line="29" Column="28" />
+      <File FileName="Assets\Scripts\Models\Pattern.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Models\Item.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Manager\PatternLockManager\PatternLockManager.cs" Line="260" Column="5" />
       <File FileName="Assets\Scripts\Manager\InterfaceManager\InterfaceManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Manager\InventoryManager\ItemData.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Manager\GameManager\GameManager.cs" Line="53" Column="33" />
-      <File FileName="Assets\Scripts\Manager\PasswordManager\PasswordManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Manager\JobManager\JobManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Common\Constants.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Manager\InventoryManager\ItemDatabase.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Manager\MessageManager\MessageManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Test\TestMessage.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Models\CSVReader.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\System\Singleton.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Manager\ComponentManager\ComponentManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Manager\NavigationManager\NavigationPoints.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Manager\PlayerManager\PlayerControlManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Environment\Elevator.cs" Line="16" Column="25" />
+      <File FileName="Assets\Scripts\Manager\InventoryManager\InventoryManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Manager\GameManager\GameManager.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
