@@ -11,8 +11,8 @@ public class DataManager : MonoSingleton<DataManager>
 
 	private List<Pattern> patternDatabase = new List<Pattern>(); //accessor doesn't work here, why?
 
-	private Dictionary<int, bool> chestData = new Dictionary<int, bool>();
-	public Dictionary<int, bool> ChestData {
+	private List<bool> chestData = new List<bool>();
+	public List<bool> ChestData {
 		get {
 			return this.chestData;
 		}
@@ -25,8 +25,8 @@ public class DataManager : MonoSingleton<DataManager>
 		}
 	}
 
-	private Dictionary<int, bool> eventData = new Dictionary<int, bool>();
-	public Dictionary<int, bool> EventData {
+	private List<bool> eventData = new List<bool>();
+	public List<bool> EventData {
 		get {
 			return this.eventData;
 		}
@@ -46,12 +46,14 @@ public class DataManager : MonoSingleton<DataManager>
 
 	private void Awake()
 	{
-		AssignGameDataFile("GameData.json");
-		AssignPatternDataFile("Patterns.json");
-		ConstructPatternDatabase();
-		ConstructChestData();
-		ConstructInventoryData();
-		ConstructEventData();
+		if (gameData == null || patternData == null) {
+			AssignGameDataFile("GameData.json");
+			AssignPatternDataFile("Patterns.json");
+			ConstructPatternDatabase();
+			ConstructChestData();
+			ConstructInventoryData();
+			ConstructEventData();
+		}
 	}
 
 	public Pattern FetchPatternById(int id)
@@ -67,6 +69,7 @@ public class DataManager : MonoSingleton<DataManager>
 	public bool GetChestState(int id) {
 		for (int i = 0; i < chestData.Count; i++) {
 			if (id == i) {
+				Debug.Log (chestData[i]);
 				return chestData[i];
 			}
 		}
@@ -178,7 +181,8 @@ public class DataManager : MonoSingleton<DataManager>
 	private void ConstructChestData()
 	{
 		for (int i = 0; i < gameData[0]["chests"].Count; i++) {
-			chestData.Add(i, (bool)gameData[0]["chests"][i]);
+			Debug.Log ((bool)gameData[0]["chests"][i]);
+			chestData.Add((bool)gameData[0]["chests"][i]);
 		}
 	}
 
@@ -197,7 +201,7 @@ public class DataManager : MonoSingleton<DataManager>
 	private void ConstructEventData()
 	{
 		for (int i = 0; i < gameData[0]["events"].Count; i++) {
-			eventData.Add(i, (bool)gameData[0]["events"][i]);
+			eventData.Add((bool)gameData[0]["events"][i]);
 		}
 	}
 }
