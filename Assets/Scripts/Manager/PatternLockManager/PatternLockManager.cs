@@ -84,6 +84,7 @@ public class PatternLockManager : MonoSingleton<PatternLockManager> {
 
 	public void MarkBetweenPoints(Vector2 startPoint, Vector2 endPoint, Vector2 subsPoint, bool isX)
 	{
+		//TODO This caused some error
 		Vector2 furtherPoint = Vector2.zero;
 		Vector2 closerPoint = Vector2.zero;
 
@@ -242,7 +243,7 @@ public class PatternLockManager : MonoSingleton<PatternLockManager> {
 	public void CorrectPatternCheck ()
 	{
 		DataManager dataManager = DataManager.Instance;
-		for (int i = 0; i < dataManager.PatternCount(); i++) {
+		for (int i = 0; i < dataManager.PatternCount; i++) {
 			List<Vector2> coorsList = dataManager.FetchPatternById(i).PatternCombination;
 			int requiredItem = dataManager.FetchPatternById(i).RequiredItemId;
 			//TODO Why the Vector 2 lists comparison don't work here, it is beyond fucking me.
@@ -292,41 +293,6 @@ public class PatternLockManager : MonoSingleton<PatternLockManager> {
 			return false;
 		}
 	}
-
-	private void Temporary()
-	{
-		DataManager dataManager = DataManager.Instance;
-		for (int i = 0; i < dataManager.PatternCount(); i++) {
-			List<Vector2> coorsList = dataManager.FetchPatternById(i).PatternCombination;
-			int requiredItem = dataManager.FetchPatternById(i).RequiredItemId;
-			//TODO Why the Vector 2 lists comparison don't work here, it is beyond fucking me.
-			if (coorsList.Count == patternCoordinates.Count) {
-				int correct = 0;
-				for(int c = 0; c < patternCoordinates.Count; c++) {
-					if (coorsList[c] == patternCoordinates[c]) {
-						correct++;
-					}
-				}
-				if (correct == patternCoordinates.Count) {
-					if (requiredItem != -1 && InventoryManager.Instance.IsItemInInventory(requiredItem)) {
-						InterfaceManager.Instance.ToggleInfoWindow("Floor " + dataManager.FetchPatternById(i).Floor + "'s pattern matched." , 
-						                                           ()=> OnCompletePattern(dataManager.FetchPatternById(i).Floor));
-					}
-					else if (requiredItem == -1 ){
-						InterfaceManager.Instance.ToggleInfoWindow("Floor " + dataManager.FetchPatternById(i).Floor + "'s pattern matched." , 
-						                                           ()=> OnCompletePattern(dataManager.FetchPatternById(i).Floor));
-					}
-					else {
-						InterfaceManager.Instance.ToggleInfoWindow("For some reason the elevator isn't moving.", null);
-					}
-					return;
-				}
-				
-			}
-		}
-		InterfaceManager.Instance.ToggleInfoWindow("No match found.", null);
-	}
-
 
 	private void OnCompletePattern(string floor)
 	{

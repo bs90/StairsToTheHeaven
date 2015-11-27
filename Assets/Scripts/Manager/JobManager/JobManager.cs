@@ -12,7 +12,7 @@ public class JobManager : MonoSingleton<JobManager>
 
 public class Job
 {
-	public event Action<bool> jobCompleted;
+	public event Action<bool> onComplete;
 
 	private bool running;
 	public bool isRuning {
@@ -196,8 +196,8 @@ public class Job
 				}
 			}
 		}
-		if (jobCompleted != null) {
-			jobCompleted(jobWasKilled);
+		if (onComplete != null) {
+			onComplete(jobWasKilled);
 		}
 	}
 

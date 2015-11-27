@@ -1,117 +1,103 @@
+
 [
-	{
-		"playerName": "Ein",
-		"playedTime": "",
-		"floor": "B10",
-		"chests": {
-			"0": false,
-			"1": false,
-			"2": false,
-			"3": false,
-			"4": false,
-			"5": false,
-			"6": false,
-			"7": false,
-			"8": false,
-			"9": false,
-			"10": false,
-			"11": false,
-			"12": false,
-			"13": false,
-			"14": false,
-			"15": false,
-			"16": false,
-			"17": false,
-			"18": false,
-			"19": false
-		},
-		"passwords": {
-			"0": {
-				"type": 1,
-				"word": "123",
-				"reward": 4,
-			},
-			"1": {
-				"type": 0,
-				"word": "abc",
-				"reward": -1,
-			}
-		},
-		"patterns": {
-			"0": {
-				"pattern": [{"x":0,"y":0}, {"x":1,"y":0}],
-				"requires": -1,
-				"floor": "B2"
-			},
-			"1": {
-				"pattern": [{"x":0,"y":2}, {"x":1,"y":3}, {"x":2,"y":3}, {"x":2,"y":2}, {"x":1,"y":1}, {"x":1,"y":0}, {"x":2,"y":0}, {"x":3,"y":0}],
-				"requires": 4,
-				"floor": "F2"
-			}
-		},
-		"inventory": {
-			"0": -1,
-			"0Amount": 0,
-			"1": -1,
-			"1Amount": 0,
-			"2": -1,
-			"2Amount": 0,
-			"3": -1,
-			"3Amount": 0,
-			"4": -1,
-			"4Amount": 0,
-			"5": -1,
-			"5Amount": 0,
-			"6": -1,
-			"6Amount": 0,
-			"7": -1,
-			"7Amount": 0,
-			"8": -1,
-			"8Amount": 0,
-			"9": -1,
-			"9Amount": 0,
-			"10": -1,
-			"10Amount": 0,
-			"11": -1,
-			"11Amount": 0,
-			"12": -1,
-			"12Amount": 0,
-			"13": -1,
-			"13Amount": 0,
-			"14": -1,
-			"14Amount": 0,
-			"15": -1,
-			"15Amount": 0,
-			"16": -1,
-			"16Amount": 0,
-			"17": -1,
-			"17Amount": 0,
-			"18": -1,
-			"18Amount": 0,
-			"19": -1,
-			"19Amount": 0,
-		},
-		"events": {
-			"0": false,
-			"1": false,
-			"2": false 
-		},
-		"flags": {
-			"0": false,
-			"1": false,
-			"2": false
-		},
-		"character1": {
-			"name": 0,
-			"class": 0,
-			"hp": 0, 
-			"sp": 0,
-			"str": 0,
-			"vit": 0,
-			"agi": 0,
-			"dex": 0,
-			"int": 0,
-			"spi": 0
-		}
-	}
+  {
+    "playerName" : "Ein",
+    "playedTime" : "",
+    "floor"      : "B10",
+    "chests"     : {
+      "0" : false,
+      "1" : false,
+      "2" : false,
+      "3" : false,
+      "4" : false,
+      "5" : false,
+      "6" : false,
+      "7" : false,
+      "8" : false,
+      "9" : false,
+      "10" : false,
+      "11" : false,
+      "12" : false,
+      "13" : false,
+      "14" : false,
+      "15" : false,
+      "16" : false,
+      "17" : false,
+      "18" : false,
+      "19" : false
+    },
+    "slotItem"   : {
+      "0" : -1,
+      "1" : -1,
+      "2" : -1,
+      "3" : -1,
+      "4" : -1,
+      "5" : -1,
+      "6" : -1,
+      "7" : -1,
+      "8" : -1,
+      "9" : -1,
+      "10" : -1,
+      "11" : -1,
+      "12" : -1,
+      "13" : -1,
+      "14" : -1,
+      "15" : -1,
+      "16" : -1,
+      "17" : -1,
+      "18" : -1,
+      "19" : -1,
+      "20" : -1
+    },
+    "slotAmount" : {
+      "0" : 0,
+      "1" : 0,
+      "2" : 0,
+      "3" : 0,
+      "4" : 0,
+      "5" : 0,
+      "6" : 0,
+      "7" : 0,
+      "8" : 0,
+      "9" : 0,
+      "10" : 0,
+      "11" : 0,
+      "12" : 0,
+      "13" : 0,
+      "14" : 0,
+      "15" : 0,
+      "16" : 0,
+      "17" : 0,
+      "18" : 0,
+      "19" : 0,
+      "20" : 0
+    },
+    "events"     : {
+      "0" : false,
+      "1" : false,
+      "2" : false
+    },
+    "flags"      : {
+      "0" : false,
+      "1" : false,
+      "2" : false
+    },
+    "tutorials"  : {
+      "0" : false,
+      "1" : false,
+      "2" : false
+    },
+    "character1" : {
+      "name" : 0,
+      "class" : 0,
+      "hp"    : 0,
+      "sp"    : 0,
+      "str"   : 0,
+      "vit"   : 0,
+      "agi"   : 0,
+      "dex"   : 0,
+      "int"   : 0,
+      "spi"   : 0
+    }
+  }
 ]

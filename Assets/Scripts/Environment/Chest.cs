@@ -19,12 +19,10 @@ public class Chest : MonoBehaviour {
 	public string rewardMessage;
 	public char[] kanjiSet;
 
-	public void OnEnable()
+	public void Start()
 	{
-		//TODO Get information if this chest is opened;
-		if (opened) {
-			this.gameObject.GetComponentInChildren<InteractableObject>().enabled = false;
-		}
+		opened = DataManager.Instance.GetChestState(chestID);
+		this.gameObject.GetComponentInChildren<InteractableObject>().enabled = false;
 	}
 
 	public void OnEventInvestigateChest ()
@@ -71,6 +69,7 @@ public class Chest : MonoBehaviour {
 			//TODO Save progress
 			this.gameObject.GetComponent<Animation>()["ChestAnim"].speed = 1;
 			this.gameObject.GetComponent<Animation>().Play("ChestAnim");
+			DataManager.Instance.SaveChestState(chestID, true);
 		}
 	}
 

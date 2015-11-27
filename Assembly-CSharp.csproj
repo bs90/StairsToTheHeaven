@@ -79,9 +79,38 @@
      <Compile Include="Assets\Scripts\Manager\PlayerManager\AnimationHash.cs" />
      <Compile Include="Assets\Scripts\Manager\PlayerManager\PlayerControlManager.cs" />
      <Compile Include="Assets\Scripts\Manager\SoundManager\SoundManager.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\DataStructures\ThreadSafeQueue.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\AsyncTask.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\CoroutineException.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\EnumeratorWithProgress.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\IRunner.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\ITask.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\MonoRunner.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\MultiThreadParallelTaskCollection.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\MultiThreadRunner.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\ParallelTaskCollection.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\PausableTask.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\RunnerBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\SerialTaskCollection.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\SingleTask.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\TaskCollection.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\TaskRoutine.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\TaskRoutinePool.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\TaskRunner.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\TimingOutTask.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\YieldInstructionTask.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\Test\CSharpTestDriver.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\Test\ExampleParallelTasks.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\Test\ExampleParallelTasksManaged.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\Test\ExampleParallelTasksManagedMultiThread.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\Test\ExamplePooledTaskRoutine.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\Test\ExampleSerialTasks.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\Test\ExampleSingleTask.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\Test\TaskRunnerTests.cs" />
      <Compile Include="Assets\Scripts\Models\CSVReader.cs" />
      <Compile Include="Assets\Scripts\Models\DialogMessage.cs" />
      <Compile Include="Assets\Scripts\Models\Item.cs" />
+     <Compile Include="Assets\Scripts\Models\ItemSlot.cs" />
      <Compile Include="Assets\Scripts\Models\Pattern.cs" />
      <Compile Include="Assets\Scripts\System\Singleton.cs" />
      <Compile Include="Assets\Scripts\Test\TestMessage.cs" />
@@ -101,10 +130,12 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Plugins\Demigiant\DOTween\readme.txt" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />
+     <None Include="Assets\Plugins\NUnitLite\NUnitLite.LICENSE.txt" />
      <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasic.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\SeparableWeightedBlurDof34.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ShowAlphaChannel.shader" />
      <None Include="Assets\Materials\Shaders\Outlined_Diffuse.shader" />
+     <None Include="Assets\Plugins\NUnitLite\NUnitLite.CHANGES.txt" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\SunShaftsComposite.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionCurves.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ScreenSpaceAmbientObscurance.shader" />
@@ -153,6 +184,7 @@
      <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonLit.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionSelective.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\Bokeh34.shader" />
+     <None Include="Assets\Plugins\NUnitLite\NUnitLite.README.txt" />
      <None Include="Assets\Models\Modern Interior Pack\Shaders\Glass.shader" />
      <None Include="Assets\Plugins\HighlightingSystem\Resources\HighlightingBlit.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\CameraMotionBlurDX11.shader" />
@@ -175,6 +207,7 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\VortexEffect.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Adaptation.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseAndGrain.shader" />
+     <None Include="Assets\Plugins\NUnitLite\NUnitLiteUnityRunner.README.txt" />
      <None Include="Assets\Standard Assets\Effects\Projectors\Shaders\ProjectorMultiply.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\VignettingShader.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\Tonemapper.shader" />
@@ -216,6 +249,9 @@
  </Reference>
  <Reference Include="DOTween50">
  <HintPath>E:/Projects/Unity3D/Stairs To The Heaven/Assets/Plugins/Demigiant/DOTween/DOTween50.dll</HintPath>
+ </Reference>
+ <Reference Include="NUnitLite">
+ <HintPath>E:/Projects/Unity3D/Stairs To The Heaven/Assets/Plugins/NUnitLite/NUnitLite.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Cecil">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/Mono.Cecil.dll</HintPath>

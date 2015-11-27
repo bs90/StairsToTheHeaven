@@ -55,7 +55,6 @@ public class GameManager : MonoSingleton<GameManager> {
 	{
 		SetGameState(GameState.Investigation);
 		Elevator.Instance.ToggleDoors(null);
-		UpdateFloor(Application.loadedLevelName);
 	}
 
 	void Start () 
@@ -108,6 +107,7 @@ public class GameManager : MonoSingleton<GameManager> {
 	public void UpdateFloor (string floor)
 	{
 		presentFloor = floor;
+		DataManager.Instance.SaveFloor(floor);
 	}
 
 	public void MoveToFloor (int floorNumber)
@@ -123,11 +123,19 @@ public class GameManager : MonoSingleton<GameManager> {
 	private IEnumerator SceneCoroutine(string sceneName)
 	{
 		LoadingScene.SetActive(true);
+		DataManager.Instance.WriteGameData("GameData.json");
 		AsyncOperation async = Application.LoadLevelAsync(sceneName);
 		while (!async.isDone) {
 			LoadingBar.fillAmount = async.progress / 0.9f;
 			yield return null;
 		}
 		LoadingScene.SetActive(false);
+
+	}
+
+	private IEnumerator SaveGame(string saveName)
+	{
+
+		yield return null;
 	}
 }

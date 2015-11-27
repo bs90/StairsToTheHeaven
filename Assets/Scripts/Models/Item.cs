@@ -84,7 +84,7 @@ public class Item
 		this.Id = -1;
 		this.Title = "Empty Slot";
 		this.Tag = "null";
-		this.Description = "If you are a dev, you must have messed something seriously up, otherwise, happy cheating.";
+		this.Description = "Happy cheating.";
 		
 		this.Stackable = false;
 		this.Value = 0;

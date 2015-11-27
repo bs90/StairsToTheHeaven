@@ -194,7 +194,7 @@ public class LogManager : MonoSingleton<LogManager> {
 
 		int lineNumber = GetLineBreakCount(logText);
 		RectTransform panelRect = logPanel.GetComponent<RectTransform>();
-		panelRect.sizeDelta = new Vector2(panelRect.sizeDelta.x, (15 * lineNumber) + (10 * logStrings.Count) + 15);
+		panelRect.sizeDelta = new Vector2(panelRect.sizeDelta.x, (15 * lineNumber) + (10 * logStrings.Count) + 35);
 	}
 
 	public void ToggleLog () 
