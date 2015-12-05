@@ -33,7 +33,10 @@ public class Chest : MonoBehaviour {
 	private void SetState()
 	{
 		opened = DataManager.Instance.GetChestState(chestID);
-		this.gameObject.GetComponentInChildren<InteractableObject>().enabled = false;
+		if (opened) {
+			this.gameObject.GetComponentInChildren<InteractableObject>().enabled = false;
+			this.gameObject.SetActive(false);
+		}
 	}
 
 	public void OnEventInvestigateChest ()

@@ -3,7 +3,7 @@
   {
     "playerName" : "Ein",
     "playedTime" : "",
-    "floor"      : "F2",
+    "floor"      : "B10",
     "chests"     : {
       "0" : true,
       "1" : false,

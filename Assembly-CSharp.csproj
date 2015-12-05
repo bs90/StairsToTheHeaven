@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\Effects\RenderToCubemap.cs" />
      <Compile Include="Assets\Scripts\Environment\Chest.cs" />
      <Compile Include="Assets\Scripts\Environment\Elevator.cs" />
+     <Compile Include="Assets\Scripts\Environment\ImageSide.cs" />
      <Compile Include="Assets\Scripts\Manager\ComponentManager\ComponentManager.cs" />
      <Compile Include="Assets\Scripts\Manager\ControlManager\ControlManager.cs" />
      <Compile Include="Assets\Scripts\Manager\DataManager\DataManager.cs" />

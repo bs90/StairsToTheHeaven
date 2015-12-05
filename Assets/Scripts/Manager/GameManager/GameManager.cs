@@ -30,6 +30,28 @@ public class GameManager : MonoSingleton<GameManager> {
 		}
 	}
 
+	public bool isInvestigationState {
+		get {
+			if (gameState == GameState.Investigation) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+	}
+
+	public bool isUncontrolableState {
+		get {
+			if (gameState == GameState.Uncontrolable) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+	}
+
 	public GameObject infoText;
 	public GameObject modeText;
 

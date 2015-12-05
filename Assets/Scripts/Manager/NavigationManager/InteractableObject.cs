@@ -46,18 +46,28 @@ public class InteractableObject : MonoBehaviour {
 	private void ToggleInteractableObject (GameObject interactable, bool toggle)
 	{
 		//TODO Another shit like codes
-		bool chestOpened = false;
-		if (interactable.transform.GetComponent<Chest>()) {
+		bool isChest = false;
+		if (interactable.GetComponent<Chest>() != null) {
+			isChest = true;
+		}
+
+		if (isChest) {
 			interactable.transform.GetComponent<Chest>().enabled = toggle;
-			chestOpened = interactable.transform.GetComponent<Chest>().opened;
+			bool chestOpened = interactable.transform.GetComponent<Chest>().opened;
+			if (!chestOpened && toggle) {
+				interactable.GetComponentInChildren<InteractableObject>().enabled = toggle;
+			}
+			else {
+				if (interactable.activeInHierarchy) {
+					interactable.GetComponentInChildren<InteractableObject>().enabled = false;
+				}
+			}
 		}
 		if (interactable.GetComponent<InteractableObject>()) {
 			interactable.GetComponent<InteractableObject>().enabled = toggle;
 		}
 		else if (interactable.GetComponentInChildren<InteractableObject>()) {
-			if (!chestOpened && toggle) {
-				interactable.GetComponentInChildren<InteractableObject>().enabled = toggle;
-			}
+			interactable.GetComponentInChildren<InteractableObject>().enabled = toggle;
 		}
 	}
 

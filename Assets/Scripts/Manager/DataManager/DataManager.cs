@@ -69,8 +69,16 @@ public class DataManager : MonoSingleton<DataManager>
 	public bool GetChestState(int id) {
 		for (int i = 0; i < chestData.Count; i++) {
 			if (id == i) {
-				Debug.Log (chestData[i]);
 				return chestData[i];
+			}
+		}
+		return false;
+	}
+
+	public bool GetEventState(int id) {
+		for (int i = 0; i < eventData.Count; i++) {
+			if (id == i) {
+				return eventData[i];
 			}
 		}
 		return false;
@@ -181,7 +189,7 @@ public class DataManager : MonoSingleton<DataManager>
 	private void ConstructChestData()
 	{
 		for (int i = 0; i < gameData[0]["chests"].Count; i++) {
-			Debug.Log ((bool)gameData[0]["chests"][i]);
+//			Debug.Log ((bool)gameData[0]["chests"][i]);
 			chestData.Add((bool)gameData[0]["chests"][i]);
 		}
 	}

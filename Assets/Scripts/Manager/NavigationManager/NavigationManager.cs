@@ -59,7 +59,9 @@ public class NavigationManager : MonoSingleton<NavigationManager> {
 	public GameObject GetPresentPoint ()
 	{
 		//TODO Complete this function
-		GameObject point = new GameObject();
-		return point;
+		if (NavigationPoints.instance.presentNavigationPoint != null) {
+			return NavigationPoints.instance.presentNavigationPoint;
+		}
+		return null;
 	}
 }
