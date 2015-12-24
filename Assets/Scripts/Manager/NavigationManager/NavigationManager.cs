@@ -13,6 +13,9 @@ public class NavigationManager : MonoSingleton<NavigationManager> {
 	public void SetupNavigation ()
 	{
 		MoveAwayFromPoint(NavigationPoints.Instance.navigationPoints[1]);
+		if (Application.loadedLevelName == "F2") {
+			MoveAwayFromPoint(NavigationPoints.Instance.navigationPoints[3]);
+		}
 		SetPresentPoint(NavigationPoints.Instance.navigationPoints[0]);
 	}
 
