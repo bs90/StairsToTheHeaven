@@ -34,9 +34,9 @@
 	},
 	{
 		"id": 1,
-		"title": "Blue Herb",
-		"tag": "u_01",
-		"description": "Blue colored herb with energizing properties. Combine with Green Herb to create Yellow Herb.",
+		"title": "T1's paper",
+		"tag": "u_00",
+		"description": "herb_01",
 		"equipable": false,
 		"stats": {
 			"type": 0,
@@ -48,28 +48,28 @@
 		},
 		"useable": true,
 		"usability": {
-			"hp": 0,
-			"sp": 5,
+			"hp": 10,
+			"sp": 0,
 			"cure": 0
 		},
-		"combineable": true,
+		"combineable": false,
 		"combination": {
-			"id1": 0,
+			"id1": 1,
 			"id2": -1,
 			"id3": -1,
 			"idResult": 3
 		},
 		"stackable": true,
-		"inspectable": false,
-		"inspectSprite": "",
-		"value": 7,
- 		"icon": "herb_02"
+		"inspectable": true,
+		"inspectSprite": "herb_01",
+ 		"value": 6,
+ 		"icon": "herb_01"
 	},
 	{
 		"id": 2,
-		"title": "Red Herb",
-		"tag": "u_02",
-		"description": "Red colored herb with curing abilities.",
+		"title": "T2's path",
+		"tag": "u_00",
+		"description": "herb_01",
 		"equipable": false,
 		"stats": {
 			"type": 0,
@@ -81,28 +81,28 @@
 		},
 		"useable": true,
 		"usability": {
-			"hp": 0,
+			"hp": 10,
 			"sp": 0,
-			"cure": 99
+			"cure": 0
 		},
 		"combineable": false,
 		"combination": {
-			"id1": -1,
+			"id1": 1,
 			"id2": -1,
 			"id3": -1,
-			"idResult": -1
+			"idResult": 3
 		},
 		"stackable": true,
-		"inspectable": false,
-		"inspectSprite": "",
-		"value": 2,
- 		"icon": "herb_04"
+		"inspectable": true,
+		"inspectSprite": "herb_01",
+ 		"value": 6,
+ 		"icon": "herb_01"
 	},
 	{
 		"id": 3,
-		"title": "Yellow Herb",
-		"tag": "u_03",
-		"description": "Yellow colored herb incredible recovering abilities. Combined from Green Herb and Yellow Herb.",
+		"title": "T2's paper",
+		"tag": "u_00",
+		"description": "herb_01",
 		"equipable": false,
 		"stats": {
 			"type": 0,
@@ -114,28 +114,28 @@
 		},
 		"useable": true,
 		"usability": {
-			"hp": 15,
-			"sp": 10,
+			"hp": 10,
+			"sp": 0,
 			"cure": 0
 		},
 		"combineable": false,
 		"combination": {
-			"id1": -1,
+			"id1": 1,
 			"id2": -1,
 			"id3": -1,
-			"idResult": -1
+			"idResult": 3
 		},
 		"stackable": true,
-		"inspectable": false,
-		"inspectSprite": "",
-		"value": 1,
- 		"icon": "herb_03"
+		"inspectable": true,
+		"inspectSprite": "herb_01",
+ 		"value": 6,
+ 		"icon": "herb_01"
 	},
 	{
 		"id": 4,
-		"title": "Piece of Paper",
-		"tag": "e_01",
-		"description": "A piece of paper, found in a chest at basement 10th, it seems there is a drawing on it.",
+		"title": "T3's path",
+		"tag": "u_00",
+		"description": "herb_01",
 		"equipable": false,
 		"stats": {
 			"type": 0,
@@ -145,23 +145,223 @@
 			"defense": 0,
 			"protection": 0
 		},
-		"useable": false,
+		"useable": true,
 		"usability": {
-			"hp": 0,
+			"hp": 10,
 			"sp": 0,
 			"cure": 0
 		},
 		"combineable": false,
 		"combination": {
-			"id1": -1,
+			"id1": 1,
 			"id2": -1,
 			"id3": -1,
-			"idResult": -1
+			"idResult": 3
 		},
-		"stackable": false,
+		"stackable": true,
 		"inspectable": true,
-		"inspectSprite": "PatternB10",
-		"value": 0,
- 		"icon": "scroll"
+		"inspectSprite": "herb_01",
+ 		"value": 6,
+ 		"icon": "herb_01"
+	},
+	{
+		"id": 5,
+		"title": "T4's path",
+		"tag": "u_00",
+		"description": "herb_01",
+		"equipable": false,
+		"stats": {
+			"type": 0,
+			"hp": 0,
+			"sp": 0,
+			"attack": 0,
+			"defense": 0,
+			"protection": 0
+		},
+		"useable": true,
+		"usability": {
+			"hp": 10,
+			"sp": 0,
+			"cure": 0
+		},
+		"combineable": false,
+		"combination": {
+			"id1": 1,
+			"id2": -1,
+			"id3": -1,
+			"idResult": 3
+		},
+		"stackable": true,
+		"inspectable": true,
+		"inspectSprite": "herb_01",
+ 		"value": 6,
+ 		"icon": "herb_01"
+	},
+	{
+		"id": 6,
+		"title": "T4's paper 1",
+		"tag": "u_00",
+		"description": "herb_01",
+		"equipable": false,
+		"stats": {
+			"type": 0,
+			"hp": 0,
+			"sp": 0,
+			"attack": 0,
+			"defense": 0,
+			"protection": 0
+		},
+		"useable": true,
+		"usability": {
+			"hp": 10,
+			"sp": 0,
+			"cure": 0
+		},
+		"combineable": true,
+		"combination": {
+			"id1": 7,
+			"id2": -1,
+			"id3": -1,
+			"idResult": 8
+		},
+		"stackable": true,
+		"inspectable": true,
+		"inspectSprite": "herb_01",
+ 		"value": 6,
+ 		"icon": "herb_01"
+	},
+	{
+		"id": 7,
+		"title": "T4's paper 2",
+		"tag": "u_00",
+		"description": "herb_01",
+		"equipable": false,
+		"stats": {
+			"type": 0,
+			"hp": 0,
+			"sp": 0,
+			"attack": 0,
+			"defense": 0,
+			"protection": 0
+		},
+		"useable": true,
+		"usability": {
+			"hp": 10,
+			"sp": 0,
+			"cure": 0
+		},
+		"combineable": true,
+		"combination": {
+			"id1": 6,
+			"id2": -1,
+			"id3": -1,
+			"idResult": 8
+		},
+		"stackable": true,
+		"inspectable": true,
+		"inspectSprite": "herb_01",
+ 		"value": 6,
+ 		"icon": "herb_01"
+	},
+	{
+		"id": 8,
+		"title": "T4's paper",
+		"tag": "u_00",
+		"description": "herb_01",
+		"equipable": false,
+		"stats": {
+			"type": 0,
+			"hp": 0,
+			"sp": 0,
+			"attack": 0,
+			"defense": 0,
+			"protection": 0
+		},
+		"useable": true,
+		"usability": {
+			"hp": 10,
+			"sp": 0,
+			"cure": 0
+		},
+		"combineable": false,
+		"combination": {
+			"id1": 1,
+			"id2": -1,
+			"id3": -1,
+			"idResult": 3
+		},
+		"stackable": true,
+		"inspectable": true,
+		"inspectSprite": "herb_01",
+ 		"value": 6,
+ 		"icon": "herb_01"
+	},
+	{
+		"id": 9,
+		"title": "T4's maze",
+		"tag": "u_00",
+		"description": "herb_01",
+		"equipable": false,
+		"stats": {
+			"type": 0,
+			"hp": 0,
+			"sp": 0,
+			"attack": 0,
+			"defense": 0,
+			"protection": 0
+		},
+		"useable": true,
+		"usability": {
+			"hp": 10,
+			"sp": 0,
+			"cure": 0
+		},
+		"combineable": false,
+		"combination": {
+			"id1": 1,
+			"id2": -1,
+			"id3": -1,
+			"idResult": 3
+		},
+		"stackable": true,
+		"inspectable": true,
+		"inspectSprite": "herb_01",
+ 		"value": 6,
+ 		"icon": "herb_01"
+	},
+	{
+		"id": 10,
+		"title": "T13's path",
+		"tag": "u_00",
+		"description": "herb_01",
+		"equipable": false,
+		"stats": {
+			"type": 0,
+			"hp": 0,
+			"sp": 0,
+			"attack": 0,
+			"defense": 0,
+			"protection": 0
+		},
+		"useable": true,
+		"usability": {
+			"hp": 10,
+			"sp": 0,
+			"cure": 0
+		},
+		"combineable": false,
+		"combination": {
+			"id1": 1,
+			"id2": -1,
+			"id3": -1,
+			"idResult": 3
+		},
+		"stackable": true,
+		"inspectable": true,
+		"inspectSprite": "herb_01",
+ 		"value": 6,
+ 		"icon": "herb_01"
 	}
 ]
+
+

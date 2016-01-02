@@ -18,6 +18,13 @@ public class DataManager : MonoSingleton<DataManager>
 		}
 	}
 
+	private List<bool> pickUpData = new List<bool>();
+	public List<bool> PickUp {
+		get {
+			return this.pickUpData;
+		}
+	}
+
 	private List<ItemSlot> inventoryData = new List<ItemSlot>();
 	public List<ItemSlot> InventoryData {
 		get {
@@ -51,6 +58,7 @@ public class DataManager : MonoSingleton<DataManager>
 			AssignPatternDataFile("Patterns.json");
 			ConstructPatternDatabase();
 			ConstructChestData();
+			ConstructPickUpData();
 			ConstructInventoryData();
 			ConstructEventData();
 		}
@@ -70,6 +78,15 @@ public class DataManager : MonoSingleton<DataManager>
 		for (int i = 0; i < chestData.Count; i++) {
 			if (id == i) {
 				return chestData[i];
+			}
+		}
+		return false;
+	}
+
+	public bool GetPickUpState(int id) {
+		for (int i = 0; i < pickUpData.Count; i++) {
+			if (id == i) {
+				return pickUpData[i];
 			}
 		}
 		return false;
@@ -127,6 +144,16 @@ public class DataManager : MonoSingleton<DataManager>
 		for (int i = 0; i < gameData[0]["chests"].Count; i++) {
 			if (i == id) {
 				gameData[0]["chests"][i] = openState;
+				return;
+			}
+		}
+	}
+
+	public void SavePickUpState (int id, bool openState)
+	{
+		for (int i = 0; i < gameData[0]["pickUps"].Count; i++) {
+			if (i == id) {
+				gameData[0]["pickUps"][i] = openState;
 				return;
 			}
 		}
@@ -191,6 +218,13 @@ public class DataManager : MonoSingleton<DataManager>
 		for (int i = 0; i < gameData[0]["chests"].Count; i++) {
 //			Debug.Log ((bool)gameData[0]["chests"][i]);
 			chestData.Add((bool)gameData[0]["chests"][i]);
+		}
+	}
+
+	private void ConstructPickUpData()
+	{
+		for (int i = 0; i < gameData[0]["pickUps"].Count; i++) {
+			pickUpData.Add((bool)gameData[0]["pickUps"][i]);
 		}
 	}
 

@@ -93,6 +93,10 @@ public class InteractableObject : MonoBehaviour {
 							if (!isObject) {
 								player.Move(this.transform.parent.gameObject, isElevator, null);
 							}
+							else if (isObject && transform.GetComponent<ItemPicker>()) {
+								Debug.Log ("Woohoo");
+								transform.GetComponent<ItemPicker>().PickUp();
+							}
 							else if (isObject && !transform.parent.GetComponentInParent<Chest>().opened) {
 								player.Rotate(this.transform.parent.gameObject, ()=> transform.parent.GetComponent<Chest>().OnEventInvestigateChest());
 							}
