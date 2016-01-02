@@ -183,13 +183,13 @@ public class MessageManager : MonoSingleton<MessageManager> {
 	public void DisplayMessages (string filePath, OnMessageEvent endMessage)
 	{
 		if (!messageOver) {
-			Debug.LogError("The messages are still running!");
+			Debug.LogError("The jobs are still running!");
 			return;
 		}
 		CheckTextEnabled();
 		CreateList(filePath);
-		messageDisplayJob = Job.Create(ReadMessages());
-		messageDisplayJob.jobCompleted += (obj)=> endMessage();
+		messageDisplayJob = Job.Create(ReadMessages(), 2);
+		messageDisplayJob.onComplete += (obj)=> endMessage();
 	}
 	
 	public void RemoveMessages ()
@@ -199,7 +199,7 @@ public class MessageManager : MonoSingleton<MessageManager> {
 			DisableMessage();
 		}
 		else {
-			Debug.LogError("You haven't even started the job!");
+			Debug.LogError("Job not started!");
 		}
 	}
 
@@ -210,5 +210,19 @@ public class MessageManager : MonoSingleton<MessageManager> {
 			OnMessageClick();
 			yield return null;
 		}
+	}
+	IEnumerator ReadMessages2()
+	{
+		while(!messageOver) {
+			MessageDisplay();
+			OnMessageClick();
+			yield return null;
+		}
+	}
+
+	IEnumerator SimplyWait()
+	{
+		yield return new WaitForSeconds(3);
+		Debug.Log ("Done running");
 	}
 }

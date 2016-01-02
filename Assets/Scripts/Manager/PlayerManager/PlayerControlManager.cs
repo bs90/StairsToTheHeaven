@@ -49,7 +49,7 @@ public class PlayerControlManager : MonoSingleton<PlayerControlManager> {
 
 	void Update ()
 	{
-		if (Input.GetButton("Fire2") && game.State == GameState.Investigation) {
+		if (Input.GetMouseButton(1) && game.State == GameState.Investigation) {
 			Rotate();
 		}
 	}

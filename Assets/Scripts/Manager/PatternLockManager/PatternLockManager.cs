@@ -84,6 +84,7 @@ public class PatternLockManager : MonoSingleton<PatternLockManager> {
 
 	public void MarkBetweenPoints(Vector2 startPoint, Vector2 endPoint, Vector2 subsPoint, bool isX)
 	{
+		//TODO This caused some error
 		Vector2 furtherPoint = Vector2.zero;
 		Vector2 closerPoint = Vector2.zero;
 
@@ -241,33 +242,65 @@ public class PatternLockManager : MonoSingleton<PatternLockManager> {
 
 	public void CorrectPatternCheck ()
 	{
-		List<Vector2> toChecklist = new List<Vector2>();
-		toChecklist.Add(new Vector2(0, 2));
-		toChecklist.Add(new Vector2(1, 3));
-		toChecklist.Add(new Vector2(2, 3));
-		toChecklist.Add(new Vector2(2, 2));
-		toChecklist.Add(new Vector2(1, 1));
-		toChecklist.Add(new Vector2(1, 0));
-		toChecklist.Add(new Vector2(2, 0));
-		toChecklist.Add(new Vector2(3, 0));
-		if (CompareCoordinations(toChecklist, patternCoordinates) == true) {
-			//TODO Navigate to the right floor.
-			if (InventoryManager.Instance.IsItemInInventory(4)) {
-				InterfaceManager.Instance.ToggleInfoWindow("Floor 2's pattern successfully entered.", OnCompletePattern);
-			}
-			else {
-				InterfaceManager.Instance.ToggleInfoWindow("The machine is acting weird.", null);
+		DataManager dataManager = DataManager.Instance;
+		for (int i = 0; i < dataManager.PatternCount; i++) {
+			List<Vector2> coorsList = dataManager.FetchPatternById(i).PatternCombination;
+			int requiredItem = dataManager.FetchPatternById(i).RequiredItemId;
+			//TODO Why the Vector 2 lists comparison don't work here, it is beyond fucking me.
+			if (coorsList.Count == patternCoordinates.Count) {
+				bool correctPattern = false;
+				if (ComparePatterns(coorsList, patternCoordinates)) {
+					correctPattern = true;
+				}
+				else {
+					coorsList.Reverse();
+					if (ComparePatterns(coorsList, patternCoordinates)) {
+						correctPattern = true;
+					}
+				}
+
+				if (correctPattern) {
+					if (requiredItem != -1 && InventoryManager.Instance.IsItemInInventory(requiredItem)) {
+						InterfaceManager.Instance.ToggleInfoWindow("Floor " + dataManager.FetchPatternById(i).Floor + "'s pattern matched." , 
+						                                           ()=> OnCompletePattern(dataManager.FetchPatternById(i).Floor));
+					}
+					else if (requiredItem == -1 ){
+						InterfaceManager.Instance.ToggleInfoWindow("Floor " + dataManager.FetchPatternById(i).Floor + "'s pattern matched." , 
+						                                           ()=> OnCompletePattern(dataManager.FetchPatternById(i).Floor));
+					}
+					else {
+						InterfaceManager.Instance.ToggleInfoWindow("For some reason the elevator isn't moving.", null);
+					}
+					return;
+				}
 			}
 		}
-		else {
-			InterfaceManager.Instance.ToggleInfoWindow("Entered pattern doesn't exist.", null);
-		}
-		
+		InterfaceManager.Instance.ToggleInfoWindow("No match found.", null);
 	}
 
-	private void OnCompletePattern()
+	private bool ComparePatterns (List<Vector2> toCheck, List<Vector2> toCompare)
 	{
-		Elevator.Instance.ToggleDoors(()=> GameManager.Instance.LoadScene("F2"));
+		int correct = 0;
+		for(int c = 0; c < toCompare.Count; c++) {
+			if (toCheck[c] == toCompare[c]) {
+				correct++;
+			}
+		}
+		if (correct == patternCoordinates.Count) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	private void OnCompletePattern(string floor)
+	{
+		if(floor == GameManager.Instance.PresentFloor) {
+			InterfaceManager.Instance.ToggleInfoWindow("But you already are on " + floor + " floor.", null);
+			return;
+		}
+		Elevator.Instance.ToggleDoors(()=> GameManager.Instance.LoadScene(floor));
 	}
 
 	public void ClearPoints()

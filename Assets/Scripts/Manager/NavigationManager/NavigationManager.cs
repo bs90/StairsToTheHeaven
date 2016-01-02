@@ -13,6 +13,9 @@ public class NavigationManager : MonoSingleton<NavigationManager> {
 	public void SetupNavigation ()
 	{
 		MoveAwayFromPoint(NavigationPoints.Instance.navigationPoints[1]);
+		if (Application.loadedLevelName == "F2") {
+			MoveAwayFromPoint(NavigationPoints.Instance.navigationPoints[3]);
+		}
 		SetPresentPoint(NavigationPoints.Instance.navigationPoints[0]);
 	}
 
@@ -59,7 +62,9 @@ public class NavigationManager : MonoSingleton<NavigationManager> {
 	public GameObject GetPresentPoint ()
 	{
 		//TODO Complete this function
-		GameObject point = new GameObject();
-		return point;
+		if (NavigationPoints.instance.presentNavigationPoint != null) {
+			return NavigationPoints.instance.presentNavigationPoint;
+		}
+		return null;
 	}
 }

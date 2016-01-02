@@ -32,6 +32,7 @@ public class InventoryManager : MonoSingleton<InventoryManager> {
 	{
 		SetupComponents();
 		SetupPanelSlots();
+		LoadItemsToSlots();
 	}
 
 	public void SetupComponents()
@@ -68,6 +69,17 @@ public class InventoryManager : MonoSingleton<InventoryManager> {
 			slots.Add(equipSlot);
 			items.Add(new Item());
 			equipSlot.GetComponent<Slot>().id = slots.Count - 1;
+		}
+	}
+
+	public void LoadItemsToSlots()
+	{
+		DataManager data = DataManager.Instance;
+		//TODO There must be a better sufficient way to do this
+		for (int i = 0; i < data.SlotsCount; i++) {
+			if (data.GetItemSlot(i).Item != -1) {
+				AddItem(data.GetItemSlot(i).Item, data.GetItemSlot(i).Amount);
+			}
 		}
 	}
 
@@ -150,6 +162,26 @@ public class InventoryManager : MonoSingleton<InventoryManager> {
 		}
 		else {
 			return;
+		}
+	}
+
+	public int GetItemId(int slotId)
+	{
+		if (slots[slotId].transform.childCount > 0) {
+			return slots[slotId].transform.GetChild(0).GetComponent<ItemData>().item.Id;
+		}
+		else {
+			return -1;
+		}
+	}
+
+	public int GetAmount(int slotId)
+	{
+		if (slots[slotId].transform.childCount > 0) {
+			return slots[slotId].transform.GetChild(0).GetComponent<ItemData>().amount;
+		}
+		else {
+			return 0;
 		}
 	}
 

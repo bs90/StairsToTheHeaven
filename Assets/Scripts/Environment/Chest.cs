@@ -19,11 +19,23 @@ public class Chest : MonoBehaviour {
 	public string rewardMessage;
 	public char[] kanjiSet;
 
-	public void OnEnable()
+	private void Start()
 	{
-		//TODO Get information if this chest is opened;
+		//TODO I think it should not be set on Start
+		SetState();
+	}
+
+	private void Awake()
+	{
+		SetState();
+	}
+
+	private void SetState()
+	{
+		opened = DataManager.Instance.GetChestState(chestID);
 		if (opened) {
 			this.gameObject.GetComponentInChildren<InteractableObject>().enabled = false;
+			this.gameObject.SetActive(false);
 		}
 	}
 
@@ -71,6 +83,7 @@ public class Chest : MonoBehaviour {
 			//TODO Save progress
 			this.gameObject.GetComponent<Animation>()["ChestAnim"].speed = 1;
 			this.gameObject.GetComponent<Animation>().Play("ChestAnim");
+			DataManager.Instance.SaveChestState(chestID, true);
 		}
 	}
 

@@ -5,10 +5,10 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<RootNamespace></RootNamespace>
-	<ProjectGuid>{0226101F-B633-CC84-2256-782A24650097}</ProjectGuid>
+	<ProjectGuid>{4ACABDFB-7660-F0E9-C705-6119D4B203F6}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
+	<RootNamespace></RootNamespace>
 	<AssemblyName>Assembly-CSharp</AssemblyName>
 	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
 	<FileAlignment>512</FileAlignment>
@@ -19,7 +19,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_5_2_1;UNITY_5_2;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_REFLECTION_BUFFERS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;UNITY_STANDALONE_LINUX;UNITY_STANDALONE;UNITY_STANDALONE_LINUX_API;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_5_1_3;UNITY_5_1;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_LICENSE;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_EDITOR_METRICS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_LOCALIZATION;UNITY_STANDALONE_OSX;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_GAMECENTER;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -28,6 +28,7 @@
 	<DebugType>pdbonly</DebugType>
 	<Optimize>true</Optimize>
 	<OutputPath>Temp\bin\Release\</OutputPath>
+	<DefineConstants>TRACE</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -38,10 +39,10 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -53,8 +54,11 @@
      <Compile Include="Assets\Scripts\Effects\RenderToCubemap.cs" />
      <Compile Include="Assets\Scripts\Environment\Chest.cs" />
      <Compile Include="Assets\Scripts\Environment\Elevator.cs" />
+     <Compile Include="Assets\Scripts\Environment\ImageSide.cs" />
+     <Compile Include="Assets\Scripts\Manager\ChestManager\ChestManager.cs" />
      <Compile Include="Assets\Scripts\Manager\ComponentManager\ComponentManager.cs" />
      <Compile Include="Assets\Scripts\Manager\ControlManager\ControlManager.cs" />
+     <Compile Include="Assets\Scripts\Manager\DataManager\DataManager.cs" />
      <Compile Include="Assets\Scripts\Manager\DebugManager\LogManager.cs" />
      <Compile Include="Assets\Scripts\Manager\GameManager\GameData.cs" />
      <Compile Include="Assets\Scripts\Manager\GameManager\GameLoader.cs" />
@@ -62,7 +66,6 @@
      <Compile Include="Assets\Scripts\Manager\HighlightManager\HighlightManager.cs" />
      <Compile Include="Assets\Scripts\Manager\InterfaceManager\InterfaceManager.cs" />
      <Compile Include="Assets\Scripts\Manager\InventoryManager\InventoryManager.cs" />
-     <Compile Include="Assets\Scripts\Manager\InventoryManager\Item.cs" />
      <Compile Include="Assets\Scripts\Manager\InventoryManager\ItemData.cs" />
      <Compile Include="Assets\Scripts\Manager\InventoryManager\ItemDatabase.cs" />
      <Compile Include="Assets\Scripts\Manager\InventoryManager\Slot.cs" />
@@ -70,6 +73,7 @@
      <Compile Include="Assets\Scripts\Manager\JobManager\JobManager.cs" />
      <Compile Include="Assets\Scripts\Manager\MessageManager\MessageManager.cs" />
      <Compile Include="Assets\Scripts\Manager\NavigationManager\InteractableObject.cs" />
+     <Compile Include="Assets\Scripts\Manager\NavigationManager\ItemPicker.cs" />
      <Compile Include="Assets\Scripts\Manager\NavigationManager\NavigationManager.cs" />
      <Compile Include="Assets\Scripts\Manager\NavigationManager\NavigationPoints.cs" />
      <Compile Include="Assets\Scripts\Manager\PasswordManager\PasswordManager.cs" />
@@ -79,8 +83,39 @@
      <Compile Include="Assets\Scripts\Manager\PlayerManager\AnimationHash.cs" />
      <Compile Include="Assets\Scripts\Manager\PlayerManager\PlayerControlManager.cs" />
      <Compile Include="Assets\Scripts\Manager\SoundManager\SoundManager.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\DataStructures\ThreadSafeQueue.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\AsyncTask.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\CoroutineException.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\EnumeratorWithProgress.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\IRunner.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\ITask.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\MonoRunner.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\MultiThreadParallelTaskCollection.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\MultiThreadRunner.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\ParallelTaskCollection.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\PausableTask.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\RunnerBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\SerialTaskCollection.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\SingleTask.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\TaskCollection.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\TaskRoutine.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\TaskRoutinePool.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\TaskRunner.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\TimingOutTask.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\TaskRunner\YieldInstructionTask.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\Test\CSharpTestDriver.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\Test\ExampleParallelTasks.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\Test\ExampleParallelTasksManaged.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\Test\ExampleParallelTasksManagedMultiThread.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\Test\ExamplePooledTaskRoutine.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\Test\ExampleSerialTasks.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\Test\ExampleSingleTask.cs" />
+     <Compile Include="Assets\Scripts\Manager\TaskManager\Test\TaskRunnerTests.cs" />
      <Compile Include="Assets\Scripts\Models\CSVReader.cs" />
      <Compile Include="Assets\Scripts\Models\DialogMessage.cs" />
+     <Compile Include="Assets\Scripts\Models\Item.cs" />
+     <Compile Include="Assets\Scripts\Models\ItemSlot.cs" />
+     <Compile Include="Assets\Scripts\Models\Pattern.cs" />
      <Compile Include="Assets\Scripts\System\Singleton.cs" />
      <Compile Include="Assets\Scripts\Test\TestMessage.cs" />
      <Compile Include="Assets\Scripts\Tools\FPSCounter.cs" />
@@ -99,10 +134,12 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Plugins\Demigiant\DOTween\readme.txt" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />
+     <None Include="Assets\Plugins\NUnitLite\NUnitLite.LICENSE.txt" />
      <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasic.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\SeparableWeightedBlurDof34.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ShowAlphaChannel.shader" />
      <None Include="Assets\Materials\Shaders\Outlined_Diffuse.shader" />
+     <None Include="Assets\Plugins\NUnitLite\NUnitLite.CHANGES.txt" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\SunShaftsComposite.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionCurves.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ScreenSpaceAmbientObscurance.shader" />
@@ -151,6 +188,7 @@
      <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonLit.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionSelective.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\Bokeh34.shader" />
+     <None Include="Assets\Plugins\NUnitLite\NUnitLite.README.txt" />
      <None Include="Assets\Models\Modern Interior Pack\Shaders\Glass.shader" />
      <None Include="Assets\Plugins\HighlightingSystem\Resources\HighlightingBlit.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\CameraMotionBlurDX11.shader" />
@@ -173,6 +211,7 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\VortexEffect.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Adaptation.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseAndGrain.shader" />
+     <None Include="Assets\Plugins\NUnitLite\NUnitLiteUnityRunner.README.txt" />
      <None Include="Assets\Standard Assets\Effects\Projectors\Shaders\ProjectorMultiply.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\VignettingShader.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\Tonemapper.shader" />
@@ -194,37 +233,40 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAAPreset2.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendForBloom.shader" />
- <Reference Include="UnityEngine.UI">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UI">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="LitJson">
- <HintPath>E:/Projects/Unity3D/Stairs To The Heaven/Assets/Plugins/LitJson.dll</HintPath>
+ <HintPath>/Users/bs90/StairsToTheHeaven/Assets/Plugins/LitJson.dll</HintPath>
  </Reference>
  <Reference Include="DOTween">
- <HintPath>E:/Projects/Unity3D/Stairs To The Heaven/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
+ <HintPath>/Users/bs90/StairsToTheHeaven/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
  </Reference>
  <Reference Include="DOTween43">
- <HintPath>E:/Projects/Unity3D/Stairs To The Heaven/Assets/Plugins/Demigiant/DOTween/DOTween43.dll</HintPath>
+ <HintPath>/Users/bs90/StairsToTheHeaven/Assets/Plugins/Demigiant/DOTween/DOTween43.dll</HintPath>
  </Reference>
  <Reference Include="DOTween46">
- <HintPath>E:/Projects/Unity3D/Stairs To The Heaven/Assets/Plugins/Demigiant/DOTween/DOTween46.dll</HintPath>
+ <HintPath>/Users/bs90/StairsToTheHeaven/Assets/Plugins/Demigiant/DOTween/DOTween46.dll</HintPath>
  </Reference>
  <Reference Include="DOTween50">
- <HintPath>E:/Projects/Unity3D/Stairs To The Heaven/Assets/Plugins/Demigiant/DOTween/DOTween50.dll</HintPath>
+ <HintPath>/Users/bs90/StairsToTheHeaven/Assets/Plugins/Demigiant/DOTween/DOTween50.dll</HintPath>
  </Reference>
- <Reference Include="Mono.Cecil">
- <HintPath>C:/Program Files/Unity/Editor/Data/Managed/Mono.Cecil.dll</HintPath>
+ <Reference Include="NUnitLite">
+ <HintPath>/Users/bs90/StairsToTheHeaven/Assets/Plugins/NUnitLite/NUnitLite.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
- <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+ <HintPath>/Applications/Unity/Unity.app/Contents/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{638212E3-3D6C-87AA-7467-6CA00F97B8B8}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+      <Project>{959624D2-20A4-8A72-3E0F-DC9EF22B29F1}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

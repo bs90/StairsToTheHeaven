@@ -44,6 +44,8 @@ public class Elevator : MonoSingleton<Elevator> {
 
 	public void OnDoorsEnd()
 	{
+		//TODO I should do something about updating floors
 		GameManager.Instance.SetGameState(previousState);
+		GameManager.Instance.UpdateFloor(Application.loadedLevelName);
 	}
 }
