@@ -34,9 +34,9 @@
 	},
 	{
 		"id": 1,
-		"title": "T1's paper",
+		"title": "T1's Info",
 		"tag": "u_00",
-		"description": "herb_01",
+		"description": "A piece of info found in T1.",
 		"equipable": false,
 		"stats": {
 			"type": 0,
@@ -63,13 +63,13 @@
 		"inspectable": true,
 		"inspectSprite": "herb_01",
  		"value": 6,
- 		"icon": "herb_01"
+ 		"icon": "scroll2"
 	},
 	{
 		"id": 2,
-		"title": "T2's path",
+		"title": "T2's Pattern",
 		"tag": "u_00",
-		"description": "herb_01",
+		"description": "A piece of paper containing elevator's pattern to T2.",
 		"equipable": false,
 		"stats": {
 			"type": 0,
@@ -94,15 +94,15 @@
 		},
 		"stackable": true,
 		"inspectable": true,
-		"inspectSprite": "herb_01",
+		"inspectSprite": "PatternB10",
  		"value": 6,
- 		"icon": "herb_01"
+ 		"icon": "scroll"
 	},
 	{
 		"id": 3,
-		"title": "T2's paper",
+		"title": "T2's Info",
 		"tag": "u_00",
-		"description": "herb_01",
+		"description": "Piece of info on paper found on T2.",
 		"equipable": false,
 		"stats": {
 			"type": 0,
@@ -129,13 +129,13 @@
 		"inspectable": true,
 		"inspectSprite": "herb_01",
  		"value": 6,
- 		"icon": "herb_01"
+ 		"icon": "scroll2"
 	},
 	{
 		"id": 4,
-		"title": "T3's path",
+		"title": "T3's Pattern",
 		"tag": "u_00",
-		"description": "herb_01",
+		"description": "Elevator's pattern to floor T3.",
 		"equipable": false,
 		"stats": {
 			"type": 0,
@@ -160,15 +160,15 @@
 		},
 		"stackable": true,
 		"inspectable": true,
-		"inspectSprite": "herb_01",
+		"inspectSprite": "PatternB10",
  		"value": 6,
- 		"icon": "herb_01"
+ 		"icon": "scroll"
 	},
 	{
 		"id": 5,
-		"title": "T4's path",
+		"title": "T4's Pattern",
 		"tag": "u_00",
-		"description": "herb_01",
+		"description": "Piece of info containing T4's elevator pattern.",
 		"equipable": false,
 		"stats": {
 			"type": 0,
@@ -193,15 +193,15 @@
 		},
 		"stackable": true,
 		"inspectable": true,
-		"inspectSprite": "herb_01",
+		"inspectSprite": "PatternB10",
  		"value": 6,
- 		"icon": "herb_01"
+ 		"icon": "scroll"
 	},
 	{
 		"id": 6,
-		"title": "T4's paper 1",
+		"title": "T4's Info 1",
 		"tag": "u_00",
-		"description": "herb_01",
+		"description": "A piece of info found on T4, marked with number 1.",
 		"equipable": false,
 		"stats": {
 			"type": 0,
@@ -226,15 +226,15 @@
 		},
 		"stackable": true,
 		"inspectable": true,
-		"inspectSprite": "herb_01",
+		"inspectSprite": "none",
  		"value": 6,
- 		"icon": "herb_01"
+ 		"icon": "scroll3"
 	},
 	{
 		"id": 7,
-		"title": "T4's paper 2",
+		"title": "T4's Info 2",
 		"tag": "u_00",
-		"description": "herb_01",
+		"description": "A piece of info found on T4, marked with number 2.",
 		"equipable": false,
 		"stats": {
 			"type": 0,
@@ -259,15 +259,15 @@
 		},
 		"stackable": true,
 		"inspectable": true,
-		"inspectSprite": "herb_01",
+		"inspectSprite": "PatternB10",
  		"value": 6,
- 		"icon": "herb_01"
+ 		"icon": "scroll3"
 	},
 	{
 		"id": 8,
-		"title": "T4's paper",
+		"title": "T4's Info 3",
 		"tag": "u_00",
-		"description": "herb_01",
+		"description": "A piece of info found on T4, marked with number 3.",
 		"equipable": false,
 		"stats": {
 			"type": 0,
@@ -292,15 +292,15 @@
 		},
 		"stackable": true,
 		"inspectable": true,
-		"inspectSprite": "herb_01",
+		"inspectSprite": "none",
  		"value": 6,
- 		"icon": "herb_01"
+ 		"icon": "scroll3"
 	},
 	{
 		"id": 9,
-		"title": "T4's maze",
+		"title": "T4's Maze Chart",
 		"tag": "u_00",
-		"description": "herb_01",
+		"description": "A maze chart found on T4.",
 		"equipable": false,
 		"stats": {
 			"type": 0,
@@ -325,15 +325,15 @@
 		},
 		"stackable": true,
 		"inspectable": true,
-		"inspectSprite": "herb_01",
+		"inspectSprite": "none",
  		"value": 6,
- 		"icon": "herb_01"
+ 		"icon": "scroll2"
 	},
 	{
 		"id": 10,
-		"title": "T13's path",
+		"title": "T13's Pattern",
 		"tag": "u_00",
-		"description": "herb_01",
+		"description": "Elevator's pattern to the T13 floor, looks important.",
 		"equipable": false,
 		"stats": {
 			"type": 0,
@@ -358,9 +358,9 @@
 		},
 		"stackable": true,
 		"inspectable": true,
-		"inspectSprite": "herb_01",
+		"inspectSprite": "PatternB10",
  		"value": 6,
- 		"icon": "herb_01"
+ 		"icon": "scroll"
 	}
 ]
 
