@@ -34,7 +34,7 @@
 	},
 	{
 		"id": 1,
-		"title": "T1's Info",
+		"title": "Weird markings",
 		"tag": "u_00",
 		"description": "A piece of info found in T1.",
 		"equipable": false,
@@ -61,7 +61,7 @@
 		},
 		"stackable": true,
 		"inspectable": true,
-		"inspectSprite": "herb_01",
+		"inspectSprite": "symbol1",
  		"value": 6,
  		"icon": "scroll2"
 	},
@@ -100,9 +100,9 @@
 	},
 	{
 		"id": 3,
-		"title": "T2's Info",
+		"title": "Another weird markings",
 		"tag": "u_00",
-		"description": "Piece of info on paper found on T2.",
+		"description": "Piece of markings on paper found on T2.",
 		"equipable": false,
 		"stats": {
 			"type": 0,
@@ -127,7 +127,7 @@
 		},
 		"stackable": true,
 		"inspectable": true,
-		"inspectSprite": "herb_01",
+		"inspectSprite": "symbol2",
  		"value": 6,
  		"icon": "scroll2"
 	},
@@ -199,9 +199,9 @@
 	},
 	{
 		"id": 6,
-		"title": "T4's Info 1",
+		"title": "Cryptogram piece 1",
 		"tag": "u_00",
-		"description": "A piece of info found on T4, marked with number 1.",
+		"description": "A piece of cryptogram found on T4, marked with number 1.",
 		"equipable": false,
 		"stats": {
 			"type": 0,
@@ -226,15 +226,15 @@
 		},
 		"stackable": true,
 		"inspectable": true,
-		"inspectSprite": "none",
+		"inspectSprite": "part1",
  		"value": 6,
  		"icon": "scroll3"
 	},
 	{
 		"id": 7,
-		"title": "T4's Info 2",
+		"title": "Cryptogram piece 2",
 		"tag": "u_00",
-		"description": "A piece of info found on T4, marked with number 2.",
+		"description": "A piece of cryptogram found on T4, marked with number 2.",
 		"equipable": false,
 		"stats": {
 			"type": 0,
@@ -244,7 +244,7 @@
 			"defense": 0,
 			"protection": 0
 		},
-		"useable": true,
+		"useable": false,
 		"usability": {
 			"hp": 10,
 			"sp": 0,
@@ -259,15 +259,15 @@
 		},
 		"stackable": true,
 		"inspectable": true,
-		"inspectSprite": "PatternB10",
+		"inspectSprite": "part2",
  		"value": 6,
  		"icon": "scroll3"
 	},
 	{
 		"id": 8,
-		"title": "T4's Info 3",
+		"title": "Combined Cryptogram",
 		"tag": "u_00",
-		"description": "A piece of info found on T4, marked with number 3.",
+		"description": "A piece of cryptogram combined with separated pieces.",
 		"equipable": false,
 		"stats": {
 			"type": 0,
@@ -277,7 +277,7 @@
 			"defense": 0,
 			"protection": 0
 		},
-		"useable": true,
+		"useable": false,
 		"usability": {
 			"hp": 10,
 			"sp": 0,
@@ -285,14 +285,14 @@
 		},
 		"combineable": false,
 		"combination": {
-			"id1": 1,
+			"id1": -1,
 			"id2": -1,
 			"id3": -1,
-			"idResult": 3
+			"idResult": -1
 		},
 		"stackable": true,
 		"inspectable": true,
-		"inspectSprite": "none",
+		"inspectSprite": "fullpiece",
  		"value": 6,
  		"icon": "scroll3"
 	},
@@ -310,7 +310,7 @@
 			"defense": 0,
 			"protection": 0
 		},
-		"useable": true,
+		"useable": false,
 		"usability": {
 			"hp": 10,
 			"sp": 0,
@@ -358,7 +358,7 @@
 		},
 		"stackable": true,
 		"inspectable": true,
-		"inspectSprite": "PatternB10",
+		"inspectSprite": "pattern6",
  		"value": 6,
  		"icon": "scroll"
 	}

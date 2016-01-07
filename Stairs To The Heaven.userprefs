@@ -1,15 +1,15 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Environment\Chest.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Manager\InterfaceManager\InterfaceManager.cs">
     <Files>
-      <File FileName="..\AkatsukiPoker\Assets\Scripts\Controllers\TableController\TableController.cs" Line="1" Column="1" />
-      <File FileName="..\AkatsukiPoker\Assets\Scripts\Controllers\PlayerController\PlayerController.cs" Line="1" Column="1" />
-      <File FileName="..\AkatsukiPoker\Assets\Scripts\Models\PlayerList.cs" Line="1" Column="1" />
-      <File FileName="..\AkatsukiPoker\Assets\Scripts\Models\Player.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Manager\InterfaceManager\InterfaceManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Manager\InventoryManager\InventoryManager.cs" Line="21" Column="25" />
-      <File FileName="Assets\Scripts\System\Singleton.cs" Line="24" Column="74" />
+      <File FileName="Assets\Scripts\Manager\NavigationManager\ItemPicker.cs" Line="18" Column="25" />
+      <File FileName="Assets\Scripts\Manager\NavigationManager\InteractableObject.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Manager\NavigationManager\NavigationManager.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Environment\Chest.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Manager\DataManager\DataManager.cs" Line="78" Column="1" />
+      <File FileName="Assets\Scripts\ControlPanel\RemotePanel.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Manager\InventoryManager\InventoryManager.cs" Line="278" Column="37" />
+      <File FileName="Assets\Scripts\Manager\InterfaceManager\InterfaceManager.cs" Line="9" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

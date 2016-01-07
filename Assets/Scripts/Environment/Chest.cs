@@ -19,20 +19,16 @@ public class Chest : MonoBehaviour {
 	public string rewardMessage;
 	public char[] kanjiSet;
 
-	private void Start()
-	{
-		//TODO I think it should not be set on Start
-		SetState();
-	}
-
 	private void Awake()
 	{
-		SetState();
+		StartCoroutine(SetState());
 	}
 
-	private void SetState()
+	private IEnumerator SetState()
 	{
+		yield return new WaitForSeconds(1);
 		opened = DataManager.Instance.GetChestState(chestID);
+//		Debug.Log ("Chest " + chestID + " open state is " + opened);
 		if (opened) {
 			this.gameObject.GetComponentInChildren<InteractableObject>().enabled = false;
 			this.gameObject.SetActive(false);

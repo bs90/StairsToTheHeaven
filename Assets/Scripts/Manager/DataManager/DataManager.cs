@@ -39,6 +39,20 @@ public class DataManager : MonoSingleton<DataManager>
 		}
 	}
 
+	private List<bool> quizData = new List<bool>();
+	public List<bool> QuizData {
+		get {
+			return this.quizData;
+		}
+	}
+
+	private List<bool> panelData = new List<bool>();
+	public List<bool> PanelData {
+		get {
+			return this.panelData;
+		}
+	}
+
 	public int PatternCount {
 		get {
 			return  this.patternData.Count;
@@ -61,6 +75,8 @@ public class DataManager : MonoSingleton<DataManager>
 			ConstructPickUpData();
 			ConstructInventoryData();
 			ConstructEventData();
+			ConstructQuizData();
+			ConstructRemotePanelData();
 		}
 	}
 
@@ -143,6 +159,7 @@ public class DataManager : MonoSingleton<DataManager>
 	{
 		for (int i = 0; i < gameData[0]["chests"].Count; i++) {
 			if (i == id) {
+				chestData[id] = openState;
 				gameData[0]["chests"][i] = openState;
 				return;
 			}
@@ -153,6 +170,7 @@ public class DataManager : MonoSingleton<DataManager>
 	{
 		for (int i = 0; i < gameData[0]["pickUps"].Count; i++) {
 			if (i == id) {
+				pickUpData[id] = openState;
 				gameData[0]["pickUps"][i] = openState;
 				return;
 			}
@@ -172,9 +190,21 @@ public class DataManager : MonoSingleton<DataManager>
 	{
 		for (int i = 0; i < gameData[0]["events"].Count; i++) {
 			if (i == id) {
+				eventData[id] = eventState;
 				gameData[0]["events"][i] = eventState;
 				return;
 			}
+		}
+	}
+
+	public void SavePanelData(List<bool> switchOn)
+	{
+		if (switchOn.Count != panelData.Count) {
+			return;
+		}
+		for (int i = 0; i < gameData[0]["remotePanel"].Count; i++) {
+			panelData[i] = switchOn[i];
+			gameData[0]["remotePanel"][i] = switchOn[i];
 		}
 	}
 
@@ -189,8 +219,6 @@ public class DataManager : MonoSingleton<DataManager>
 		
 		File.WriteAllText(Application.streamingAssetsPath + "/" + fileName, builder.ToString());
 	}
-
-
 
 	private void AssignGameDataFile(string fileName)
 	{
@@ -216,7 +244,7 @@ public class DataManager : MonoSingleton<DataManager>
 	private void ConstructChestData()
 	{
 		for (int i = 0; i < gameData[0]["chests"].Count; i++) {
-//			Debug.Log ((bool)gameData[0]["chests"][i]);
+//			Debug.Log (i " open state is " + (bool)gameData[0]["chests"][i]);
 			chestData.Add((bool)gameData[0]["chests"][i]);
 		}
 	}
@@ -244,6 +272,20 @@ public class DataManager : MonoSingleton<DataManager>
 	{
 		for (int i = 0; i < gameData[0]["events"].Count; i++) {
 			eventData.Add((bool)gameData[0]["events"][i]);
+		}
+	}
+
+	private void ConstructQuizData()
+	{
+		for (int i = 0; i < gameData[0]["quiz"].Count; i++) {
+			quizData.Add((bool)gameData[0]["quiz"][i]);
+		}
+	}
+
+	private void ConstructRemotePanelData()
+	{
+		for (int i = 0; i < gameData[0]["remotePanel"].Count; i++) {
+			panelData.Add((bool)gameData[0]["remotePanel"][i]);
 		}
 	}
 }

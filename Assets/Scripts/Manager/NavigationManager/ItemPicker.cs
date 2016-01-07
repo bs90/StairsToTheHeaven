@@ -6,20 +6,16 @@ public class ItemPicker : MonoBehaviour {
 	public bool pickedUp;
 	public int itemId;
 
-	private void Start()
-	{
-		SetState();
-	}
-
 	private void Awake()
 	{
-		SetState();
+		StartCoroutine(SetState());
 	}
-	
-	private void SetState()
+
+	private IEnumerator SetState()
 	{
+		yield return new WaitForSeconds(1);
 		pickedUp = DataManager.Instance.GetPickUpState(itemId);
-		Debug.Log ("Pickup " + itemId + " is picked: " + pickedUp);
+//		Debug.Log ("Pickup " + itemId + " is picked: " + pickedUp);
 		if (pickedUp) {
 			Destroy(this.gameObject);
 		}
@@ -34,6 +30,6 @@ public class ItemPicker : MonoBehaviour {
 	{
 		InventoryManager.Instance.AddItem (itemId, 1);
 		DataManager.Instance.SavePickUpState(itemId, true);
-		Destroy (this.gameObject);
+		this.gameObject.SetActive(false);
 	}
 }
