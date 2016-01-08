@@ -3,7 +3,7 @@
   {
     "playerName" : "Ein",
     "playedTime" : "",
-    "floor"      : "T2",
+    "floor"      : "T13",
     "chests"     : {
       "0" : false,
       "1" : true,
@@ -27,17 +27,8 @@
       "19" : false,
       "20" : false
     },
-    "remotePanel" : {
+    "defaultOrder" : {
       "0" : {
-        "Red" : true,
-        "Green" : false,
-        "White" : true,
-        "Purple" : false,
-        "Blue"   : true,
-        "Orange" : false,
-        "Yellow" : true
-      },
-      "1" : {
         "Red" : false,
         "Green" : false,
         "White" : false,
@@ -46,32 +37,88 @@
         "Orange" : false,
         "Yellow" : false
       },
+      "1" : {
+        "Red" : false,
+        "Green" : true,
+        "White" : true,
+        "Purple" : true,
+        "Blue"   : false,
+        "Orange" : false,
+        "Yellow" : true
+      },
       "2" : {
         "Red" : true,
-        "Green" : false,
+        "Green" : true,
         "White" : true,
-        "Purple" : false,
-        "Blue"   : true,
-        "Orange" : false,
+        "Purple" : true,
+        "Blue"   : false,
+        "Orange" : true,
         "Yellow" : true
       },
       "3" : {
         "Red" : true,
         "Green" : false,
         "White" : true,
+        "Purple" : true,
+        "Blue"   : false,
+        "Orange" : false,
+        "Yellow" : false
+      },
+      "4" : {
+        "Red" : false,
+        "Green" : false,
+        "White" : true,
+        "Purple" : true,
+        "Blue"   : false,
+        "Orange" : true,
+        "Yellow" : false
+      }
+    },
+    "remotePanel"  : {
+      "0" : {
+        "Red" : false,
+        "Green" : false,
+        "White" : false,
         "Purple" : false,
-        "Blue"   : true,
+        "Blue"   : false,
+        "Orange" : false,
+        "Yellow" : false
+      },
+      "1" : {
+        "Red" : false,
+        "Green" : true,
+        "White" : true,
+        "Purple" : true,
+        "Blue"   : false,
         "Orange" : false,
         "Yellow" : true
       },
-      "4" : {
+      "2" : {
+        "Red" : true,
+        "Green" : true,
+        "White" : true,
+        "Purple" : true,
+        "Blue"   : false,
+        "Orange" : true,
+        "Yellow" : true
+      },
+      "3" : {
         "Red" : true,
         "Green" : false,
         "White" : true,
-        "Purple" : false,
-        "Blue"   : true,
+        "Purple" : true,
+        "Blue"   : false,
         "Orange" : false,
-        "Yellow" : true
+        "Yellow" : false
+      },
+      "4" : {
+        "Red" : false,
+        "Green" : false,
+        "White" : true,
+        "Purple" : true,
+        "Blue"   : false,
+        "Orange" : true,
+        "Yellow" : false
       }
     },
     "correctOrder" : {
@@ -88,44 +135,44 @@
         "Red" : true,
         "Green" : false,
         "White" : true,
-        "Purple" : false,
+        "Purple" : true,
         "Blue"   : true,
-        "Orange" : false,
-        "Yellow" : true
+        "Orange" : true,
+        "Yellow" : false
       },
       "2" : {
         "Red" : false,
         "Green" : false,
-        "White" : false,
-        "Purple" : false,
-        "Blue"   : false,
+        "White" : true,
+        "Purple" : true,
+        "Blue"   : true,
         "Orange" : false,
         "Yellow" : false
       },
       "3" : {
         "Red" : false,
-        "Green" : false,
-        "White" : false,
-        "Purple" : false,
-        "Blue"   : false,
-        "Orange" : false,
-        "Yellow" : false
+        "Green" : true,
+        "White" : true,
+        "Purple" : true,
+        "Blue"   : true,
+        "Orange" : true,
+        "Yellow" : true
       },
       "4" : {
-        "Red" : false,
-        "Green" : false,
-        "White" : false,
-        "Purple" : false,
-        "Blue"   : false,
+        "Red" : true,
+        "Green" : true,
+        "White" : true,
+        "Purple" : true,
+        "Blue"   : true,
         "Orange" : false,
-        "Yellow" : false
+        "Yellow" : true
       }
     },
     "pickUps"      : {
       "0" : false,
-      "1" : true,
+      "1" : false,
       "2" : false,
-      "3" : true,
+      "3" : false,
       "4" : false,
       "5" : false,
       "6" : false,
@@ -144,9 +191,9 @@
       "19" : false
     },
     "slotItem"     : {
-      "0" : 1,
-      "1" : 3,
-      "2" : 2,
+      "0" : -1,
+      "1" : -1,
+      "2" : -1,
       "3" : -1,
       "4" : -1,
       "5" : -1,
@@ -167,9 +214,9 @@
       "20" : -1
     },
     "slotAmount"   : {
-      "0" : 1,
-      "1" : 1,
-      "2" : 1,
+      "0" : 0,
+      "1" : 0,
+      "2" : 0,
       "3" : 0,
       "4" : 0,
       "5" : 0,
@@ -192,7 +239,11 @@
     "events"       : {
       "0" : false,
       "1" : false,
-      "2" : false
+      "2" : false,
+      "3" : false,
+      "4" : false,
+      "5" : false,
+      "6" : false
     },
     "quiz"         : {
       "0" : false,

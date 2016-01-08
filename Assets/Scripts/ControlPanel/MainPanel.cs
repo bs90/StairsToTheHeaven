@@ -9,6 +9,7 @@ public class MainPanel : MonoBehaviour {
 	public Transform button3;
 
 	public Transform mainButton;
+	public Transform resetButton;
 
 	public Material[] colorMats;
 
@@ -18,6 +19,13 @@ public class MainPanel : MonoBehaviour {
 	public RemotePanelColors button1Color;
 	public RemotePanelColors button2Color;
 	public RemotePanelColors button3Color;
+
+	public string accessPoint = "Point3";
+	public int rewardItem = 14;
+//	public RemotePanel panel1;
+//	public RemotePanel panel2;
+//	public RemotePanel panel3;
+//	public RemotePanel panel4;
 
 	void Awake() 
 	{
@@ -58,7 +66,7 @@ public class MainPanel : MonoBehaviour {
 
 	void ButtonsInteraction()
 	{
-		if (NavigationManager.Instance.GetPresentPoint().name == "Point5" && Input.GetMouseButtonDown(0)) {
+		if (NavigationManager.Instance.GetPresentPoint().name == accessPoint && Input.GetMouseButtonDown(0)) {
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
 			if (Physics.Raycast(ray, out hit, 100)) {
@@ -74,18 +82,36 @@ public class MainPanel : MonoBehaviour {
 				else if (hit.collider.transform == mainButton) {
 					ExecuteColorChange();
 				}
+				else if (hit.collider.transform == resetButton) {
+					ResetColors();
+				}
 			}
 		}
 	}
 
 	private void Reward()
 	{
+		if (DataManager.Instance.ComparePanelData() == true) {
+			InterfaceManager.Instance.ToggleInfoWindow("Something unlocked, and a piece of paper fell out.", GetItem);
+		}
+		else {
+			InterfaceManager.Instance.ToggleInfoWindow("Nothing happened...", null);
+		}
+	}
 
+	private void GetItem()
+	{
+		DataManager.Instance.SaveEventData(eventId, true);
+		InterfaceManager.Instance.ToggleInfoWindow("You picked up a <color=yellow>" + ItemDatabase.Instance.FetchItemByID(rewardItem).Title + "</color>.", RewardItem);
+	}
+
+	private void RewardItem()
+	{
+		InventoryManager.Instance.AddItem(rewardItem, 1);
 	}
 
 	private RemotePanelColors ChangeMatColor(Transform button, RemotePanelColors color)
 	{
-		Debug.Log (button.name);
 		int colorValue = (int)color;
 		if (colorValue < 6) {
 			colorValue += 1;
@@ -99,12 +125,23 @@ public class MainPanel : MonoBehaviour {
 
 	private void ExecuteColorChange()
 	{
-		Debug.Log ("Gasp");
 		List<RemotePanelColors> colors = new List<RemotePanelColors>();
 		colors.Add(button1Color);
 		colors.Add(button2Color);
 		colors.Add(button3Color);
 		DataManager.Instance.SavePanelColorData(colors);
-		InterfaceManager.Instance.ToggleInfoWindow(button1Color.ToString() + " " + button2Color.ToString() + " " + button3Color.ToString() + " were toggled.", null);
+		DataManager.Instance.WriteGameData("GameData.json");
+//		StartCoroutine(panel1.LightUp());
+//		StartCoroutine(panel2.LightUp());
+//		StartCoroutine(panel3.LightUp());
+//		StartCoroutine(panel4.LightUp());
+		InterfaceManager.Instance.ToggleInfoWindow(button1Color.ToString() + " " + button2Color.ToString() + " " + button3Color.ToString() + " were toggled.", Reward);
+	}
+
+	private void ResetColors()
+	{
+		InterfaceManager.Instance.ToggleInfoWindow("You pressed a reset button, the colors are back to default.", null);
+		DataManager.Instance.ResetPanelData();
+		DataManager.Instance.WriteGameData("GameData.json");
 	}
 }

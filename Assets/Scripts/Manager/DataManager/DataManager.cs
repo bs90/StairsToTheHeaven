@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
@@ -72,6 +73,13 @@ public class DataManager : MonoSingleton<DataManager>
 		}
 	}
 
+	private List<Panel> defaultPanelData = new List<Panel>();
+	public List<Panel> DefaultPanelData {
+		get {
+			return this.defaultPanelData;
+		}
+	}
+
 	public int PatternCount {
 		get {
 			return  this.patternData.Count;
@@ -97,6 +105,7 @@ public class DataManager : MonoSingleton<DataManager>
 			ConstructQuizData();
 			ConstructRemotePanelData();
 			ConstructCorrectPanelData();
+			ConstructDefaultPanelData();
 		}
 	}
 
@@ -229,26 +238,33 @@ public class DataManager : MonoSingleton<DataManager>
 		}
 	}
 
-	public void SavePanelData(List<Panel> panels)
+	public void SavePanelData()
 	{
-		for (int i = 0; i < gameData[0]["remotePanel"].Count; i++) {
-			for (int c = 0; c < panels[i].Colors.Count; c++) {
-				string color = panels[i].Colors.Keys.ElementAt(c);
-				gameData[0]["remotePanel"][i][color] =  panels[i].Colors[color];
+		for (int i = 1; i < gameData[0]["remotePanel"].Count; i++) {
+			for (int c = 0; c < Enum.GetNames(typeof(RemotePanelColors)).Length; c++) {
+				if (c >= 7) {
+					break;
+				}
+				Debug.Log ("==============" + c);
+				RemotePanelColors color = (RemotePanelColors)c;
+				Debug.Log (color.ToString());
+				Debug.Log ("Data " + gameData[0]["remotePanel"][i][color.ToString()]);
+				Debug.Log ("Panel " + panelData[i].Colors[color.ToString()]);
+				gameData[0]["remotePanel"][i][color.ToString()] = panelData[i].Colors[color.ToString()];
 			}
 		}
 	}
 
 	public void SavePanelColorData(List<RemotePanelColors> colors)
 	{
-		for (int i = 0; i < gameData[0]["remotePanel"].Count; i++) {
+		for (int i = 1; i < gameData[0]["remotePanel"].Count; i++) {
 			for (int c = 0; c < panelData[i].Colors.Count; c++) {
 				for (int d = 0; d < colors.Count; d++) {
 					if (panelData[i].Colors.Keys.ElementAt(c) == colors[d].ToString()) {
 						bool presentState = panelData[i].Colors[colors[d].ToString()];
 						panelData[i].Colors[colors[d].ToString()] = !presentState;
 						gameData[0]["remotePanel"][i][colors[d].ToString()] = panelData[i].Colors[colors[d].ToString()];
-						Debug.Log ("Panel " + i + "'s color" + colors[d].ToString() + " has been changed to " + panelData[i].Colors[colors[d].ToString()]);
+//						Debug.Log ("Panel " + i + "'s color" + colors[d].ToString() + " has been changed to " + panelData[i].Colors[colors[d].ToString()]);
 						break;
 					}
 				}
@@ -355,21 +371,44 @@ public class DataManager : MonoSingleton<DataManager>
 				RemotePanelColors enumDisplayStatus = (RemotePanelColors)c;
 				string color = enumDisplayStatus.ToString();
 				newPanel.Colors[color] = (bool)gameData[0]["correctOrder"][i][color];
+//				Debug.Log("Show me " + color + " bool is " + (bool)gameData[0]["correctOrder"][i][color]);
 			}
 			correctPanelData.Add(newPanel);
 		}
 	}
 
+	private void ConstructDefaultPanelData()
+	{
+		for (int i = 0; i < gameData[0]["defaultOrder"].Count; i++) {
+			Panel newPanel = new Panel(i);
+			int colorCount = gameData[0]["defaultOrder"][i].Count;
+			for (int c = 0; c < colorCount; c++) {
+				RemotePanelColors enumDisplayStatus = (RemotePanelColors)c;
+				string color = enumDisplayStatus.ToString();
+				newPanel.Colors[color] = (bool)gameData[0]["defaultOrder"][i][color];
+			}
+			defaultPanelData.Add(newPanel);
+		}
+	}
+
+	public void ResetPanelData()
+	{
+		panelData = defaultPanelData;
+		SavePanelData();
+	}
+
 	public bool ComparePanelData()
 	{
 		for (int i = 0; i < panelData.Count; i++) {
-			Panel panel = panelData[0];
-			Panel correctPanel = correctPanelData[0];
+			Panel panel = panelData[i];
+			Panel correctPanel = correctPanelData[i];
 			int colorCount = panel.Colors.Count;
 			for (int c = 0; c < colorCount; c++) {
 				RemotePanelColors enumDisplayStatus = (RemotePanelColors)c;
 				string color = enumDisplayStatus.ToString();
 				if (panel.Colors[color] != correctPanel.Colors[color]) {
+					Debug.Log ("Panel " + i + " color " + (RemotePanelColors)c);
+					Debug.Log (panel.Colors[color] + " is wrong compared to " + correctPanel.Colors[color]);
 					return false;
 				}
 			}

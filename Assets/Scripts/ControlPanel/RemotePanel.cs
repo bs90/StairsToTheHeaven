@@ -13,15 +13,15 @@ public class RemotePanel : MonoBehaviour {
 
 	private void Awake()
 	{
-		Debug.Log ("Awake");
+//		Debug.Log ("Awake");
 		StartCoroutine(LightUp());
 	}
 
-	private IEnumerator LightUp()
+	public IEnumerator LightUp()
 	{
 		yield return new WaitForSeconds(1);
 		SetupColors();
-		Debug.Log ("Correct ? " + DataManager.Instance.ComparePanelData());
+//		Debug.Log ("Correct ? " + DataManager.Instance.ComparePanelData());
 	}
 
 	private void SetupColors()
@@ -33,7 +33,7 @@ public class RemotePanel : MonoBehaviour {
 
 		for (int i = 0; i < materials.Length; i++) {
 			bool lit = DataManager.Instance.GetPanelComponentState(materials[i].name, floor);
-			Debug.Log (materials[i].name + " is lit: " + lit);
+//			Debug.Log (materials[i].name + " is lit: " + lit);
 			if (lit) {
 				lightComponents[i].GetComponent<MeshRenderer>().material = materials[i];
 			}

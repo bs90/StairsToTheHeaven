@@ -1,14 +1,14 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ControlPanel\MainPanel.cs">
     <Files>
-      <File FileName="Assets\Scripts\Util\Util.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Manager\DataManager\DataManager.cs" Line="251" Column="66" />
-      <File FileName="Assets\Scripts\ControlPanel\RemotePanel.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ControlPanel\MainPanel.cs" Line="102" Column="19" />
-      <File FileName="Assets\Scripts\ControlPanel\ColorButton.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Environment\ImageSide.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Models\Panel.cs" Line="5" Column="2" />
+      <File FileName="Assets\Scripts\Environment\ImageSide.cs" Line="94" Column="3" />
+      <File FileName="Assets\Scripts\Models\Panel.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Manager\GameManager\GameManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Manager\NavigationManager\InteractableObject.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Manager\NavigationManager\ItemPicker.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ControlPanel\MainPanel.cs" Line="109" Column="52" />
+      <File FileName="Assets\Scripts\Manager\DataManager\DataManager.cs" Line="245" Column="12" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

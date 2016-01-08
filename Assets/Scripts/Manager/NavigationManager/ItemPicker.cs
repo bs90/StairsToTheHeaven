@@ -17,7 +17,7 @@ public class ItemPicker : MonoBehaviour {
 		pickedUp = DataManager.Instance.GetPickUpState(itemId);
 //		Debug.Log ("Pickup " + itemId + " is picked: " + pickedUp);
 		if (pickedUp) {
-			Destroy(this.gameObject);
+			this.gameObject.SetActive(false);
 		}
 	}
 
@@ -30,6 +30,7 @@ public class ItemPicker : MonoBehaviour {
 	{
 		InventoryManager.Instance.AddItem (itemId, 1);
 		DataManager.Instance.SavePickUpState(itemId, true);
+		DataManager.Instance.WriteGameData("GameData.json");
 		this.gameObject.SetActive(false);
 	}
 }

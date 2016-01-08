@@ -361,6 +361,138 @@
 		"inspectSprite": "pattern6",
  		"value": 6,
  		"icon": "scroll"
+	},
+	{
+		"id": 11,
+		"title": "Weird picture with a horse",
+		"tag": "u_00",
+		"description": "Some nasty weird horse is drawed, also URL links, who could thought of this?",
+		"equipable": false,
+		"stats": {
+			"type": 0,
+			"hp": 0,
+			"sp": 0,
+			"attack": 0,
+			"defense": 0,
+			"protection": 0
+		},
+		"useable": true,
+		"usability": {
+			"hp": 10,
+			"sp": 0,
+			"cure": 0
+		},
+		"combineable": false,
+		"combination": {
+			"id1": 1,
+			"id2": -1,
+			"id3": -1,
+			"idResult": 3
+		},
+		"stackable": true,
+		"inspectable": true,
+		"inspectSprite": "freak",
+ 		"value": 6,
+ 		"icon": "scroll2"
+	},
+	{
+		"id": 12,
+		"title": "Half of scribble",
+		"tag": "u_00",
+		"description": "This could be a half of some scribble, doesn't seem to be combineable.",
+		"equipable": false,
+		"stats": {
+			"type": 0,
+			"hp": 0,
+			"sp": 0,
+			"attack": 0,
+			"defense": 0,
+			"protection": 0
+		},
+		"useable": true,
+		"usability": {
+			"hp": 10,
+			"sp": 0,
+			"cure": 0
+		},
+		"combineable": false,
+		"combination": {
+			"id1": 1,
+			"id2": -1,
+			"id3": -1,
+			"idResult": 3
+		},
+		"stackable": true,
+		"inspectable": true,
+		"inspectSprite": "order1",
+ 		"value": 6,
+ 		"icon": "scroll3"
+	},
+	{
+		"id": 13,
+		"title": "Other half of scribble",
+		"tag": "u_00",
+		"description": "Nope, this doesn't seem to be combineable neither.",
+		"equipable": false,
+		"stats": {
+			"type": 0,
+			"hp": 0,
+			"sp": 0,
+			"attack": 0,
+			"defense": 0,
+			"protection": 0
+		},
+		"useable": true,
+		"usability": {
+			"hp": 10,
+			"sp": 0,
+			"cure": 0
+		},
+		"combineable": false,
+		"combination": {
+			"id1": 1,
+			"id2": -1,
+			"id3": -1,
+			"idResult": 3
+		},
+		"stackable": true,
+		"inspectable": true,
+		"inspectSprite": "order2",
+ 		"value": 6,
+ 		"icon": "scroll3"
+	},
+	{
+		"id": 14,
+		"title": "Stairs to the heaven",
+		"tag": "u_00",
+		"description": "Heaven? Where does this lead to?",
+		"equipable": false,
+		"stats": {
+			"type": 0,
+			"hp": 0,
+			"sp": 0,
+			"attack": 0,
+			"defense": 0,
+			"protection": 0
+		},
+		"useable": true,
+		"usability": {
+			"hp": 10,
+			"sp": 0,
+			"cure": 0
+		},
+		"combineable": false,
+		"combination": {
+			"id1": 1,
+			"id2": -1,
+			"id3": -1,
+			"idResult": 3
+		},
+		"stackable": true,
+		"inspectable": true,
+		"inspectSprite": "pattern6",
+ 		"value": 6,
+ 		"icon": "scroll"
 	}
 ]
 
