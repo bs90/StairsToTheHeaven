@@ -49,6 +49,8 @@
      <Compile Include="Assets\Models\OldChest\DemoScene\MouseOrbit.cs" />
      <Compile Include="Assets\Models\PrimitivePlus\Scripts\PrimitivePlusEditor.cs" />
      <Compile Include="Assets\Scripts\Common\Constants.cs" />
+     <Compile Include="Assets\Scripts\ControlPanel\ColorButton.cs" />
+     <Compile Include="Assets\Scripts\ControlPanel\MainButton.cs" />
      <Compile Include="Assets\Scripts\ControlPanel\MainPanel.cs" />
      <Compile Include="Assets\Scripts\ControlPanel\RemotePanel.cs" />
      <Compile Include="Assets\Scripts\Effects\MirrorReflection.cs" />
@@ -116,6 +118,7 @@
      <Compile Include="Assets\Scripts\Models\DialogMessage.cs" />
      <Compile Include="Assets\Scripts\Models\Item.cs" />
      <Compile Include="Assets\Scripts\Models\ItemSlot.cs" />
+     <Compile Include="Assets\Scripts\Models\Panel.cs" />
      <Compile Include="Assets\Scripts\Models\Pattern.cs" />
      <Compile Include="Assets\Scripts\System\Singleton.cs" />
      <Compile Include="Assets\Scripts\Test\TestMessage.cs" />
@@ -131,6 +134,7 @@
      <Compile Include="Assets\Scripts\UI\ScrollDetailTexture.cs" />
      <Compile Include="Assets\Scripts\UI\ShowSliderValue.cs" />
      <Compile Include="Assets\Scripts\UI\TiltWindow.cs" />
+     <Compile Include="Assets\Scripts\Util\Util.cs" />
      <Compile Include="Assets\_MK\_MKGlowSystem\_Demo\Code\MK_DemoControl.cs" />
      <Compile Include="Assets\_MK\_MKGlowSystem\_Demo\Code\MK_RotateObject.cs" />
      <Compile Include="Assets\_MK\_MKGlowSystem\_Internal\MKGlow.cs" />

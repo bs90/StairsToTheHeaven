@@ -3,6 +3,18 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using LitJson;
+using System.Linq;
+
+public enum RemotePanelColors {
+	Red = 0,
+	Green = 1,
+	White = 2,
+	Purple = 3,
+	Blue = 4,
+	Orange = 5,
+	Yellow = 6,
+	None = 7
+}
 
 public class DataManager : MonoSingleton<DataManager> 
 {
@@ -46,10 +58,17 @@ public class DataManager : MonoSingleton<DataManager>
 		}
 	}
 
-	private List<bool> panelData = new List<bool>();
-	public List<bool> PanelData {
+	private List<Panel> panelData = new List<Panel>();
+	public List<Panel> PanelData {
 		get {
 			return this.panelData;
+		}
+	}
+
+	private List<Panel> correctPanelData = new List<Panel>();
+	public List<Panel> CorrectPanelData {
+		get {
+			return this.correctPanelData;
 		}
 	}
 
@@ -77,6 +96,7 @@ public class DataManager : MonoSingleton<DataManager>
 			ConstructEventData();
 			ConstructQuizData();
 			ConstructRemotePanelData();
+			ConstructCorrectPanelData();
 		}
 	}
 
@@ -105,6 +125,18 @@ public class DataManager : MonoSingleton<DataManager>
 				return pickUpData[i];
 			}
 		}
+		return false;
+	}
+
+	public bool GetPanelComponentState(string color, int floor) {
+		if (floor < 0 || floor > panelData.Count) {
+			return false;
+		}
+		Panel panel = panelData[floor];
+		if (panel.Colors.ContainsKey(color)) {
+			return panel.Colors[color];
+		}
+		Debug.LogError("The frigging color doesn't exist");
 		return false;
 	}
 
@@ -197,14 +229,30 @@ public class DataManager : MonoSingleton<DataManager>
 		}
 	}
 
-	public void SavePanelData(List<bool> switchOn)
+	public void SavePanelData(List<Panel> panels)
 	{
-		if (switchOn.Count != panelData.Count) {
-			return;
-		}
 		for (int i = 0; i < gameData[0]["remotePanel"].Count; i++) {
-			panelData[i] = switchOn[i];
-			gameData[0]["remotePanel"][i] = switchOn[i];
+			for (int c = 0; c < panels[i].Colors.Count; c++) {
+				string color = panels[i].Colors.Keys.ElementAt(c);
+				gameData[0]["remotePanel"][i][color] =  panels[i].Colors[color];
+			}
+		}
+	}
+
+	public void SavePanelColorData(List<RemotePanelColors> colors)
+	{
+		for (int i = 0; i < gameData[0]["remotePanel"].Count; i++) {
+			for (int c = 0; c < panelData[i].Colors.Count; c++) {
+				for (int d = 0; d < colors.Count; d++) {
+					if (panelData[i].Colors.Keys.ElementAt(c) == colors[d].ToString()) {
+						bool presentState = panelData[i].Colors[colors[d].ToString()];
+						panelData[i].Colors[colors[d].ToString()] = !presentState;
+						gameData[0]["remotePanel"][i][colors[d].ToString()] = panelData[i].Colors[colors[d].ToString()];
+						Debug.Log ("Panel " + i + "'s color" + colors[d].ToString() + " has been changed to " + panelData[i].Colors[colors[d].ToString()]);
+						break;
+					}
+				}
+			}
 		}
 	}
 
@@ -285,7 +333,47 @@ public class DataManager : MonoSingleton<DataManager>
 	private void ConstructRemotePanelData()
 	{
 		for (int i = 0; i < gameData[0]["remotePanel"].Count; i++) {
-			panelData.Add((bool)gameData[0]["remotePanel"][i]);
+			Panel newPanel = new Panel(i);
+			int colorCount = gameData[0]["remotePanel"][i].Count;
+//			Debug.Log ("panel " + i + " count: " + colorCount);
+			for (int c = 0; c < colorCount; c++) {
+				RemotePanelColors enumDisplayStatus = (RemotePanelColors)c;
+				string color = enumDisplayStatus.ToString();
+//				Debug.Log ("color " + color + " at panel " + i + " is lit: " + gameData[0]["remotePanel"][i][color]);
+				newPanel.Colors[color] = (bool)gameData[0]["remotePanel"][i][color];
+			}
+			panelData.Add(newPanel);
 		}
+	}
+
+	private void ConstructCorrectPanelData()
+	{
+		for (int i = 0; i < gameData[0]["correctOrder"].Count; i++) {
+			Panel newPanel = new Panel(i);
+			int colorCount = gameData[0]["correctOrder"][i].Count;
+			for (int c = 0; c < colorCount; c++) {
+				RemotePanelColors enumDisplayStatus = (RemotePanelColors)c;
+				string color = enumDisplayStatus.ToString();
+				newPanel.Colors[color] = (bool)gameData[0]["correctOrder"][i][color];
+			}
+			correctPanelData.Add(newPanel);
+		}
+	}
+
+	public bool ComparePanelData()
+	{
+		for (int i = 0; i < panelData.Count; i++) {
+			Panel panel = panelData[0];
+			Panel correctPanel = correctPanelData[0];
+			int colorCount = panel.Colors.Count;
+			for (int c = 0; c < colorCount; c++) {
+				RemotePanelColors enumDisplayStatus = (RemotePanelColors)c;
+				string color = enumDisplayStatus.ToString();
+				if (panel.Colors[color] != correctPanel.Colors[color]) {
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 }

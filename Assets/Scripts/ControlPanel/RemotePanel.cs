@@ -1,36 +1,47 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum RemotePanelColors {
-	red = 0,
-	green = 1,
-	white = 2,
-	purple = 3,
-	blue = 4,
-	orange = 5,
-	yellow = 6
-}
-
 public class RemotePanel : MonoBehaviour {
-	public Transform part0;	
-	public Transform part1;	
-	public Transform part2;	
-	public Transform part3;	
-	public Transform part4;	
-	public Transform part5;	
-	public Transform part6;
+	public int floor;
 
-	public Material redMat;
-	public Material greenMat;
-	public Material whiteMat;
-	public Material purpleMat;
-	public Material blueMat;
-	public Material orangeMat;
-	public Material yellowMat;
+	public Transform[] lightComponents;
+	public Material[] materials;
+	
 	public Material offMat;
+
+	public int[] componentOrder;
+
+	private void Awake()
+	{
+		Debug.Log ("Awake");
+		StartCoroutine(LightUp());
+	}
+
+	private IEnumerator LightUp()
+	{
+		yield return new WaitForSeconds(1);
+		SetupColors();
+		Debug.Log ("Correct ? " + DataManager.Instance.ComparePanelData());
+	}
 
 	private void SetupColors()
 	{
+		if (lightComponents.Length != materials.Length || 
+		    lightComponents.Length != DataManager.Instance.PanelData[floor].Colors.Count) {
+			return;
+		}
 
+		for (int i = 0; i < materials.Length; i++) {
+			bool lit = DataManager.Instance.GetPanelComponentState(materials[i].name, floor);
+			Debug.Log (materials[i].name + " is lit: " + lit);
+			if (lit) {
+				lightComponents[i].GetComponent<MeshRenderer>().material = materials[i];
+			}
+			else {
+				lightComponents[i].GetComponent<MeshRenderer>().material = offMat;
+			}
+		}
 	}
+
+
 }

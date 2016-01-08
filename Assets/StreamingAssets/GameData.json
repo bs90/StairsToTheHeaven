@@ -28,15 +28,100 @@
       "20" : false
     },
     "remotePanel" : {
-      "0" : false,
-      "1" : false,
-      "2" : false,
-      "3" : false,
-      "4" : false,
-      "5" : false,
-      "6" : false
+      "0" : {
+        "Red" : true,
+        "Green" : false,
+        "White" : true,
+        "Purple" : false,
+        "Blue"   : true,
+        "Orange" : false,
+        "Yellow" : true
+      },
+      "1" : {
+        "Red" : false,
+        "Green" : false,
+        "White" : false,
+        "Purple" : false,
+        "Blue"   : false,
+        "Orange" : false,
+        "Yellow" : false
+      },
+      "2" : {
+        "Red" : true,
+        "Green" : false,
+        "White" : true,
+        "Purple" : false,
+        "Blue"   : true,
+        "Orange" : false,
+        "Yellow" : true
+      },
+      "3" : {
+        "Red" : true,
+        "Green" : false,
+        "White" : true,
+        "Purple" : false,
+        "Blue"   : true,
+        "Orange" : false,
+        "Yellow" : true
+      },
+      "4" : {
+        "Red" : true,
+        "Green" : false,
+        "White" : true,
+        "Purple" : false,
+        "Blue"   : true,
+        "Orange" : false,
+        "Yellow" : true
+      }
     },
-    "pickUps"    : {
+    "correctOrder" : {
+      "0" : {
+        "Red" : false,
+        "Green" : false,
+        "White" : false,
+        "Purple" : false,
+        "Blue"   : false,
+        "Orange" : false,
+        "Yellow" : false
+      },
+      "1" : {
+        "Red" : true,
+        "Green" : false,
+        "White" : true,
+        "Purple" : false,
+        "Blue"   : true,
+        "Orange" : false,
+        "Yellow" : true
+      },
+      "2" : {
+        "Red" : false,
+        "Green" : false,
+        "White" : false,
+        "Purple" : false,
+        "Blue"   : false,
+        "Orange" : false,
+        "Yellow" : false
+      },
+      "3" : {
+        "Red" : false,
+        "Green" : false,
+        "White" : false,
+        "Purple" : false,
+        "Blue"   : false,
+        "Orange" : false,
+        "Yellow" : false
+      },
+      "4" : {
+        "Red" : false,
+        "Green" : false,
+        "White" : false,
+        "Purple" : false,
+        "Blue"   : false,
+        "Orange" : false,
+        "Yellow" : false
+      }
+    },
+    "pickUps"      : {
       "0" : false,
       "1" : true,
       "2" : false,
@@ -58,7 +143,7 @@
       "18" : false,
       "19" : false
     },
-    "slotItem"   : {
+    "slotItem"     : {
       "0" : 1,
       "1" : 3,
       "2" : 2,
@@ -81,7 +166,7 @@
       "19" : -1,
       "20" : -1
     },
-    "slotAmount" : {
+    "slotAmount"   : {
       "0" : 1,
       "1" : 1,
       "2" : 1,
@@ -104,12 +189,12 @@
       "19" : 0,
       "20" : 0
     },
-    "events"     : {
+    "events"       : {
       "0" : false,
       "1" : false,
       "2" : false
     },
-    "quiz"     : {
+    "quiz"         : {
       "0" : false,
       "1" : false,
       "2" : false,
@@ -131,17 +216,17 @@
       "18" : false,
       "19" : false
     },
-    "flags"      : {
+    "flags"        : {
       "0" : false,
       "1" : false,
       "2" : false
     },
-    "tutorials"  : {
+    "tutorials"    : {
       "0" : false,
       "1" : false,
       "2" : false
     },
-    "character1" : {
+    "character1"   : {
       "name" : 0,
       "class" : 0,
       "hp"    : 0,
