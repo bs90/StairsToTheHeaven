@@ -94,7 +94,7 @@
 		},
 		"stackable": true,
 		"inspectable": true,
-		"inspectSprite": "PatternB10",
+		"inspectSprite": "pattern2",
  		"value": 6,
  		"icon": "scroll"
 	},
@@ -160,7 +160,7 @@
 		},
 		"stackable": true,
 		"inspectable": true,
-		"inspectSprite": "PatternB10",
+		"inspectSprite": "pattern3",
  		"value": 6,
  		"icon": "scroll"
 	},
@@ -193,7 +193,7 @@
 		},
 		"stackable": true,
 		"inspectable": true,
-		"inspectSprite": "PatternB10",
+		"inspectSprite": "pattern4",
  		"value": 6,
  		"icon": "scroll"
 	},
@@ -325,7 +325,7 @@
 		},
 		"stackable": true,
 		"inspectable": true,
-		"inspectSprite": "none",
+		"inspectSprite": "maze",
  		"value": 6,
  		"icon": "scroll2"
 	},
@@ -358,7 +358,7 @@
 		},
 		"stackable": true,
 		"inspectable": true,
-		"inspectSprite": "pattern6",
+		"inspectSprite": "pattern5",
  		"value": 6,
  		"icon": "scroll"
 	},
